@@ -9,18 +9,18 @@ import { navData } from '@/data/navData';
 
 
 <!--=============== HEADER ===============-->
-<header class="site-header">
-  <div class="nav-container">
-    <div class="logo">
-      <a href="/" class="logo-img">
+<header class="nav">
+  <div class="nav__container">
+    <div class="nav__logo">
+      <a href="/" class="nav__logo-img">
         <Image src={wordmark} alt="beyond belief studio" />
       </a>
-      <a href="/" class="logo-img__sticky">
+      <a href="/" class="nav__logo-img__sticky">
         <Image src={navLogo} alt="beyond belief studio" />
       </a>
     </div>
 
-    <nav class="nav-links">
+    <nav class="nav__links">
         {navData.map((i) => {
             return <Links variant="nav-link" href={i.href}>{i.title}</Links>
         })}
@@ -34,7 +34,7 @@ import { navData } from '@/data/navData';
   </div>
 
   <!-- Mobile Menu -->
-  <div class="mobile-nav" id="mobileNav">
+  <div class="nav__mobile" id="mobileNav">
         {navData.map((i) => {
             return <a class="nav-link" href="{i.href}">{i.title}</a>
         })}
@@ -46,46 +46,93 @@ import { navData } from '@/data/navData';
 
 <style lang="scss">
 /* Header Styles */
-.site-header {
+.nav {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-}
+  
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: var(--container--main);
+    margin: 0 auto;
+    background-color: var(--light-200);
+    backdrop-filter: blur(0.35rem);
+    padding: 1rem;
+    border-radius: var(--border-radius-small);
+    margin: 2rem auto;
+    width: 100%;
+    gap: 2rem;
+  }
+  
+  &__logo img {
+    max-height: 90px;
+  }
+  
+  &__logo-img__sticky {
+    display: none;
+  
+    img {
+      max-height: 60px;
+    }
+  }
+  
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
 
-.nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: var(--container--main);
-  margin: 0 auto;
-  background-color: var(--light-200);
-  backdrop-filter: blur(0.35rem);
-  padding: 1rem;
-  border-radius: var(--border-radius-small);
-  margin: 2rem auto;
-  width: 100%;
-  gap: 2rem;
-}
+  /* Mobile Nav */
+  &__mobile {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: #0d0d0d;
+    width: 100%;
+    height: 100vh;
+    padding: 6rem 2rem 2rem;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    z-index: 1050;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
 
-.logo img {
-  max-height: 90px;
-}
+  &__mobile a {
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+  }
 
-.logo-img__sticky {
-  display: none;
+  /* Open State */
+  &__nav.open {
+    display: flex;
+    transform: translateX(0);
+  }
 
-  img {
-    max-height: 60px;
+  &.scrolled {
+    .nav__logo-img {
+        display: none;
+    }
+
+    .nav__logo-img__sticky {
+        display: block;
+    }
+
+    .nav__container {
+        background-color: #f5eee9d1;
+        width: fit-content;
+        padding: 0.5rem .5rem .5rem 1.5rem;
+        box-shadow: 0px 0px 13px #00000029;
+    }
   }
 }
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
 
 /* Hamburger Button */
 .hamburger {
@@ -107,61 +154,13 @@ import { navData } from '@/data/navData';
   transition: all 0.3s ease;
 }
 
-/* Mobile Nav */
-.mobile-nav {
-  display: none;
-  position: fixed;
-  top: 0;
-  right: 0;
-  background: #0d0d0d;
-  width: 100%;
-  height: 100vh;
-  padding: 6rem 2rem 2rem;
-  flex-direction: column;
-  gap: 2rem;
-  align-items: center;
-  justify-content: center;
-  z-index: 1050;
-  transform: translateX(100%);
-  transition: transform 0.3s ease;
-}
-
-.mobile-nav a {
-  color: white;
-  font-size: 1.5rem;
-  text-decoration: none;
-}
-
-/* Open State */
-.mobile-nav.open {
-  display: flex;
-  transform: translateX(0);
-}
-
 body.menu-open {
   overflow: hidden;
 }
 
-.site-header.scrolled {
-    .logo-img {
-        display: none;
-    }
-
-    .logo-img__sticky {
-        display: block;
-    }
-
-    .nav-container {
-        background-color: #f5eee9d1;
-        width: fit-content;
-        padding: 0.5rem .5rem .5rem 1.5rem;
-        box-shadow: 0px 0px 13px #00000029;
-    }
-}
-
 /* Responsive Behavior */
 @media (max-width: 768px) {
-  .nav-links {
+  .nav__links {
     display: none;
   }
 
@@ -197,7 +196,7 @@ hamburgerBtn.addEventListener("click", () => {
 hamburgerBtn.classList.toggle("open");
 
 window.addEventListener("scroll", () => {
-  const header = document.querySelector(".site-header") as HTMLElement;
+  const header = document.querySelector(".nav") as HTMLElement;
   if (window.scrollY > 50) {
     header.classList.add("scrolled");
   } else {
