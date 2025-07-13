@@ -1,0 +1,192 @@
+---
+
+---
+
+<section>
+    <div class="u-container column-main">
+        <div class="content-lg">
+            <h2>Frequently Asked Questions</h2>
+        </div>
+        <div class="content-lg">
+            <div class="accordion">
+                <div class="accordion__item">
+                    <div class="accordion__question">
+                        <button type="button" class="accordion__button" aria-expanded="false" aria-controls="a1">
+                        </button>
+                        <h3 class="accordion__heading">
+                            Why should accordions be accessible?
+                        </h3>
+                    </div>
+                    <div id="a1" class="accordion__content" hidden>
+                        <p>
+                            Accordions on your website include important information. Everyone should be able to access this information, even if they do not use a typical keyboard and mouse to browser your website. Many laws around the world also require websites to be accessible, including accordion components.
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion__item">
+                    <div class="accordion__question">
+                        <button type="button" class="accordion__button" aria-expanded="false" aria-controls="a2">
+                        </button>
+                        <h3 class="accordion__heading">
+                            Why should accordions be accessible?
+                        </h3>
+                    </div>
+                    <div id="a2" class="accordion__content" hidden>
+                        <p>
+                            Accordions on your website include important information. Everyone should be able to access this information, even if they do not use a typical keyboard and mouse to browser your website. Many laws around the world also require websites to be accessible, including accordion components.
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion__item">
+                    <div class="accordion__question">
+                        <button type="button" class="accordion__button" aria-expanded="false" aria-controls="a3">
+                        </button>
+                        <h3 class="accordion__heading">
+                            Why should accordions be accessible?
+                        </h3>
+                    </div>
+                    <div id="a3" class="accordion__content" hidden>
+                        <p>
+                            Accordions on your website include important information. Everyone should be able to access this information, even if they do not use a typical keyboard and mouse to browser your website. Many laws around the world also require websites to be accessible, including accordion components.
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion__item">
+                    <div class="accordion__question">
+                        <button type="button" class="accordion__button" aria-expanded="false" aria-controls="a4">
+                        </button>
+                        <h3 class="accordion__heading">
+                            Why should accordions be accessible?
+                        </h3>
+                    </div>
+                    <div id="a4" class="accordion__content" hidden>
+                        <p>
+                            Accordions on your website include important information. Everyone should be able to access this information, even if they do not use a typical keyboard and mouse to browser your website. Many laws around the world also require websites to be accessible, including accordion components.
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion__item">
+                    <div class="accordion__question">
+                        <button type="button" class="accordion__button" aria-expanded="false" aria-controls="a5">
+                        </button>
+                        <h3 class="accordion__heading">
+                            Why should accordions be accessible?
+                        </h3>
+                    </div>
+                    <div id="a5" class="accordion__content" hidden>
+                        <p>
+                            Accordions on your website include important information. Everyone should be able to access this information, even if they do not use a typical keyboard and mouse to browser your website. Many laws around the world also require websites to be accessible, including accordion components.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.accordion__item {
+    background: var(--light-100);
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.accordion__question {
+    display: flex;
+    width: 100%;
+    gap: 2rem;
+    align-items: center;
+}
+
+.accordion__button {
+    border: 0;
+    border-radius: 0;
+    justify-content: normal;
+    padding: 0;
+    color: #1b1b1b;
+    background-color: transparent;
+    background-image: url(https://equalizedigital.com/wp-content/uploads/2024/07/minus.svg), linear-gradient(transparent, transparent);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1.5rem;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: inherit;
+    width: 50px;
+    background-color: #6def77;
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+}
+
+.accordion__heading {
+    margin-bottom: 0;
+    width: fit-content;
+    text-align: left;
+    font-size: 1.5rem;
+}
+
+.accordion__content {
+    color: #1b1b1b;
+    margin-top: 0;
+    overflow: auto;
+    padding: 0;
+    line-height: 1.5;
+    text-align: left;
+    margin-left: calc(50px + 2rem);
+
+    p {
+        margin-bottom: 0;
+    }
+}
+
+.accordion__button[aria-expanded=false], 
+.accordion__button[aria-expanded=false]:hover {
+    background-image: url(https://equalizedigital.com/wp-content/uploads/2024/07/plus.svg), linear-gradient(transparent, transparent);
+    background-repeat: no-repeat;
+}
+
+.accordion__button[aria-expanded=false] {
+    background-size: 1.5rem;
+}
+
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const accordionButtons: NodeListOf<HTMLButtonElement> = document.querySelectorAll(".accordion__button");
+
+  accordionButtons.forEach((button: HTMLButtonElement) => {
+    button.addEventListener("click", () => {
+      const isExpanded: boolean = button.getAttribute("aria-expanded") === "true";
+      const contentId: string | null = button.getAttribute("aria-controls");
+      const content: HTMLElement | null = contentId ? document.getElementById(contentId) : null;
+
+      // Collapse all accordions
+      accordionButtons.forEach((btn: HTMLButtonElement) => {
+        const contentToHide: HTMLElement | null = document.getElementById(btn.getAttribute("aria-controls") || "");
+        btn.setAttribute("aria-expanded", "false");
+        if (contentToHide) {
+          contentToHide.setAttribute("hidden", "");
+        }
+      });
+
+      // If the clicked accordion was not expanded, expand it
+      if (!isExpanded && content) {
+        button.setAttribute("aria-expanded", "true");
+        content.removeAttribute("hidden");
+      }
+    });
+  });
+});
+</script>

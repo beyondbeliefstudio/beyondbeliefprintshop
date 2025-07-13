@@ -1,0 +1,37 @@
+---
+import Links from "./Links.astro";
+
+
+---
+
+<section class="CTA">
+    <div class="u-container container-lg bg-dark CTA-container">
+        <div class="content-lg content-light CTA-content">
+            <h2 class="large">Let’s Make Something You’re Proud to Wear</h2>
+            <p class="large">Whether it’s your first time ordering custom shirts or your tenth merch drop, we’re here to make it simple. No hassle, no guesswork—just high-quality screen printing with a quick turnaround and a local team that’s got your back.</h3>
+            <div class="btn-group">
+                <Links href={"/"}>Get Started</Links>
+                <Links variant="outline" href={"/"}>Get A Quote</Links>
+            </div>
+        </div>
+        <div id="blobCTA"></div>
+        <div id="blur"></div>
+    </div>
+</section>
+
+<style lang="scss">
+
+.CTA {
+    &-container {
+        border-radius: var(--border-radius-medium);
+        overflow: hidden;
+    }
+
+    &-content {
+        position: relative;
+        z-index: 999;
+        text-wrap: balance;
+    }
+}
+
+</style>

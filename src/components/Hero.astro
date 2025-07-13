@@ -1,0 +1,104 @@
+---
+import { getCollection } from "astro:content";
+import Links from "./Links.astro";
+
+
+import Heading from "./Heading.astro";
+import HeroCards from "./heroCards.astro";
+
+const heroCards = await getCollection("heroCards", ({data}) => data.isFeatured);
+
+---
+
+<section class="hero bg-dark">
+    <div class="u-container hero__container">
+        <div class="hero__column vc">
+            <div class="hero__content">
+                <Heading tag="h1" size="display" fontFamily="primary">Screen Printing That’s Local, Fast, and Built to Last.</Heading>
+                <p class="large">
+                    At Beyond Belief Studio, we specialize exclusively in high-quality screen printing for schools, small businesses, events, and brands—right here in Monroe, NC.
+                </p>
+                <div class="btn-group">
+                    <Links href={"/"}>Get Started</Links>
+                    <Links variant="outline" href={"/"}>Get A Quote</Links>
+                </div>
+            </div>
+            <div class="hero__arrows">
+                <button id="prevArrow" aria-label="Previous Slide">←</button>
+                <button id="nextArrow" aria-label="Next Slide">→</button>
+            </div>
+        </div>
+        <div class="hero__column">
+            {
+                heroCards.map((card) => <HeroCards heroCards={card} />)
+            }
+        </div>
+    </div>
+    <div id="blob"></div>
+    <div id="blur"></div>
+</section>
+
+<style lang="scss">
+.hero {
+    overflow: hidden; 
+    position: relative;
+    padding-top: 200px;
+    height: 100vh;
+
+    &__container {
+        padding-top: 0;
+        padding-bottom: 2rem;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+        gap: 4rem;
+    }
+
+    h1, h2, h3, h4, p {
+        color: var(--light-200)
+    }
+
+    &__content {
+        text-align: left;
+    }
+
+    &__column {
+        position: relative;
+        height: 100%;
+        z-index: 999;
+    }
+    
+    &__arrows {
+      position: absolute;
+      bottom: 2rem;
+      display: flex;
+      gap: 1rem;
+      z-index: 1000;
+      left: 0;
+      bottom: 0
+    }
+    
+    &__arrows button {
+        background: none;
+        border: 2px solid white;
+        color: white;
+        font-size: 2rem;
+        padding: 0;
+        cursor: pointer;
+        height: 60px;
+        width: 60px;
+        border-radius: 100%;
+        padding-bottom: 3px;
+        transition: .25s ease-in-out all;
+    
+        &:hover {
+            transform: scale(.97);
+            opacity: .7;
+        }
+    }
+}
+
+
+
+
+</style>

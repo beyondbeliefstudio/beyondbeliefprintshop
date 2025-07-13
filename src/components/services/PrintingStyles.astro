@@ -1,0 +1,182 @@
+---
+import Picture from "astro/components/Picture.astro";
+import Links from "../Links.astro";
+import press from "@/assets/press.jpg"
+
+
+---
+
+<section class="bg-white" id="printing-styles">
+    <div class="u-container styles-component vertical-section">
+        <div class="styles-wrapper__text">
+            <div class="sticky-wrapper">
+                <h2>Screen Printing Styles We Offer</h2>
+                <p>We offer several professional printing techniques to match your artwork, garment, and desired look:</p>
+                <p>Not sure which method is right for your project? Don't worry — we'll guide you through it.</p>
+                <Links href={"/"}>Get Started Today</Links>
+            </div>
+        </div>
+        <div class="styles-wrapper">
+            <div class="styles-card">
+                <div class="img-wrapper">
+                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
+                </div>
+                <div class="card-content">
+                     <span class="icon">
+                        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30.12 39.88">
+                        <path d="M30.12,24.82c0,8.32-6.74,15.06-15.06,15.06S0,33.14,0,24.82,15.06,0,15.06,0c0,0,15.06,16.5,15.06,24.82h0Z"/>
+                        </svg>
+                    </span>
+                    <h3>Spot Color Printing</h3>
+                    <p>Our most popular technique delivers clean, bold colors with exceptional opacity. Perfect for logos, text, and designs with distinct color blocks. The result is vibrant prints that maintain their brightness even after multiple washes.</p>
+                </div>
+            </div>
+            <div class="styles-card">
+                <div class="img-wrapper">
+                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
+                </div>
+                <div class="card-content">
+                     <span class="icon">
+                        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30.12 39.88">
+                        <path d="M30.12,24.82c0,8.32-6.74,15.06-15.06,15.06S0,33.14,0,24.82,15.06,0,15.06,0c0,0,15.06,16.5,15.06,24.82h0Z"/>
+                        </svg>
+                    </span>
+                    <h3>Simulated Process Printing</h3>
+                    <p>This advanced technique breaks down complex images into separate color layers to recreate photorealistic effects. Ideal for portraits, detailed illustrations, and gradient-heavy designs that require smooth color transitions. The results look stunning on both light and dark garments.</p>
+                </div>
+            </div>
+            <div class="styles-card">
+                <div class="img-wrapper">
+                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
+                </div>
+                <div class="card-content">
+                    <!-- <span class="number">01</span> -->
+                     <span class="icon">
+                        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30.12 39.88">
+                        <path d="M30.12,24.82c0,8.32-6.74,15.06-15.06,15.06S0,33.14,0,24.82,15.06,0,15.06,0c0,0,15.06,16.5,15.06,24.82h0Z"/>
+                        </svg>
+                    </span>
+                    <h3>CMYK Process Printing</h3>
+                    <p>Using cyan, magenta, yellow, and black inks, we create vintage-inspired prints with a softer feel. This method excels at producing subtle color variations and tonal effects that give your design an artistic, lived-in quality. Perfect for designs that benefit from a less commercial, more artistic look.</p>
+                </div>
+            </div>
+            <div class="styles-card">
+                <div class="img-wrapper">
+                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
+                </div>
+                <div class="card-content">
+                    <!-- <span class="number">01</span> -->
+                     <span class="icon">
+                        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30.12 39.88">
+                        <path d="M30.12,24.82c0,8.32-6.74,15.06-15.06,15.06S0,33.14,0,24.82,15.06,0,15.06,0c0,0,15.06,16.5,15.06,24.82h0Z"/>
+                        </svg>
+                    </span>
+                    <h3>Specialty Inks</h3>
+                    <p>Make your design truly unique with our range of specialty inks. From dimensional puff ink that rises above the fabric to metallic finishes that catch the light, glow-in-the-dark effects for nighttime visibility, to tonal discharge that creates a super-soft vintage feel. These inks add texture and visual interest you can't achieve with standard printing.</p>
+                </div>
+            </div>
+            <div class="styles-card">
+                <div class="img-wrapper">
+                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
+                </div>
+                <div class="card-content">
+                    <!-- <span class="number">01</span> -->
+                     <span class="icon">
+                        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30.12 39.88">
+                        <path d="M30.12,24.82c0,8.32-6.74,15.06-15.06,15.06S0,33.14,0,24.82,15.06,0,15.06,0c0,0,15.06,16.5,15.06,24.82h0Z"/>
+                        </svg>
+                    </span>
+                    <h3>Custom Tag Printing</h3>
+                    <p>Transform standard blanks into your own branded apparel with inside tag printing. We can remove existing tags and print your logo, care instructions, and sizing information directly on the garment. This professional touch elevates your brand and creates a seamless, retail-ready product.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style lang="scss">
+
+.styles-component {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: var(--_spacing---section-space--small);
+}
+
+.styles-card {
+    background-color: #6def7717;
+    border: 1px solid var(--brand-primary);
+    border-radius: var(--border-radius-medium);
+    padding: 1rem;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-wrapper {
+    aspect-ratio: 1 / 1;
+    width: fit-content;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+.card-content {
+    width: 100%;
+    padding: 2rem 2rem 1rem;
+}
+
+span.number {
+    font-size: 2.5rem;
+    font-family: 'Hamburg';
+    color: var(--brand-primary);
+    text-shadow: 2px 2px var(--dark-900);
+    -webkit-text-stroke: 1px var(--dark-900);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+span.icon {
+    height: 60px;
+    width: 60px;
+    background-color: var(--brand-primary);
+    border-radius: var(--border-radius-round);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+span.icon svg {
+    height: 30px;
+    width: 30px;
+}
+
+span.icon svg path {
+    fill: var(--dark-800);
+}
+
+
+
+.styles-wrapper__text {
+    position: sticky;
+}
+
+.sticky-wrapper {
+    z-index: 1;
+    flex: 0 auto;
+    align-self: auto;
+    display: inline-block;
+    position: sticky;
+    top: 160px;
+}
+
+.styles-wrapper {
+    grid-column-gap: 3rem;
+    grid-row-gap: 2rem;
+    flex-flow: column;
+    display: flex;
+}
+
+
+
+</style>

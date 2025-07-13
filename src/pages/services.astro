@@ -1,0 +1,313 @@
+---
+import ServicesHero from "@/components/ServicesHero.astro";
+import Layout from "@/layouts/Layout.astro";
+
+import Picture from "astro/components/Picture.astro";
+
+import press from "@/assets/press.jpg"
+import Links from "@/components/Links.astro";
+import PrintingStyles from "@/components/services/PrintingStyles.astro";
+import FAQ from "@/components/services/FAQ.astro";
+import CTA from "@/components/CTA.astro";
+
+
+---
+
+<Layout title="Services">
+
+<ServicesHero />
+
+<section>
+    <div class="u-container">
+        <div class="content-full split">
+            <div class="split__col">
+                <div class="img-wrapper">
+                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
+                </div>
+            </div>
+            <div class="split__col split__content">
+                <h2>Custom Apparel Printing</h2>
+                <p>From classic tees to hoodies, fleece, and tote bags — we print on it all. Choose from trusted brands like Comfort Colors, Bella+Canvas, AS Colour, and Gildan to fit your style and budget.</p>
+                <h3>Popular Garments:</h3>
+                <ul class="list">
+                    <li><h4>T-Shirts (Short & Long Sleeve)</h4>
+                    <p class="small">Perfect canvas for vibrant logos and detailed designs that withstand repeated washing. Ideal for team uniforms, corporate events, and retail merchandise.</p></li>
+                    <li><h4>Crewnecks & Hoodies</h4>
+                    <p>Premium print surface for maximum brand visibility. Screen printing creates durable, eye-catching designs perfect for promotional campaigns and seasonal merchandise.</p></li>
+                    <li><h4>Fleece & Performance Wear</h4>
+                    <p>Specialized printing techniques ensure vibrant designs on technical fabrics. Great for athletic teams, outdoor events, and branded activewear.</p></li>
+                    <li><h4>Tote Bags & Accessories</h4>
+                    <p>Cost-effective branding opportunity with high visibility. Screen printed bags offer walking advertisements for businesses, events, and fundraisers.</p></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<PrintingStyles />
+
+<section class="bg-primary" id="work-with-us">
+    <div class="u-container-md column-main">
+        <div class="content-md">
+            <h2>Why Work With Us</h2>
+            <p>We’re a small team that cares deeply about quality, speed, and helping you look your best. From first mockup to final print, we make it easy.</p>
+        </div>
+        <div class="content-full grid">
+            <div class="card">
+                <h3>Locally Rooted</h3>
+                <p>We’re based right here in Monroe, NC — proudly serving our local community with a personal touch, fast turnarounds, and face-to-face service when needed.</p>
+            </div>
+            <div class="card">
+                <h3>Collaborative Approach</h3>
+                <p>Whether you have a finished design or just an idea, we walk you through each step — artwork, garments, pricing, and print options — with care.</p>
+            </div>
+            <div class="card">
+                <h3>Printed In-House</h3>
+                <p>All printing is done by us in our studio. No outsourcing, no middlemen — just hands-on craftsmanship and full control over quality.</p>
+            </div>
+            <div class="card">
+                <h3>Quality Obsessed</h3>
+                <p>We don’t cut corners. Every print is checked by hand, every garment stacked with care, and every order treated like it’s our own.</p>
+            </div>
+            <div class="card">
+                <h3>Fast & Reliable</h3>
+                <p>Our typical turnaround is 7–10 business days, and we’ll always be upfront about timelines, changes, or rush availability — no radio silence, ever.</p>
+            </div>
+            <div class="card">
+                <h3>Flexible & Honest</h3>
+                <p>We’ll let you know what’s realistic, what works best for your budget, and offer alternatives if something’s not the right fit.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-dark">
+    <div class="u-container column-main">
+        <div class="content-md">
+            <h2>Print Styles</h2>
+            <p class="large">Explore different ways to make your prints stand out</p>
+        </div>
+        <div class="content-full blog-card__wrapper">
+            <div class="blog-card">
+                <div class="img-wrapper">
+                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
+                </div>
+                <div class="blog-card__content">
+                    <h4>Metallic Inks That Shine</h4>
+                    <p class="small">Add a reflective, eye-catching finish with gold, silver, or copper inks.</p>
+                </div>
+            </div>
+            <div class="blog-card">
+                <div class="img-wrapper">
+                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
+                </div>
+                <div class="blog-card__content">
+                    <h4>Tonal Prints for a Minimal Look</h4>
+                    <p class="small">Low-contrast prints that blend beautifully with shirt color for a subtle, premium style.</p>
+                </div>
+            </div>
+            <div class="blog-card">
+                <div class="img-wrapper">
+                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
+                </div>
+                <div class="blog-card__content">
+                    <h4>Puff Ink Printing: Add Depth & Texture</h4>
+                    <p class="small">Create a subtle 3D effect that pops right off the fabric.</p>
+                </div>
+            </div>
+            <div class="blog-card">
+                <div class="img-wrapper">
+                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
+                </div>
+                <div class="blog-card__content">
+                    <h4>Custom Tag Printing</h4>
+                    <p class="small">Take your apparel to the next level with branded tag prints and relabeling options.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<FAQ />
+
+<CTA />
+
+<!-- <section class="bg-white" id="garments">
+    <div class="u-container column-main">
+        <div class="content-md">
+            <h2>Garment Options</h2>
+            <p class="large">Choosing the right blank is just as important as the design. Here are some helpful reads to guide you:</p>
+        </div>
+        <div class="content-full blog-card__wrapper">
+            <div class="blog-card">
+                <div class="img-wrapper">
+                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
+                </div>
+                <div class="blog-card__content">
+                    <h4>How to Pick the Perfect T‑Shirt</h4>
+                    <p class="small">We break down fits, fabrics, and popular options for every style and budget.</p>
+                </div>
+            </div>
+            <div class="blog-card">
+                <div class="img-wrapper">
+                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
+                </div>
+                <div class="blog-card__content">
+                    <h4>Tote Bags? We Print Those Too</h4>
+                    <p class="small">Canvas totes, wine bags, and more—get your branding out there, off the tee.</p>
+                </div>
+            </div>
+            <div class="blog-card">
+                <div class="img-wrapper">
+                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
+                </div>
+                <div class="blog-card__content">
+                    <h4>Our Favorite Fleece Items</h4>
+                    <p class="small">Cozy up with the most print-friendly hoodies, sweatshirts, and zip-ups we recommend.</p>
+                </div>
+            </div>
+            <div class="blog-card">
+                <div class="img-wrapper">
+                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
+                </div>
+                <div class="blog-card__content">
+                    <h4>Best Blanks by Price Bracket</h4>
+                    <p class="small">Our favorite tees and fleece options at value, mid-range, and premium price points.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>  -->
+
+</Layout>
+
+
+<style lang="scss">
+#work-with-us {
+    .card {
+        background-color: var(--light-100);
+        border: 1px solid;
+        border-radius: var(--border-radius-medium);
+        padding: 1.5rem 1.5rem .5rem;
+        text-wrap: balance;
+        text-align: left;
+
+        h3 {
+            font-size: 1.5rem;
+        }
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(341px, 1fr));
+        grid-gap: 2rem;
+    }
+}
+
+
+.split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+
+    &__col {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+
+        .img-wrapper {
+            height: 100%;
+            border-radius: var(--border-radius-medium);
+            overflow: hidden;
+            width: 100%;
+        }
+    }
+    
+    &__content {
+        text-align: left;
+        padding: 3rem 0;
+
+        h4 {
+            margin-bottom: .25rem;
+            line-height: 1;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+    }
+}
+
+.bg-dark {
+    .content-md {
+        h1, h2, h3, h4, h5, h6, p {
+            color: var(--light-100);
+        }
+    }
+}
+
+.blog-card__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 1rem;
+}
+
+.blog-card {
+    border: 1px solid;
+    border-radius: 16px;
+    overflow: hidden;
+
+    &:hover {
+        background: #1a1a1a;
+    }
+
+    .img-wrapper {
+        // border-radius: 16px;
+        overflow: hidden;
+        margin-bottom: 1rem;
+    }
+
+    &__content {
+        text-align: left;
+        color: #fff;
+        padding: 1rem;
+
+        h4 {
+            margin-bottom: .25rem;
+        }
+
+        p {
+            color: #fff;
+            font-size: .9rem;
+        }        
+    }
+}
+
+.list {
+    border-left: 2px solid;
+    padding: 0rem 1rem;
+    margin-left: 1rem;
+
+    li:last-child {
+        p {
+            margin-bottom: 0;
+        }
+    }
+}
+
+#garments {
+    .blog-card {
+        border: 1px solid var(--dark-900--transparency);
+
+        &:hover {
+            background-color: var(--light-200--transparency)
+        }
+        &__content {
+            color: var(--dark-900);
+
+            p {
+                color: var(--dark-900);
+            }
+        }
+    }
+}
+</style>
