@@ -40,7 +40,6 @@ window.addEventListener("DOMContentLoaded", () => {
 /* -- Glow effect -- */
 
 const blob = document.getElementById("blob");
-const blobCTA = document.getElementById("blobCTA");
 
 window.onpointermove = (event) => {
   const { clientX, clientY } = event;
@@ -159,25 +158,6 @@ nextBtn.addEventListener("click", () => {
   animateToCard(nextIndex);
 });
 
-// HOMEPAGE PROCESS
-const featureItems = document.querySelectorAll(".features li");
-const cards = document.querySelectorAll(".img-preview .card");
-
-featureItems.forEach((item) => {
-  item.addEventListener("click", () => {
-    // Remove active class from all items
-    featureItems.forEach((i) => i.classList.remove("active"));
-    item.classList.add("active");
-
-    // Hide all cards
-    cards.forEach((card) => card.classList.remove("active"));
-
-    // Show selected card
-    const id = item.getAttribute("data-id");
-    document.getElementById(id).classList.add("active");
-  });
-});
-
 // GALLERY GRID
 // Animate grid items on page load
 gsap.from(".gallery-item img", {
@@ -221,5 +201,3 @@ function addAnimation() {
     }
   });
 }
-
-

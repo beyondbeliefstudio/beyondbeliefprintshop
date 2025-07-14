@@ -14,7 +14,7 @@ const fontFamilies = {
     secondary: "ff-secondary",
 };
 
-const marginBottom = {
+const mb = {
   xl: "mb-xl",
   l: "mb-l",
   m: "mb-m",
@@ -23,11 +23,11 @@ const marginBottom = {
   none: "mb-none",
 };
 
-const { tag, size, fontFamily, mb, ...rest } = Astro.props;
+const { tag, size, fontFamily, marginBottom, ...rest } = Astro.props;
 const CustomTag = tag;
 ---
 
-<CustomTag class:list={["default", sizes[size], fontFamilies[fontFamily], marginBottom[mb]]} {...rest}>
+<CustomTag class:list={["default", sizes[size], fontFamilies[fontFamily], mb[marginBottom]]} {...rest}>
   <slot />
 </CustomTag>
 
@@ -64,6 +64,7 @@ const CustomTag = tag;
   /* Familes */
   .ff-primary {
     font-family: var(--primary-family);
+    font-weight: 400;
   }
   .ff-secondary {
     font-family: var(--secondary-family);

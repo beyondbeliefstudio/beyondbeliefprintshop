@@ -11,7 +11,7 @@ const heroCards = await getCollection("heroCards", ({data}) => data.isFeatured);
 ---
 
 <section class="hero bg-dark">
-    <div class="u-container hero__container">
+    <div class="container-lg hero__container">
         <div class="hero__column vc">
             <div class="hero__content">
                 <Heading tag="h1" size="display" fontFamily="primary">Screen Printing That’s Local, Fast, and Built to Last.</Heading>
@@ -50,7 +50,7 @@ const heroCards = await getCollection("heroCards", ({data}) => data.isFeatured);
         padding-bottom: 2rem;
         height: 100%;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
         gap: 4rem;
     }
 
@@ -96,6 +96,16 @@ const heroCards = await getCollection("heroCards", ({data}) => data.isFeatured);
             opacity: .7;
         }
     }
+}
+
+@media (max-width: 1010px) {
+.hero {
+    height: auto;
+
+    &__column {
+        min-height: 500px;
+    }
+}
 }
 
 

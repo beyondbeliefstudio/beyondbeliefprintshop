@@ -2,10 +2,7 @@
 import Hero from '@/components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
 import Picture from 'astro/components/Picture.astro';
-import printing from "@/assets/printing.jpg"
-import reachOut from "@/assets/reachOut.jpg"
-import shipping from "@/assets/shipping.jpg"
-import mockup from "@/assets/mockup.jpg"
+
 
 import press from "@/assets/press.jpg"
 import scuba from "@/assets/scuba.jpg"
@@ -22,6 +19,7 @@ import Reviews from '@/components/Reviews.astro';
 import CTA from '@/components/CTA.astro';
 import Heading from '@/components/Heading.astro';
 import ScrollingText from '@/components/ScrollingText.astro';
+import OrderingProcess from '@/components/OrderingProcess.astro';
 
 
 
@@ -32,8 +30,8 @@ import ScrollingText from '@/components/ScrollingText.astro';
 
 <Hero />
 
-<section>
-    <div class="u-container column-main">
+<section id="printing-experts">
+    <div class="container-lg column-main">
         <div class="content-md">
             <Heading tag="h2" size="xl" fontFamily="primary">Your Local Screen Printing Experts</Heading>
             <p>We focus 100% on screen printing so you get sharp, consistent prints that last wash after wash. No embroidery, no vinyl—just the craft we know best.</p>
@@ -61,58 +59,23 @@ import ScrollingText from '@/components/ScrollingText.astro';
 </section>
 
 <ScrollingText>
-    <Heading tag="h2" size="xl" fontFamily="primary" marginBottom="none">Fast, Local, and Beyond Belief Good.</Heading>
+    <Heading tag="h2" size="xl" fontFamily="primary" mb="none">Fast, Local, and Beyond Belief Good.</Heading>
 </ScrollingText>
 
 <section class="bg-white">
-    <div class="u-container-md column-main">
+    <div class="container-md column-main">
         <div class="content-md">
             <h2>Getting Started Is Easy.</h2>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam qui optio beatae natus quae! Molestiae nam accusamus dolorem ab consequuntur, tempore, vitae, officia ex qui omnis necessitatibus voluptatibus alias illum.</p>
         </div>
-        <div class="row-large">
-            <div class="column list">
-                <ul class="features">
-                    <li data-id="step1" class="active">
-                        <h3>Step 1: Send Us Your Idea</h3>
-                        <p>Fill out our quote form or shoot us a message. Let us know what you’re thinking—artwork, colors, shirts, timeline.</p>
-                    </li>
-                    <li data-id="step2">
-                        <h3>Step 2: Approve Your Mockup</h3>
-                        <p>We’ll send a digital mockup so you can see your design on the actual shirt style and color.</p>
-                    </li>
-                    <li data-id="step3">
-                        <h3>Step 3: We Print It</h3>
-                        <p>Every shirt is printed in-house using top-quality inks and processes we trust. No outsourcing.</p>
-                    </li>
-                    <li data-id="step4">
-                        <h3>Step 4: Pick Up or Ship Out</h3>
-                        <p>Come by our Monroe studio to pick up your order, or let us ship it straight to your door.</p>
-                    </li>
-                </ul>
-            </div>
-            <div class="column images">
-                <div class="img-preview">
-                    <div id="step1" class="card active">
-                        <Picture src={reachOut} alt="travel photo" class="hero__img" loading="eager" width={1300} height={1000} />
-                    </div>
-                    <div id="step2" class="card">
-                        <Picture src={mockup} alt="travel photo" class="hero__img" loading="eager" width={1300} height={1000} />
-                    </div>
-                    <div id="step3" class="card">
-                        <Picture src={printing} alt="travel photo" class="hero__img" loading="eager" width={1300} height={1000} />
-                    </div>
-                    <div id="step4" class="card">
-                        <Picture src={shipping} alt="travel photo" class="hero__img" loading="eager" width={1300} height={1000} />
-                    </div>
-                </div>
-            </div>
+        <div class="content-full">
+            <OrderingProcess />
         </div>
     </div>
 </section>
 
 <section>
-    <div class="u-container column-main">
+    <div class="container-lg column-main">
         <div class="content-md">
             <h2>Shirts That Stand Out, Prints That Stick</h2>
             <p>We’ve printed thousands of shirts for schools, businesses, nonprofits, and local legends—each one with the same attention to detail and quality. Whether it’s a bold front print or full team merch, we bring your vision to life.</p>
@@ -142,7 +105,7 @@ import ScrollingText from '@/components/ScrollingText.astro';
 </section>
 
 <section class="bg-primary">
-    <div class="u-container column-main">
+    <div class="container-lg column-main">
         <div class="content-lg">
             <span class="flag">
                 <img src="/src/assets/icon-flag.svg" alt="">
@@ -197,37 +160,6 @@ import ScrollingText from '@/components/ScrollingText.astro';
 
 <style lang="scss">
 
-// SCROLLING MARQUEE
-.scrolling-marquee {
-    max-width: 100%;
-    width: fit-content;
-    margin: auto;
-    overflow: hidden;
-    
-    &-inner {
-        margin: 0;
-        padding: 2rem 0 1.75rem;
-        list-style: none;
-        display: flex;
-        // flex-wrap: wrap;
-        gap: 5rem;
-        width: max-content;
-        flex-wrap: nowrap;
-        animation: scroll 30s forwards linear infinite;
-
-        h2 {
-            margin-bottom: 0;
-        }
-    }
-}
-
-@keyframes scroll {
-    to {
-        transform: translate(calc(-50% - 2.5rem));
-    }
-}
-
-
 .flag img {
     height: 100px;
     width: 100px;
@@ -236,84 +168,25 @@ import ScrollingText from '@/components/ScrollingText.astro';
 }
 
 
-
-
-span.icon {
-    background: var(--brand-primary);
-    width: 80px;
-    height: 80px;
-    display: block;
-    margin: 0 auto 1.5rem;
-    border-radius: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    img {
-        width: 50px;
-        height: 50px;
+#printing-experts {
+    span.icon {
+        background: var(--brand-primary);
+        width: 80px;
+        height: 80px;
+        display: block;
+        margin: 0 auto 1.5rem;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+        img {
+            width: 50px;
+            height: 50px;
+        }
     }
 }
 
-ul.features {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
-
-.features li {
-  gap: 1rem;
-  padding: 1rem 1rem 1px;
-  border-radius: 0 var(--border-radius-medium) var(--border-radius-medium) 0;
-  border-left: 4px solid transparent;
-  cursor: pointer;
-  margin-bottom: 1rem;
-  transition: 0.3s;
-}
-
-.features li.active,
-.features li:hover {
-    border-color: var(--brand-primary);
-    background-color: #6def7717;;
-}
-
-.features .icon {
-  font-size: 1.5rem;
-  flex-shrink: 0;
-}
-
-.img-preview {
-  flex: 1;
-  border-radius: var(--border-radius-medium);
-  height: 100%;
-}
-
-.img-preview .card {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-}
-
-.img-preview .card picture {
-    height: 100%;
-    aspect-ratio: 1/1;
-}
-
-.img-preview .card.active {
-  display: flex;
-}
-
-.img-preview img {
-  max-width: 100%;
-  border-radius: 8px;
-  height: 100%;
-}
 
 
 // GALLERY

@@ -37,16 +37,26 @@ html {
   --secondary-family: "Kanit", sans-serif;
 
   // SIZING
-  --site--width: 110rem;
-  --site--width--md: 80rem;
   --site--margin: clamp(1rem, 0.428rem + 2.86vw, 3rem);
-  --site--max-width: min(var(--site--width), 100%);
+
+  --site--width--sm: 61rem; // 1010
+  --site--width--md: 80rem; // 1440
+  --site--width--lg: 110rem; // 1980
+
+  --site--max-width--sm: min(var(--site--width--sm), 100%);
   --site--max-width--md: min(var(--site--width--md), 100%);
-  --container--main: calc(var(--site--max-width) - var(--site--margin) * 2);
+  --site--max-width--lg: min(var(--site--width--lg), 100%);
+
+  --container--main--sm: calc(
+    var(--site--max-width--sm) - var(--site--margin) * 2
+  );
   --container--main--md: calc(
     var(--site--max-width--md) - var(--site--margin) * 2
   );
-  --container--full: calc(100% - var(--site--margin) * 2);
+  --container--main--lg: calc(
+    var(--site--max-width--lg) - var(--site--margin) * 2
+  );
+  --container--main--full: calc(100% - var(--site--margin) * 2);
 
   /* SPACING */
   --_typography---font-size--display: clamp(4rem, 3.858rem + 0.71vw, 4.5rem);
@@ -210,10 +220,6 @@ a {
   color: inherit;
 }
 
-section {
-  border-bottom: 1px solid var(--brand-secondary);
-}
-
 // UTILITIES
 .bg-primary {
   background-color: var(--brand-primary);
@@ -240,9 +246,10 @@ section {
   background-color: var(--dark-900);
 }
 
+// LAYOUTS
 .grid-auto-2 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(550px, 100%), 1fr));
   grid-gap: var(--_spacing---section-space--small);
   align-items: center;
   justify-self: center;
@@ -250,7 +257,7 @@ section {
 
 .grid-auto-3 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(435px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(435px, 100%), 1fr));
   grid-gap: var(--_spacing---section-space--small);
 }
 
@@ -297,18 +304,28 @@ section {
   display: flex;
 }
 
-// TEST CODE
-.u-container {
+// CONTAINER SIZES
+.container-full {
   position: relative;
   width: 100%;
-  max-width: var(--container--main);
+  max-width: var(--container--main--full);
   margin-right: auto;
   margin-left: auto;
   padding-top: var(--_spacing---section-space--main);
   padding-bottom: var(--_spacing---section-space--main);
 }
 
-.u-container-md {
+.container-lg {
+  position: relative;
+  width: 100%;
+  max-width: var(--container--main--lg);
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: var(--_spacing---section-space--main);
+  padding-bottom: var(--_spacing---section-space--main);
+}
+
+.container-md {
   position: relative;
   width: 100%;
   max-width: var(--container--main--md);
@@ -318,9 +335,21 @@ section {
   padding-bottom: var(--_spacing---section-space--main);
 }
 
+.container-sm {
+  position: relative;
+  width: 100%;
+  max-width: var(--container--main--sm);
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: var(--_spacing---section-space--main);
+  padding-bottom: var(--_spacing---section-space--main);
+}
+
+// CONTENT SIZES
 .content-md {
   text-align: center;
   max-width: 46rem;
+  width: 100%;
   margin: auto;
   text-wrap: balance;
 }
