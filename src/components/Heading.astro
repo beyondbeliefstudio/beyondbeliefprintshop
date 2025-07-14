@@ -12,7 +12,7 @@ const sizes = {
 const fontFamilies = {
     primary: "ff-primary",
     secondary: "ff-secondary",
-}
+};
 
 const marginBottom = {
   xl: "mb-xl",
@@ -20,8 +20,8 @@ const marginBottom = {
   m: "mb-m",
   s: "mb-s",
   xs: "mb-xs",
-}
-
+  none: "mb-none",
+};
 
 const { tag, size, fontFamily, mb, ...rest } = Astro.props;
 const CustomTag = tag;
@@ -65,7 +65,6 @@ const CustomTag = tag;
   .ff-primary {
     font-family: var(--primary-family);
   }
-
   .ff-secondary {
     font-family: var(--secondary-family);
   }
@@ -85,6 +84,9 @@ const CustomTag = tag;
   }
   .mb-xs {
     margin-bottom: var(--_spacing---space--1);
+  }
+  .mb-none {
+    margin-bottom: 0;
   }
 
 

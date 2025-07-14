@@ -222,26 +222,4 @@ function addAnimation() {
   });
 }
 
-// SCROLLING MARQUEE
-const scrollText = document.querySelectorAll(".scrolling-marquee");
 
-if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  scrollingText();
-}
-
-function scrollingText() {
-  scrollText.forEach((scroller) => {
-    scroller.setAttribute("data-animated", true);
-
-    const scrollTextInner = scroller.querySelector(".scrolling-marquee-inner");
-    const scrollContent = Array.from(scrollTextInner.children);
-
-    for (var i = 0; i < 3; i++) {
-      scrollContent.forEach((item) => {
-        const duplicatedItem = item.cloneNode(true);
-        duplicatedItem.setAttribute("aria-hidden", true);
-        scrollTextInner.appendChild(duplicatedItem);
-      });
-    }
-  });
-}

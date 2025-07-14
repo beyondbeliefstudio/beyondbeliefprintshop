@@ -21,6 +21,7 @@ import type { CollectionEntry } from "astro:content";
 import Reviews from '@/components/Reviews.astro';
 import CTA from '@/components/CTA.astro';
 import Heading from '@/components/Heading.astro';
+import ScrollingText from '@/components/ScrollingText.astro';
 
 
 
@@ -34,25 +35,24 @@ import Heading from '@/components/Heading.astro';
 <section>
     <div class="u-container column-main">
         <div class="content-md">
-            <Heading tag="h1" size="l" fontFamily="secondary">Test Heading</Heading>
-            <h2>Your Local Screen Printing Experts</h2>
+            <Heading tag="h2" size="xl" fontFamily="primary">Your Local Screen Printing Experts</Heading>
             <p>We focus 100% on screen printing so you get sharp, consistent prints that last wash after wash. No embroidery, no vinyl—just the craft we know best.</p>
         </div>
         <div class="content-full">
             <div class="card-grid grid-auto-3">
                 <div class="card">
                     <span class="icon"><img src="/src/assets/fastIcon.svg" alt=""></span>
-                    <h3>Fast Turnarounds</h3>
+                    <Heading tag="h3" size="s" fontFamily="secondary">Fast Turnarounds</Heading>
                     <p>Most orders are completed within 7–10 business days. Need it sooner? We’ll see what we can do.</p>
                 </div>
                 <div class="card">
                     <span class="icon"><img src="/src/assets/localIcon.svg" alt=""></span>
-                    <h3>Local to Monroe, NC</h3>
+                    <Heading tag="h3" size="s" fontFamily="secondary">Local to Monroe, NC</Heading>
                     <p>We're your neighborhood print shop. Work directly with a real team who cares about your project as much as you do.</p>
                 </div>
                 <div class="card">
                     <span class="icon"><img src="/src/assets/shirtIcon.svg" alt=""></span>
-                    <h3>Minimums Made Simple</h3>
+                    <Heading tag="h3" size="s" fontFamily="secondary">Minimums Made Simple</Heading>
                     <p>Just 24 pieces for single-color designs, and 36 for multi-color prints.</p>
                 </div>
             </div>
@@ -60,13 +60,9 @@ import Heading from '@/components/Heading.astro';
     </div>
 </section>
 
-<section class="bg-primary">
-    <div class="scrolling-marquee">
-        <div class="scrolling-marquee-inner">
-            <h2>Fast, Local, and Beyond Belief Good.</h2>
-        </div>
-    </div>
-</section>
+<ScrollingText>
+    <Heading tag="h2" size="xl" fontFamily="primary" marginBottom="none">Fast, Local, and Beyond Belief Good.</Heading>
+</ScrollingText>
 
 <section class="bg-white">
     <div class="u-container-md column-main">
@@ -197,6 +193,7 @@ import Heading from '@/components/Heading.astro';
 
 
 <CTA />
+</Layout>
 
 <style lang="scss">
 
