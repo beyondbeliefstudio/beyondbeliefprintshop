@@ -1,4 +1,15 @@
 ---
+import { type HTMLAttributes } from "astro/types";
+
+const tags = {
+  h1: 'h1',
+  h2: 'h2',
+  h3: 'h3',
+  h4: 'h4',
+  h5: 'h5',
+  h6: 'h6',
+}
+
 const sizes = {
   display: "fs-display",
   xxl: "fs-xxl;",
@@ -14,7 +25,7 @@ const fontFamilies = {
     secondary: "ff-secondary",
 };
 
-const mb = {
+const marginBottoms = {
   xl: "mb-xl",
   l: "mb-l",
   m: "mb-m",
@@ -23,11 +34,18 @@ const mb = {
   none: "mb-none",
 };
 
+interface Props extends HTMLAttributes<keyof typeof tags> {
+  tag: keyof typeof tags;
+  size: keyof typeof sizes;
+  fontFamily: keyof typeof fontFamilies;
+  marginBottom: keyof typeof marginBottoms;
+}
+
 const { tag, size, fontFamily, marginBottom, ...rest } = Astro.props;
 const CustomTag = tag;
 ---
 
-<CustomTag class:list={["default", sizes[size], fontFamilies[fontFamily], mb[marginBottom]]} {...rest}>
+<CustomTag class:list={["default", sizes[size], fontFamilies[fontFamily], marginBottoms[marginBottom]]} {...rest}>
   <slot />
 </CustomTag>
 
@@ -72,19 +90,19 @@ const CustomTag = tag;
 
   /* Margin Bottom */
   .mb-xl {
-    margin-bottom: var(--_spacing---space--5);
+    margin-bottom: 2rem;
   }
   .mb-l {
-    margin-bottom: var(--_spacing---space--4);
+    margin-bottom: 1.5rem;
   }
   .mb-m {
-    margin-bottom: var(--_spacing---space--3);
+    margin-bottom: 1rem;
   }
   .mb-s {
-    margin-bottom: var(--_spacing---space--2);
+    margin-bottom: .5rem;
   }
   .mb-xs {
-    margin-bottom: var(--_spacing---space--1);
+    margin-bottom: .25rem;
   }
   .mb-none {
     margin-bottom: 0;

@@ -9,12 +9,10 @@ import scuba from "@/assets/scuba.jpg"
 import tote from "@/assets/tote.jpg"
 import vest from "@/assets/vest.jpg"
 import az from "@/assets/az.jpeg"
-import exposure from "@/assets/exposure.jpg"
 
 
 
 import Links from '@/components/Links.astro';
-import type { CollectionEntry } from "astro:content";
 import Reviews from '@/components/Reviews.astro';
 import CTA from '@/components/CTA.astro';
 import Heading from '@/components/Heading.astro';
@@ -28,29 +26,34 @@ import OrderingProcess from '@/components/OrderingProcess.astro';
 
 <Layout title="Home">
 
+
+
+<!-- HERO -->
 <Hero />
 
+
+<!-- PRINTING EXPERTS -->
 <section id="printing-experts">
     <div class="container-lg column-main">
         <div class="content-md">
-            <Heading tag="h2" size="xl" fontFamily="primary">Your Local Screen Printing Experts</Heading>
+            <Heading tag="h2" size="xl" fontFamily="primary" marginBottom="m">Your Local Screen Printing Experts</Heading>
             <p>We focus 100% on screen printing so you get sharp, consistent prints that last wash after wash. No embroidery, no vinyl—just the craft we know best.</p>
         </div>
         <div class="content-full">
             <div class="card-grid grid-auto-3">
                 <div class="card">
                     <span class="icon"><img src="/src/assets/fastIcon.svg" alt=""></span>
-                    <Heading tag="h3" size="s" fontFamily="secondary">Fast Turnarounds</Heading>
+                    <Heading tag="h3" size="s" fontFamily="secondary" marginBottom='s'>Fast Turnarounds</Heading>
                     <p>Most orders are completed within 7–10 business days. Need it sooner? We’ll see what we can do.</p>
                 </div>
                 <div class="card">
                     <span class="icon"><img src="/src/assets/localIcon.svg" alt=""></span>
-                    <Heading tag="h3" size="s" fontFamily="secondary">Local to Monroe, NC</Heading>
+                    <Heading tag="h3" size="s" fontFamily="secondary" marginBottom='s'>Local to Monroe, NC</Heading>
                     <p>We're your neighborhood print shop. Work directly with a real team who cares about your project as much as you do.</p>
                 </div>
                 <div class="card">
                     <span class="icon"><img src="/src/assets/shirtIcon.svg" alt=""></span>
-                    <Heading tag="h3" size="s" fontFamily="secondary">Minimums Made Simple</Heading>
+                    <Heading tag="h3" size="s" fontFamily="secondary" marginBottom='s'>Minimums Made Simple</Heading>
                     <p>Just 24 pieces for single-color designs, and 36 for multi-color prints.</p>
                 </div>
             </div>
@@ -58,14 +61,21 @@ import OrderingProcess from '@/components/OrderingProcess.astro';
     </div>
 </section>
 
+
+
+<!-- SCROLLING TEXT -->
 <ScrollingText>
-    <Heading tag="h2" size="xl" fontFamily="primary" mb="none">Fast, Local, and Beyond Belief Good.</Heading>
+    <Heading tag="h2" size="xl" fontFamily="primary" marginBottom="none">Fast, Local, and Beyond Belief Good.</Heading>
 </ScrollingText>
 
+
+
+
+<!-- ORDERING PROCESS -->
 <section class="bg-white">
     <div class="container-md column-main">
         <div class="content-md">
-            <h2>Getting Started Is Easy.</h2>
+            <Heading tag='h2' size='xl' fontFamily='primary' marginBottom='m'>Getting Started Is Easy.</Heading>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam qui optio beatae natus quae! Molestiae nam accusamus dolorem ab consequuntur, tempore, vitae, officia ex qui omnis necessitatibus voluptatibus alias illum.</p>
         </div>
         <div class="content-full">
@@ -74,10 +84,14 @@ import OrderingProcess from '@/components/OrderingProcess.astro';
     </div>
 </section>
 
+
+
+
+<!-- GALLERY -->
 <section>
     <div class="container-lg column-main">
         <div class="content-md">
-            <h2>Shirts That Stand Out, Prints That Stick</h2>
+            <Heading tag='h2' size='xl' fontFamily='primary' marginBottom='m'>Shirts That Stand Out, Prints That Stick</Heading>
             <p>We’ve printed thousands of shirts for schools, businesses, nonprofits, and local legends—each one with the same attention to detail and quality. Whether it’s a bold front print or full team merch, we bring your vision to life.</p>
             <Links href={"/"}>View Projects</Links>
         </div>
@@ -104,17 +118,19 @@ import OrderingProcess from '@/components/OrderingProcess.astro';
     </div>
 </section>
 
+
+<!-- COMPANIES -->
 <section class="bg-primary">
     <div class="container-lg column-main">
         <div class="content-lg">
             <span class="flag">
                 <img src="/src/assets/icon-flag.svg" alt="">
             </span>
-            <h2>Built for Small Teams, Big Events, and Everything in Between</h2>
+            <Heading tag='h2' size='xl' fontFamily='primary' marginBottom='m'>Built for Small Teams, Big Events, and Everything in Between</Heading>
             <p>We work with all types of clients—from local restaurants to youth sports teams, church groups to corporate events. Whether you’re ordering for your staff or building a brand, we make it easy to get premium custom tees with quick turnaround and friendly service.</p>
         </div>
         <div class="content-lg">
-            <h3>Trusted by Local Teams, Schools & Businesses</h3>
+            <Heading tag='h3' size='m' fontFamily='primary' marginBottom='l'>Trusted by Local Teams, Schools & Businesses</Heading>
             <div class="logo-grid">
                 <div class="logo-item">
                     <img src="/src/assets/logo-az.svg">
@@ -151,12 +167,21 @@ import OrderingProcess from '@/components/OrderingProcess.astro';
     </div>
 </section>
 
+
+<!-- REVIEWS -->
 <Reviews />
 
 
-
+<!-- CALL TO ACTION -->
 <CTA />
+
+
 </Layout>
+
+
+
+
+
 
 <style lang="scss">
 
@@ -219,7 +244,7 @@ import OrderingProcess from '@/components/OrderingProcess.astro';
 // LOGO GRID
 .logo-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr));
     grid-gap: 1rem;
     margin-top: 2rem;
 }
@@ -228,6 +253,10 @@ import OrderingProcess from '@/components/OrderingProcess.astro';
     background-color: #fff;
     border-radius: var(--border-radius-medium);
     padding: 1.5rem;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     img {
         max-width: 200px;

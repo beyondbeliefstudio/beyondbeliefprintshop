@@ -29,14 +29,17 @@ import { navData } from '@/data/navData';
 
     <!-- Hamburger -->
     <button class="hamburger" id="hamburgerBtn" aria-label="Toggle Menu">
-      <span></span><span></span><span></span>
+      <div class="circle"></div>
+      <span class="line top"></span>
+      <span class="line middle"></span>
+      <span class="line bottom"></span>
     </button>
   </div>
 
   <!-- Mobile Menu -->
   <div class="nav__mobile" id="mobileNav">
         {navData.map((i) => {
-            return <a class="nav-link" href="{i.href}">{i.title}</a>
+            return <a class="nav-link" href={i.href}>{i.title}</a>
         })}
   </div>
 </header>
@@ -57,7 +60,6 @@ import { navData } from '@/data/navData';
     align-items: center;
     justify-content: space-between;
     max-width: var(--container--main--lg);
-    margin: 0 auto;
     background-color: var(--light-200);
     backdrop-filter: blur(0.35rem);
     padding: 1rem;
@@ -65,14 +67,22 @@ import { navData } from '@/data/navData';
     margin: 2rem auto;
     width: 100%;
     gap: 2rem;
+    position: relative;
+    z-index: 10;
   }
-  
-  &__logo img {
-    max-height: 90px;
+
+  &__logo-img {
+    display: block;
+    height: 100%;
+
+    img {
+      max-height: 90px;
+    }
   }
   
   &__logo-img__sticky {
     display: none;
+    height: 100%;
   
     img {
       max-height: 60px;
@@ -83,37 +93,6 @@ import { navData } from '@/data/navData';
     display: flex;
     align-items: center;
     gap: 2rem;
-  }
-
-  /* Mobile Nav */
-  &__mobile {
-    display: none;
-    position: fixed;
-    top: 0;
-    right: 0;
-    background: #0d0d0d;
-    width: 100%;
-    height: 100vh;
-    padding: 6rem 2rem 2rem;
-    flex-direction: column;
-    gap: 2rem;
-    align-items: center;
-    justify-content: center;
-    z-index: 1050;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-  }
-
-  &__mobile a {
-    color: white;
-    font-size: 1.5rem;
-    text-decoration: none;
-  }
-
-  /* Open State */
-  &__nav.open {
-    display: flex;
-    transform: translateX(0);
   }
 
   &.scrolled {
@@ -132,26 +111,83 @@ import { navData } from '@/data/navData';
         box-shadow: 0px 0px 13px #00000029;
     }
   }
+
+  /* Mobile Nav */
+  &__mobile {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: var(--light-200);
+    width: 100%;
+    height: 100vh;
+    padding: 6rem 2rem 2rem;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    transform: translateY(100%);
+    
+  }
+
+  &__mobile a {
+    color: var(--dark-900);
+    font-size: 1.5rem;
+    text-decoration: none;
+  }
+
+  /* Open State */
+  &__mobile.open {
+    transform: translateY(0);
+    display: flex !important;
+  }
 }
 
 /* Hamburger Button */
 .hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
+  position: relative;
+  width: 48px;
+  height: 48px;
   border: none;
+  background: none;
   cursor: pointer;
-  padding: 0;
-  z-index: 1100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
-.hamburger span {
-  display: block;
-  width: 25px;
-  height: 2px;
-  background: white;
-  transition: all 0.3s ease;
+.circle {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  background-color: var(--brand-primary); /* Customize */
+  border-radius: 50%;
+  z-index: -1;
+  transform: scale(1);
+  transition: background-color 0.3s ease;
+}
+
+.line {
+  position: absolute;
+  width: 24px;
+  height: 3px;
+  background-color: var(--dark-900);
+  border-radius: 2px;
+  transition: background-color 0.3s ease;
+}
+
+.line.top {
+  top: 14px;
+}
+
+.line.middle {
+  top: 22px;
+}
+
+.line.bottom {
+  top: 30px;
 }
 
 body.menu-open {
@@ -159,41 +195,100 @@ body.menu-open {
 }
 
 /* Responsive Behavior */
-@media (max-width: 768px) {
-  .nav__links {
+@media (max-width: 1010px) {
+.nav {
+  &__container {
+    margin: 1rem auto;
+  }
+
+  &__logo-img {
+    img {
+      max-height: 70px;
+    }
+  }
+  
+  &__links {
     display: none;
   }
-
-  .hamburger {
-    display: flex;
-  }
 }
 
-.hamburger.open span:nth-child(1) {
-  transform: rotate(45deg) translateY(8px);
+.hamburger {
+  display: flex;
+}
 }
 
-.hamburger.open span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.open span:nth-child(3) {
-  transform: rotate(-45deg) translateY(-8px);
-}
 
 </style>
 
 <script>
+import gsap from "gsap";
+
 // NAV
 const hamburgerBtn = document.getElementById("hamburgerBtn") as HTMLElement;
 const mobileNav = document.getElementById("mobileNav") as HTMLElement;
+const topLine = document.querySelector('.line.top');
+const middleLine = document.querySelector('.line.middle');
+const bottomLine = document.querySelector('.line.bottom');
+const circle = document.querySelector('.circle');
+let isOpen = false;
+
+const tl = gsap.timeline({ paused: true });
+
+function hideNav(): void {
+  gsap.set(mobileNav, { display: 'none' });
+}
+
+tl.to(middleLine, {
+  duration: 0.2,
+  opacity: 0,
+  ease: 'power1.inOut'
+}, 0)
+.to(topLine, {
+  duration: 0.3,
+  rotate: 45,
+  y: 8,
+  ease: 'power2.inOut'
+}, 0)
+.to(bottomLine, {
+  duration: 0.3,
+  rotate: -45,
+  y: -8,
+  ease: 'power2.inOut'
+}, 0)
+.to(circle, {
+  duration: 0.3,
+  scale: 1.15,
+  ease: 'power2.inOut'
+}, 0);
+
+hamburgerBtn.classList.remove("open");
 
 hamburgerBtn.addEventListener("click", () => {
   mobileNav.classList.toggle("open");
   document.body.classList.toggle("menu-open");
+  hamburgerBtn.classList.toggle("open");
+
+  if (!isOpen) {
+    // Reveal and animate in
+    gsap.set(mobileNav, { display: 'flex', y: '-100%' });
+    gsap.to(mobileNav, { duration: 0.5, y: '0%', ease: 'power2.out' });
+    isOpen = true;
+    tl.play();
+  } else {
+    // Animate out and hide
+    gsap.to(mobileNav, {
+      duration: 0.4,
+      y: '-100%',
+      ease: 'power2.in',
+      onComplete: hideNav
+    });
+    tl.reverse();
+    isOpen = false;
+  }
 });
 
-hamburgerBtn.classList.toggle("open");
+
+
 
 window.addEventListener("scroll", () => {
   const header = document.querySelector(".nav") as HTMLElement;
@@ -201,6 +296,16 @@ window.addEventListener("scroll", () => {
     header.classList.add("scrolled");
   } else {
     header.classList.remove("scrolled");
+  }
+});
+
+// Get all nav links
+const navLinks = document.querySelectorAll('nav a'); // Adjust selector to your actual nav links
+
+navLinks.forEach(link => {
+  // Check if the href matches the current page
+  if (link.getAttribute('href') === window.location.pathname) {
+    link.classList.add('active');
   }
 });
 </script>

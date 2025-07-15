@@ -14,7 +14,7 @@ const heroCards = await getCollection("heroCards", ({data}) => data.isFeatured);
     <div class="container-lg hero__container">
         <div class="hero__column vc">
             <div class="hero__content">
-                <Heading tag="h1" size="display" fontFamily="primary">Screen Printing That’s Local, Fast, and Built to Last.</Heading>
+                <Heading tag="h1" size="display" fontFamily="primary" marginBottom="l">Screen Printing That’s Local, Fast, and Built to Last.</Heading>
                 <p class="large">
                     At Beyond Belief Studio, we specialize exclusively in high-quality screen printing for schools, small businesses, events, and brands—right here in Monroe, NC.
                 </p>
@@ -43,12 +43,13 @@ const heroCards = await getCollection("heroCards", ({data}) => data.isFeatured);
     overflow: hidden; 
     position: relative;
     padding-top: 200px;
-    height: 100vh;
+    height: fit-content;
 
     &__container {
         padding-top: 0;
         padding-bottom: 2rem;
         height: 100%;
+        min-height: calc(100vh - 200px);
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
         gap: 4rem;
@@ -60,6 +61,8 @@ const heroCards = await getCollection("heroCards", ({data}) => data.isFeatured);
 
     &__content {
         text-align: left;
+        margin: 0rem auto 4.5rem;
+        padding: 2rem 0px 2rem;
     }
 
     &__column {

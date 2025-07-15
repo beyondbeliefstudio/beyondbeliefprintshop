@@ -1,8 +1,8 @@
 ---
 import Picture from "astro/components/Picture.astro";
-import Links from "./Links.astro";
 
 import press from "@/assets/press.jpg"
+import Heading from "./Heading.astro";
 
 
 ---
@@ -11,10 +11,7 @@ import press from "@/assets/press.jpg"
     <div class="container-lg column-main">
         <div class="column column-main flex-1">
             <div class="content-lg">
-                <h4>Our Services</h4>
-                <h1 class="display">
-                    Screen Printing
-                </h1>
+                <Heading tag="h1" size="display" fontFamily="primary" marginBottom="l">Our Services</Heading>
                 <p class="large">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates eum tenetur dignissimos tempore sed expedita at voluptatum rerum labore pariatur, ex, consequatur architecto culpa provident exercitationem nostrum amet ea sint.
                 </p>
@@ -38,10 +35,6 @@ import press from "@/assets/press.jpg"
 
     h1, h2, h3, h4, p {
         color: var(--light-200)
-    }
-
-    h1, p {
-        text-wrap: balance;
     }
 
     .img-wrapper {

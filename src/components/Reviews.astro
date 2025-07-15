@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import ReviewsCard from "./ReviewsCard.astro";
+import Heading from "./Heading.astro";
 
 const reviews = await getCollection("reviews", ({data}) => data.isFeatured);
 
@@ -9,7 +10,7 @@ const reviews = await getCollection("reviews", ({data}) => data.isFeatured);
 <section id="reviews">
     <div class="container-full">
         <div class="content-full">
-            <h2>“Printing With a Personal Touch”</h2>
+            <Heading tag="h2" size="xl" fontFamily="primary" marginBottom="l">“Printing With a Personal Touch”</Heading>
             <div class="scroller-image">
                 <ul class="scroller-inner-image">
                     {
@@ -37,15 +38,10 @@ const reviews = await getCollection("reviews", ({data}) => data.isFeatured);
     padding: 1rem 0;
     list-style: none;
     display: flex;
-    // flex-wrap: wrap;
     gap: 1rem;
     width: max-content;
     flex-wrap: nowrap;
     animation: scroll 90s forwards linear infinite;
-
-    // &:hover {
-    //     animation-play-state: paused;
-    // }
 }
 
 @keyframes scroll {

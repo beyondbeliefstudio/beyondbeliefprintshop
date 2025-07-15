@@ -2,64 +2,34 @@
 import Picture from "astro/components/Picture.astro";
 import Heading from "./Heading.astro";
 
-import printing from "@/assets/printing.jpg"
-import reachOut from "@/assets/reachOut.jpg"
-import shipping from "@/assets/shipping.jpg"
-import mockup from "@/assets/mockup.jpg"
 
- const process = [
-    {
-        data: "step1",
-        title: "This is a test",
-        description: "Testing 1,2,3",
-        image: "@/assets/tgsHero.jpeg",
-    },
-    {
-        data: "step2",
-        title: "This is another test",
-        description: "Testing 1,2,3",
-        image: "@/assets/tgsHero.jpeg",
-    },
- ]
+import { getCollection } from "astro:content";
 
- 
+const orderingProcess = await getCollection("orderingProcess");
 
 ---
 <div class="order-process grid-auto-2">
     <div class="order-process__list">
         <ul class="order-process__features">
-            <li data-id="step1" class="active">
-                <Heading tag="h3" size="s">Step 1: Send Us Your Idea</Heading>
-                <p>Fill out our quote form or shoot us a message. Let us know what you’re thinking—artwork, colors, shirts, timeline.</p>
-            </li>
-            <li data-id="step2">
-                <Heading tag="h3" size="s">Step 2: Approve Your Mockup</Heading>
-                <p>We’ll send a digital mockup so you can see your design on the actual shirt style and color.</p>
-            </li>
-            <li data-id="step3">
-                <Heading tag="h3" size="s">Step 3: We Print It</Heading>
-                <p>Every shirt is printed in-house using top-quality inks and processes we trust. No outsourcing.</p>
-            </li>
-            <li data-id="step4">
-                <Heading tag="h3" size="s">Step 4: Pick Up or Ship Out</Heading>
-                <p>Come by our Monroe studio to pick up your order, or let us ship it straight to your door.</p>
-            </li>
+            {
+                orderingProcess.map(({data}) => (
+                    <li data-id={data.data} current-state={data.active}>
+                        <Heading tag="h3" fontFamily="primary" size="m" marginBottom="s">{data.title}</Heading>
+                        <p>{data.description}</p>
+                    </li>
+                ))
+            }
         </ul>
     </div>
     <div class="order-process__imgs">
         <div class="order-process__img-preview">
-            <div id="step1" class="order-process__card active">
-                <Picture src={reachOut} alt="travel photo" class="order-process__img" loading="eager" width={1300} height={1000} />
-            </div>
-            <div id="step2" class="order-process__card">
-                <Picture src={mockup} alt="travel photo" class="order-process__img" loading="eager" width={1300} height={1000} />
-            </div>
-            <div id="step3" class="order-process__card">
-                <Picture src={printing} alt="travel photo" class="order-process__img" loading="eager" width={1300} height={1000} />
-            </div>
-            <div id="step4" class="order-process__card">
-                <Picture src={shipping} alt="travel photo" class="order-process__img" loading="eager" width={1300} height={1000} />
-            </div>
+            {
+                orderingProcess.map(({data}) => (
+                    <div id={data.data} class="order-process__card" current-state={data.active}>
+                        <Picture src={data.image} alt={data.imageAlt} class="order-process__img" loading="eager" width={1300} height={1000} />
+                    </div>
+                ))
+            }
         </div>
     </div>
 </div>
@@ -83,7 +53,7 @@ import mockup from "@/assets/mockup.jpg"
             transition: 0.3s;
             text-align: left;
           
-            &.active,
+            &[current-state='active'],
             &:hover {
               border-color: var(--brand-primary);
               background-color: #6def7717;;
@@ -124,7 +94,7 @@ import mockup from "@/assets/mockup.jpg"
             }
         }
         
-        &.active {
+        &[current-state='active'] {
             display: flex;
         }
     }
@@ -140,18 +110,18 @@ const cards = document.querySelectorAll<HTMLDivElement>(".order-process__card");
 featureItems.forEach((item) => {
   item.addEventListener("click", () => {
     // Remove active class from all items
-    featureItems.forEach((i) => i.classList.remove("active"));
-    item.classList.add("active");
+    featureItems.forEach((i) => i.removeAttribute('current-state'));
+    item.setAttribute('current-state', 'active');
 
     // Hide all cards
-    cards.forEach((card) => card.classList.remove("active"));
+    cards.forEach((card) => card.removeAttribute('current-state'));
 
     // Show selected card
     const id = item.getAttribute("data-id");
     if (id) {
       const selectedCard = document.getElementById(id);
       if (selectedCard) {
-        selectedCard.classList.add("active");
+        selectedCard.setAttribute('current-state', 'active');
       }
     }
   });
