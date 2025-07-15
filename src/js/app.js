@@ -160,21 +160,23 @@ nextBtn.addEventListener("click", () => {
 
 // GALLERY GRID
 // Animate grid items on page load
-gsap.from(".gallery-item img", {
-  opacity: 0,
-  y: 50,
-  duration: 1,
-  stagger: 0.15,
-  ease: "power3.out",
-});
-
-// Add a fun hover scale bounce
-document.querySelectorAll(".gallery-item img").forEach((item) => {
-  item.addEventListener("mouseenter", () => {
-    gsap.to(item, { scale: 1.03, duration: 0.3, ease: "back.out(1.7)" });
+window.addEventListener("DOMContentLoaded", () => {
+  gsap.from(".gallery-item img", {
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    stagger: 0.15,
+    ease: "power3.out",
   });
-  item.addEventListener("mouseleave", () => {
-    gsap.to(item, { scale: 1, duration: 0.3, ease: "power2.out" });
+
+  // Add a fun hover scale bounce
+  document.querySelectorAll(".gallery-item img").forEach((item) => {
+    item.addEventListener("mouseenter", () => {
+      gsap.to(item, { scale: 1.03, duration: 0.3, ease: "back.out(1.7)" });
+    });
+    item.addEventListener("mouseleave", () => {
+      gsap.to(item, { scale: 1, duration: 0.3, ease: "power2.out" });
+    });
   });
 });
 

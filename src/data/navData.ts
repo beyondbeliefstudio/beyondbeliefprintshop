@@ -8,8 +8,8 @@ export const navData = [
     href: "/services",
   },
   {
-    title: "Pricing",
-    href: "/pricing",
+    title: "Catalog",
+    href: "/catalog",
   },
   {
     title: "Blog",

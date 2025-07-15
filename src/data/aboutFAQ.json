@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "question": "Who runs Beyond Belief Studio?",
+    "answer": "Just me — Chris Nervegna. I’m the one answering emails, reclaiming screens, pulling prints, packing boxes, and even grabbing the coffee. I built this shop from scratch, and I take a ton of pride in every order that leaves it.",
+    "tag": "a1"
+  },
+  {
+    "id": 2,
+    "question": "How did the studio get its name?",
+    "answer": "Beyond Belief was a phrase that always stuck with me — a reminder to push boundaries, stay curious, and go above and beyond expectations. That mindset shows up in everything I do here.",
+    "tag": "a2"
+  },
+  {
+    "id": 3,
+    "question": "Where is the shop located?",
+    "answer": "We’re based out of Monroe, North Carolina, just outside of Charlotte. I work out of a rebuilt garage studio that’s been dialed in for clean, efficient screen printing (with a standing desk and a killer LED lamp setup, too).",
+    "tag": "a3"
+  },
+  {
+    "id": 4,
+    "question": "What kind of clients do you work with?",
+    "answer": "Mostly local businesses, schools, churches, and creatives — people who care about quality and want to support a local shop. I’ve printed for fundraisers, restaurants, golf trips, family reunions, and startup brands alike.",
+    "tag": "a4"
+  },
+  {
+    "id": 5,
+    "question": "What’s your favorite part of the process?",
+    "answer": "Honestly? That first pull on press when a design comes to life. That — and hearing from a customer that their team loved the shirts. Makes the long nights worth it.",
+    "tag": "a5"
+  },
+  {
+    "id": 6,
+    "question": "Do you still do everything yourself?",
+    "answer": "Yep. For now, every single job is handled in-house — no outsourcing, no middlemen. It lets me keep quality high and communication tight. I like it that way.",
+    "tag": "a6"
+  },
+  {
+    "id": 7,
+    "question": "How can I get in touch?",
+    "answer": "The best way is through the contact form on the website. I respond to every message personally, usually within a day or two. If you prefer email, you can reach me at...",
+    "tag": "a7"
+  }
+]

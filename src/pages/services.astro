@@ -7,7 +7,7 @@ import Picture from "astro/components/Picture.astro";
 import press from "@/assets/press.jpg"
 import Links from "@/components/Links.astro";
 import PrintingStyles from "@/components/services/PrintingStyles.astro";
-import FAQ from "@/components/services/FAQ.astro";
+import ServicesFAQ from "@/components/services/ServicesFAQ.astro";
 import CTA from "@/components/CTA.astro";
 
 
@@ -27,18 +27,7 @@ import CTA from "@/components/CTA.astro";
             </div>
             <div class="split__col split__content">
                 <h2>Custom Apparel Printing</h2>
-                <p>From classic tees to hoodies, fleece, and tote bags — we print on it all. Choose from trusted brands like Comfort Colors, Bella+Canvas, AS Colour, and Gildan to fit your style and budget.</p>
-                <h3>Popular Garments:</h3>
-                <ul class="list">
-                    <li><h4>T-Shirts (Short & Long Sleeve)</h4>
-                    <p class="small">Perfect canvas for vibrant logos and detailed designs that withstand repeated washing. Ideal for team uniforms, corporate events, and retail merchandise.</p></li>
-                    <li><h4>Crewnecks & Hoodies</h4>
-                    <p>Premium print surface for maximum brand visibility. Screen printing creates durable, eye-catching designs perfect for promotional campaigns and seasonal merchandise.</p></li>
-                    <li><h4>Fleece & Performance Wear</h4>
-                    <p>Specialized printing techniques ensure vibrant designs on technical fabrics. Great for athletic teams, outdoor events, and branded activewear.</p></li>
-                    <li><h4>Tote Bags & Accessories</h4>
-                    <p>Cost-effective branding opportunity with high visibility. Screen printed bags offer walking advertisements for businesses, events, and fundraisers.</p></li>
-                </ul>
+                <p>When you're looking for high quality apparel that lasts the test of time, screen printing is the way to go. Specializing in many different types of screen printing methods, we can make you anything ranging from the simple to the completely wild. Make your brand your own with custom Pantone colors, private labeling and folding/bagging services. Art is only as good as its canvas, so we also stock garments from the worlds best manufacturers to bring any project idea to life.</p>
             </div>
         </div>
     </div>
@@ -128,56 +117,9 @@ import CTA from "@/components/CTA.astro";
     </div>
 </section>
 
-<FAQ />
+<ServicesFAQ />
 
 <CTA />
-
-<!-- <section class="bg-white" id="garments">
-    <div class="u-container column-main">
-        <div class="content-md">
-            <h2>Garment Options</h2>
-            <p class="large">Choosing the right blank is just as important as the design. Here are some helpful reads to guide you:</p>
-        </div>
-        <div class="content-full blog-card__wrapper">
-            <div class="blog-card">
-                <div class="img-wrapper">
-                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
-                </div>
-                <div class="blog-card__content">
-                    <h4>How to Pick the Perfect T‑Shirt</h4>
-                    <p class="small">We break down fits, fabrics, and popular options for every style and budget.</p>
-                </div>
-            </div>
-            <div class="blog-card">
-                <div class="img-wrapper">
-                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
-                </div>
-                <div class="blog-card__content">
-                    <h4>Tote Bags? We Print Those Too</h4>
-                    <p class="small">Canvas totes, wine bags, and more—get your branding out there, off the tee.</p>
-                </div>
-            </div>
-            <div class="blog-card">
-                <div class="img-wrapper">
-                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
-                </div>
-                <div class="blog-card__content">
-                    <h4>Our Favorite Fleece Items</h4>
-                    <p class="small">Cozy up with the most print-friendly hoodies, sweatshirts, and zip-ups we recommend.</p>
-                </div>
-            </div>
-            <div class="blog-card">
-                <div class="img-wrapper">
-                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
-                </div>
-                <div class="blog-card__content">
-                    <h4>Best Blanks by Price Bracket</h4>
-                    <p class="small">Our favorite tees and fleece options at value, mid-range, and premium price points.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>  -->
 
 </Layout>
 
@@ -198,43 +140,11 @@ import CTA from "@/components/CTA.astro";
 
     .grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(341px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
         grid-gap: 1rem;
     }
 }
 
-
-.split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-
-    &__col {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 100%;
-
-        .img-wrapper {
-            height: 100%;
-            border-radius: var(--border-radius-medium);
-            overflow: hidden;
-            width: 100%;
-        }
-    }
-    
-    &__content {
-        text-align: left;
-        padding: 3rem 0;
-
-        h4 {
-            margin-bottom: .25rem;
-            line-height: 1;
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-    }
-}
 
 .bg-dark {
     .content-md {

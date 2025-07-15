@@ -1,0 +1,124 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+import press from "@/assets/press.jpg"
+import Picture from "astro/components/Picture.astro";
+import Heading from "@/components/Heading.astro";
+import Links from "@/components/Links.astro";
+import AboutHero from "@/components/AboutHero.astro";
+import Team from "@/components/Team.astro";
+import AboutFAQ from "@/components/AboutFAQ.astro";
+import CTA from "@/components/CTA.astro";
+
+
+
+---
+
+<Layout title="About Us">
+
+<AboutHero />
+
+<section aria-label="About Us">
+    <div class="container-md">
+        <div class="content-full split">
+            <div class="split__col">
+                <div class="img-wrapper">
+                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
+                </div>
+            </div>
+            <div class="split__col split__content">
+                <Heading tag="h2" size="xl" fontFamily="primary" marginBottom="s">About Beyond Belief Studio</Heading>
+                <p>What started as a side hustle in a garage quickly became a full-fledged print studio serving Monroe, NC and beyond. At Beyond Belief Studio, we specialize in high-quality screen printing with fast turnarounds, fair pricing, and a personal touch.</p>
+                <p>We don’t outsource. We don’t cut corners. We print everything in-house and treat every project like it’s our own — whether it’s a hundred shirts for a local school or a limited run for your brand’s next drop.</p>
+                <p>We're a small team doing big things for other small teams — schools, churches, businesses, breweries, artists, fundraisers, and anyone who wants to wear their message with pride..</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- GALLERY -->
+<section aria-label="Gallery" class="bg-white">
+    <div class="container-md column-main">
+        <div class="content-md">
+            <Heading tag='h2' size='xl' fontFamily='primary' marginBottom='m'>Shirts That Stand Out, Prints That Stick</Heading>
+            <p>We’ve printed thousands of shirts for schools, businesses, nonprofits, and local legends—each one with the same attention to detail and quality. Whether it’s a bold front print or full team merch, we bring your vision to life.</p>
+            <Links href={"/"}>View Projects</Links>
+        </div>
+
+        <div class="content-full">
+            <section class="gallery">
+                <div class="gallery-item">
+                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={1300} height={1000} />
+                </div>
+                <div class="gallery-item tall">
+                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={1300} height={1000} />
+                </div>
+                <div class="gallery-item">
+                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={1300} height={1000} />
+                </div>
+                <div class="gallery-item">
+                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={1300} height={1000} />
+                </div>
+                <div class="gallery-item">
+                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={1300} height={1000} />
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+
+<section class="bg-primary" id="what-were-about" aria-label="What We're About">
+    <div class="container-md column-main">
+        <div class="content-md">
+            <Heading tag="h2" size="xl" fontFamily="primary" marginBottom="s">What We’re About</Heading>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam ex quam minus eaque eius, eveniet non voluptas, sunt quo, maxime neque veritatis mollitia deleniti ratione culpa sequi dolores modi labore!</p>
+        </div>
+        <div class="content-full grid">
+            <div class="card">
+                <Heading tag="h3" size="m" fontFamily="primary" marginBottom="s">Local Always Wins</Heading>
+                <p>We’re proud to be rooted in Monroe, NC. When you work with us, you're supporting a real local business, not some faceless print broker.</p>
+            </div>
+            <div class="card">
+                <Heading tag="h3" size="m" fontFamily="primary" marginBottom="s">Real Quality, No Fluff</Heading>
+                <p>We print on the same gear and blanks used by national brands. Quality is everything — and we take it personally.</p>
+            </div>
+            <div class="card">
+                <Heading tag="h3" size="m" fontFamily="primary" marginBottom="s">We Move Fast</Heading>
+                <p>Need it by next weekend? We’ve got you. Our typical turnaround is 7–10 business days, and rush jobs are always on the table.</p>
+            </div>
+            <div class="card">
+                <Heading tag="h3" size="m" fontFamily="primary" marginBottom="s">We’re Print Nerds</Heading>
+                <p>Screen printing isn’t just what we do — it’s what we love. From color separations to specialty inks, we geek out over the details so you don’t have to.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<Team />
+
+<AboutFAQ />
+<CTA />
+
+</Layout>
+
+<style lang="scss">
+#what-were-about {
+    .card {
+        background-color: var(--light-100);
+        border-radius: var(--border-radius-medium);
+        padding: 1.5rem 1.5rem .5rem;
+        text-wrap: balance;
+        text-align: left;
+
+        h3 {
+            font-size: 1.5rem;
+        }
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        grid-gap: 1rem;
+    }
+}
+</style>

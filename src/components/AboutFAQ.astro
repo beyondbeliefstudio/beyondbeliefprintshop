@@ -1,0 +1,201 @@
+---
+import { getCollection } from "astro:content";
+import Heading from "@/components/Heading.astro";
+
+const aboutFAQ = await getCollection("aboutFAQ");
+---
+
+<section>
+    <div class="container-md column-main">
+        <div class="content-lg">
+            <Heading tag="h2" size="xl" fontFamily="primary" marginBottom="m">Frequently Asked Questions</Heading>
+        </div>
+        <div class="content-lg">
+            <div class="accordion">
+                {
+                    aboutFAQ.map(({data}) => (
+                        <div class="accordion__item">
+                            <div class="accordion__question">
+                                <button type="button" class="accordion__button" aria-expanded="false" aria-controls={data.tag}>
+                                    <div class="circle">
+                                        <span class="horizontal"></span>
+                                        <span class="vertical"></span>
+                                    </div>
+                                </button>
+                                <Heading tag="h3" size="m" fontFamily="secondary" marginBottom="none" class="accordion__headings">{data.question}</Heading>
+                            </div>
+                            <div id={data.tag} class="accordion__content" hidden>
+                                <p>
+                                    {data.answer}
+                                </p>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<style lang="scss">
+.accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    
+    &__item {
+        background: var(--light-100);
+        border-radius: var(--border-radius-medium);
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    &__question {
+        display: flex;
+        width: 100%;
+        gap: 2rem;
+        align-items: center;
+    }
+    
+    &__button {
+        background: none;
+        cursor: pointer;
+        padding: 0;
+        width: 48px;
+        height: 48px;
+        position: relative;
+        border: 0px;
+
+        .circle {
+            background: var(--brand-primary);
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .horizontal,
+        .vertical {
+            position: absolute;
+            width: 24px;
+            height: 3px;
+            background-color: var(--dark-900);
+            transition: background-color 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .horizontal {
+            opacity: 1;
+        }
+
+        .vertical {
+            transform: rotate(90deg);
+            transform-origin: center;
+            transition: .25s ease-in-out all;
+        }
+    }
+    
+    &__heading {
+        /* margin-bottom: 0; */
+        width: fit-content;
+        text-align: left;
+        /* font-size: 1.5rem; */
+    }
+    
+    &__content {
+        color: #1b1b1b;
+        margin-top: 0;
+        overflow: auto;
+        padding: 0;
+        line-height: 1.5;
+        text-align: left;
+        margin-left: calc(50px + 2rem);
+    
+        p {
+            margin-bottom: 0;
+        }
+    }
+    
+    &__button[aria-expanded=true] {
+        .circle {
+            .vertical {
+                transform: rotate(180deg);
+            }
+            
+            .horizontal {
+                width: 0;
+            }
+        }
+    }
+}
+
+
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const accordionButtons: NodeListOf<HTMLButtonElement> = document.querySelectorAll(".accordion__button");
+
+  accordionButtons.forEach((button: HTMLButtonElement) => {
+    button.addEventListener("click", () => {
+      const isExpanded: boolean = button.getAttribute("aria-expanded") === "true";
+      const contentId: string | null = button.getAttribute("aria-controls");
+      const content: HTMLElement | null = contentId ? document.getElementById(contentId) : null;
+
+      // Collapse all accordions
+      accordionButtons.forEach((btn: HTMLButtonElement) => {
+        const contentToHide: HTMLElement | null = document.getElementById(btn.getAttribute("aria-controls") || "");
+        btn.setAttribute("aria-expanded", "false");
+        if (contentToHide) {
+          contentToHide.setAttribute("hidden", "");
+        }
+      });
+
+      // If the clicked accordion was not expanded, expand it
+      if (!isExpanded && content) {
+        button.setAttribute("aria-expanded", "true");
+        content.removeAttribute("hidden");
+      }
+    });
+  });
+});
+
+
+// ANIMATION
+import { gsap } from 'gsap';
+
+const toggleBtn = document.getElementById('accordionToggle') as HTMLElement;
+const content = document.getElementById('accordionContent') as HTMLElement;
+const vertical = toggleBtn.querySelector('.vertical') as HTMLElement;
+const horizontal = toggleBtn.querySelector('.horizontal') as HTMLElement;
+
+let isOpen: boolean = false;
+
+// Timeline for the + to - icon animation
+const iconTL = gsap.timeline({ paused: true });
+iconTL
+.to(horizontal, {
+  duration: 0.2,
+  opacity: 0,
+  ease: 'power2.inOut'
+}, 0)
+.to(vertical, {
+  duration: 0.3,
+  rotate: 90,
+  ease: 'power2.inOut'
+}, 0);
+
+// Timeline for the accordion content
+const contentTL = gsap.timeline({ paused: true });
+contentTL.to(content, {
+  duration: 0.4,
+  height: 'auto',
+  opacity: 1,
+  ease: 'power2.out'
+});
+</script>
