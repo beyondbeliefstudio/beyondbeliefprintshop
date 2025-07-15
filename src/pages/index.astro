@@ -34,7 +34,7 @@ import OrderingProcess from '@/components/OrderingProcess.astro';
 
 <!-- PRINTING EXPERTS -->
 <section id="printing-experts">
-    <div class="container-lg column-main">
+    <div class="container-md column-main">
         <div class="content-md">
             <Heading tag="h2" size="xl" fontFamily="primary" marginBottom="m">Your Local Screen Printing Experts</Heading>
             <p>We focus 100% on screen printing so you get sharp, consistent prints that last wash after wash. No embroidery, no vinyl—just the craft we know best.</p>
@@ -89,7 +89,7 @@ import OrderingProcess from '@/components/OrderingProcess.astro';
 
 <!-- GALLERY -->
 <section>
-    <div class="container-lg column-main">
+    <div class="container-md column-main">
         <div class="content-md">
             <Heading tag='h2' size='xl' fontFamily='primary' marginBottom='m'>Shirts That Stand Out, Prints That Stick</Heading>
             <p>We’ve printed thousands of shirts for schools, businesses, nonprofits, and local legends—each one with the same attention to detail and quality. Whether it’s a bold front print or full team merch, we bring your vision to life.</p>
@@ -121,7 +121,7 @@ import OrderingProcess from '@/components/OrderingProcess.astro';
 
 <!-- COMPANIES -->
 <section class="bg-primary">
-    <div class="container-lg column-main">
+    <div class="container-md column-main">
         <div class="content-lg">
             <span class="flag">
                 <img src="/src/assets/icon-flag.svg" alt="">
@@ -129,8 +129,8 @@ import OrderingProcess from '@/components/OrderingProcess.astro';
             <Heading tag='h2' size='xl' fontFamily='primary' marginBottom='m'>Built for Small Teams, Big Events, and Everything in Between</Heading>
             <p>We work with all types of clients—from local restaurants to youth sports teams, church groups to corporate events. Whether you’re ordering for your staff or building a brand, we make it easy to get premium custom tees with quick turnaround and friendly service.</p>
         </div>
-        <div class="content-lg">
-            <Heading tag='h3' size='m' fontFamily='primary' marginBottom='l'>Trusted by Local Teams, Schools & Businesses</Heading>
+        <div class="content-full">
+            <Heading tag='h3' size='l' fontFamily='primary' marginBottom='l'>Trusted by Local Teams, Schools & Businesses</Heading>
             <div class="logo-grid">
                 <div class="logo-item">
                     <img src="/src/assets/logo-az.svg">
@@ -210,6 +210,12 @@ import OrderingProcess from '@/components/OrderingProcess.astro';
             height: 50px;
         }
     }
+
+    .card {
+        background: var(--light-100);
+        border-radius: var(--border-radius-medium);
+        padding: 2rem;
+    }
 }
 
 
@@ -244,7 +250,7 @@ import OrderingProcess from '@/components/OrderingProcess.astro';
 // LOGO GRID
 .logo-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr));
     grid-gap: 1rem;
     margin-top: 2rem;
 }

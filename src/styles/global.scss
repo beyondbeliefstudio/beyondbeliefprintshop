@@ -272,8 +272,8 @@ a {
 
 .grid-auto-3 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(435px, 100%), 1fr));
-  grid-gap: var(--_spacing---section-space--small);
+  grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
+  gap: 1rem;;
 }
 
 .row-small {
@@ -326,8 +326,8 @@ a {
   max-width: var(--container--main--full);
   margin-right: auto;
   margin-left: auto;
-  padding-top: var(--_spacing---section-space--main);
-  padding-bottom: var(--_spacing---section-space--main);
+  padding-top: var(--site--margin);
+  padding-bottom: var(--site--margin);
 }
 
 .container-lg {
@@ -336,8 +336,8 @@ a {
   max-width: var(--container--main--lg);
   margin-right: auto;
   margin-left: auto;
-  padding-top: var(--_spacing---section-space--main);
-  padding-bottom: var(--_spacing---section-space--main);
+  padding-top: var(--site--margin);
+  padding-bottom: var(--site--margin);
 }
 
 .container-md {
@@ -346,8 +346,8 @@ a {
   max-width: var(--container--main--md);
   margin-right: auto;
   margin-left: auto;
-  padding-top: var(--_spacing---section-space--main);
-  padding-bottom: var(--_spacing---section-space--main);
+  padding-top: var(--site--margin);
+  padding-bottom: var(--site--margin);
 }
 
 .container-sm {
@@ -356,8 +356,8 @@ a {
   max-width: var(--container--main--sm);
   margin-right: auto;
   margin-left: auto;
-  padding-top: var(--_spacing---section-space--main);
-  padding-bottom: var(--_spacing---section-space--main);
+  padding-top: var(--site--margin);
+  padding-bottom: var(--site--margin);
 }
 
 // CONTENT SIZES
