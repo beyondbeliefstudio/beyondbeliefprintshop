@@ -9,6 +9,7 @@ import Links from "@/components/Links.astro";
 import PrintingStyles from "@/components/services/PrintingStyles.astro";
 import ServicesFAQ from "@/components/services/ServicesFAQ.astro";
 import CTA from "@/components/CTA.astro";
+import Heading from "@/components/Heading.astro";
 
 
 ---
@@ -26,7 +27,7 @@ import CTA from "@/components/CTA.astro";
                 </div>
             </div>
             <div class="split__col split__content">
-                <h2>Custom Apparel Printing</h2>
+                <Heading tag="h2" size="xl" fontFamily="primary" marginBottom="s">Custom Apparel Printing</Heading>
                 <p>When you're looking for high quality apparel that lasts the test of time, screen printing is the way to go. Specializing in many different types of screen printing methods, we can make you anything ranging from the simple to the completely wild. Make your brand your own with custom Pantone colors, private labeling and folding/bagging services. Art is only as good as its canvas, so we also stock garments from the worlds best manufacturers to bring any project idea to life.</p>
             </div>
         </div>
@@ -38,32 +39,32 @@ import CTA from "@/components/CTA.astro";
 <section class="bg-primary" id="work-with-us">
     <div class="container-md column-main">
         <div class="content-md">
-            <h2>Why Work With Us</h2>
+            <Heading tag="h2" size="xl" fontFamily="primary" marginBottom="s">Why Work With Us</Heading>
             <p>We’re a small team that cares deeply about quality, speed, and helping you look your best. From first mockup to final print, we make it easy.</p>
         </div>
         <div class="content-full grid">
             <div class="card">
-                <h3>Locally Rooted</h3>
+                <Heading tag="h3" size="m" fontFamily="primary" marginBottom="s">Locally Rooted</Heading>
                 <p>We’re based right here in Monroe, NC — proudly serving our local community with a personal touch, fast turnarounds, and face-to-face service when needed.</p>
             </div>
             <div class="card">
-                <h3>Collaborative Approach</h3>
+                <Heading tag="h3" size="m" fontFamily="primary" marginBottom="s">Collaborative Approach</Heading>
                 <p>Whether you have a finished design or just an idea, we walk you through each step — artwork, garments, pricing, and print options — with care.</p>
             </div>
             <div class="card">
-                <h3>Printed In-House</h3>
+                <Heading tag="h3" size="m" fontFamily="primary" marginBottom="s">Printed In-House</Heading>
                 <p>All printing is done by us in our studio. No outsourcing, no middlemen — just hands-on craftsmanship and full control over quality.</p>
             </div>
             <div class="card">
-                <h3>Quality Obsessed</h3>
+                <Heading tag="h3" size="m" fontFamily="primary" marginBottom="s">Quality Obsessed</Heading>
                 <p>We don’t cut corners. Every print is checked by hand, every garment stacked with care, and every order treated like it’s our own.</p>
             </div>
             <div class="card">
-                <h3>Fast & Reliable</h3>
+                <Heading tag="h3" size="m" fontFamily="primary" marginBottom="s">Fast & Reliable</Heading>
                 <p>Our typical turnaround is 7–10 business days, and we’ll always be upfront about timelines, changes, or rush availability — no radio silence, ever.</p>
             </div>
             <div class="card">
-                <h3>Flexible & Honest</h3>
+                <Heading tag="h3" size="m" fontFamily="primary" marginBottom="s">Flexible & Honest</Heading>
                 <p>We’ll let you know what’s realistic, what works best for your budget, and offer alternatives if something’s not the right fit.</p>
             </div>
         </div>
@@ -73,7 +74,7 @@ import CTA from "@/components/CTA.astro";
 <section class="bg-dark">
     <div class="container-md column-main">
         <div class="content-md">
-            <h2>Print Styles</h2>
+            <Heading tag="h2" size="xl" fontFamily="primary" marginBottom="s">Print Styles</Heading>
             <p class="large">Explore different ways to make your prints stand out</p>
         </div>
         <div class="content-full blog-card__wrapper">
@@ -82,7 +83,7 @@ import CTA from "@/components/CTA.astro";
                     <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
                 </div>
                 <div class="blog-card__content">
-                    <h4>Metallic Inks That Shine</h4>
+                    <Heading tag="h3" size="s" fontFamily="secondary" marginBottom="s">Metallic Inks That Shine</Heading>
                     <p class="small">Add a reflective, eye-catching finish with gold, silver, or copper inks.</p>
                 </div>
             </div>
@@ -91,7 +92,7 @@ import CTA from "@/components/CTA.astro";
                     <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
                 </div>
                 <div class="blog-card__content">
-                    <h4>Tonal Prints for a Minimal Look</h4>
+                    <Heading tag="h3" size="s" fontFamily="secondary" marginBottom="s">Tonal Prints for a Minimal Look</Heading>
                     <p class="small">Low-contrast prints that blend beautifully with shirt color for a subtle, premium style.</p>
                 </div>
             </div>
@@ -100,7 +101,7 @@ import CTA from "@/components/CTA.astro";
                     <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
                 </div>
                 <div class="blog-card__content">
-                    <h4>Puff Ink Printing: Add Depth & Texture</h4>
+                    <Heading tag="h3" size="s" fontFamily="secondary" marginBottom="s">Puff Ink Printing: Add Depth & Texture</Heading>
                     <p class="small">Create a subtle 3D effect that pops right off the fabric.</p>
                 </div>
             </div>
@@ -109,7 +110,7 @@ import CTA from "@/components/CTA.astro";
                     <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
                 </div>
                 <div class="blog-card__content">
-                    <h4>Custom Tag Printing</h4>
+                    <Heading tag="h3" size="s" fontFamily="secondary" marginBottom="s">Custom Tag Printing</Heading>
                     <p class="small">Take your apparel to the next level with branded tag prints and relabeling options.</p>
                 </div>
             </div>
@@ -132,10 +133,6 @@ import CTA from "@/components/CTA.astro";
         padding: 1.5rem 1.5rem .5rem;
         text-wrap: balance;
         text-align: left;
-
-        h3 {
-            font-size: 1.5rem;
-        }
     }
 
     .grid {

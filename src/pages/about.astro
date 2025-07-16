@@ -9,6 +9,7 @@ import AboutHero from "@/components/AboutHero.astro";
 import Team from "@/components/Team.astro";
 import AboutFAQ from "@/components/AboutFAQ.astro";
 import CTA from "@/components/CTA.astro";
+import AboutSlider from "@/components/AboutSlider.astro";
 
 
 
@@ -27,45 +28,32 @@ import CTA from "@/components/CTA.astro";
                 </div>
             </div>
             <div class="split__col split__content">
-                <Heading tag="h2" size="xl" fontFamily="primary" marginBottom="s">About Beyond Belief Studio</Heading>
+                <Heading tag="h2" size="xl" fontFamily="primary" marginBottom="s">Your New Favorite Print Shop</Heading>
                 <p>What started as a side hustle in a garage quickly became a full-fledged print studio serving Monroe, NC and beyond. At Beyond Belief Studio, we specialize in high-quality screen printing with fast turnarounds, fair pricing, and a personal touch.</p>
                 <p>We don’t outsource. We don’t cut corners. We print everything in-house and treat every project like it’s our own — whether it’s a hundred shirts for a local school or a limited run for your brand’s next drop.</p>
-                <p>We're a small team doing big things for other small teams — schools, churches, businesses, breweries, artists, fundraisers, and anyone who wants to wear their message with pride..</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- GALLERY -->
-<section aria-label="Gallery" class="bg-white">
-    <div class="container-md column-main">
-        <div class="content-md">
-            <Heading tag='h2' size='xl' fontFamily='primary' marginBottom='m'>Shirts That Stand Out, Prints That Stick</Heading>
-            <p>We’ve printed thousands of shirts for schools, businesses, nonprofits, and local legends—each one with the same attention to detail and quality. Whether it’s a bold front print or full team merch, we bring your vision to life.</p>
-            <Links href={"/"}>View Projects</Links>
-        </div>
-
-        <div class="content-full">
-            <section class="gallery">
-                <div class="gallery-item">
-                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={1300} height={1000} />
+<section aria-label="Our Story">
+    <div class="container-md">
+        <div class="content-full split">
+            <div class="split__col split__content">
+                <Heading tag="h2" size="xl" fontFamily="primary" marginBottom="s">Our Story</Heading>
+                <p>Beyond Belief, a small, family-run, faith-based print shop, was born in 2016 in New Jersey as a humble basement hobby. Focused on crafting apparel that resonates with pride and satisfaction, we've grown from a local provider of screen-printed items to a comprehensive design and web design service, all while maintaining our core commitment to community involvement with businesses, churches, and non-profits.</p>
+                <p>Relocating to Monroe, NC in 2023, we've upheld our reputation as the dependable "merch guys," prioritizing reliability and personal growth for our clients over being the biggest in the business. From Chris's initial experiments with a DIY screen printing kit to becoming a town favorite, our journey has always been about fostering connections and ensuring customer satisfaction.</p>
+            </div>
+            <div class="split__col">
+                <div class="img-wrapper">
+                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
                 </div>
-                <div class="gallery-item tall">
-                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={1300} height={1000} />
-                </div>
-                <div class="gallery-item">
-                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={1300} height={1000} />
-                </div>
-                <div class="gallery-item">
-                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={1300} height={1000} />
-                </div>
-                <div class="gallery-item">
-                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={1300} height={1000} />
-                </div>
-            </section>
+            </div>
         </div>
     </div>
 </section>
+
+<AboutSlider />
 
 <section class="bg-primary" id="what-were-about" aria-label="What We're About">
     <div class="container-md column-main">
