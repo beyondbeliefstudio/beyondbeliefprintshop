@@ -67,6 +67,21 @@ const team = defineCollection({
     }),
 });
 
+const popularProducts = defineCollection({
+  loader: file("src/data/popularProducts.json"),
+  schema: ({ image }) =>
+    z.object({
+      id: z.number(),
+      itemNumber: z.string(),
+      itemDescription: z.string(),
+      itemImage: z.string().url(),
+      itemPrice: z.number(),
+      itemCategory: z.string(),
+      itemQuality: z.string(),
+      itemURL: z.string().optional(),
+    }),
+});
+
 export const collections = {
   reviews,
   heroCards,
@@ -74,4 +89,5 @@ export const collections = {
   servicesFAQ,
   team,
   aboutFAQ,
+  popularProducts,
 };

@@ -5,11 +5,54 @@ import press from "@/assets/press.jpg"
 import Picture from "astro/components/Picture.astro";
 import Heading from "@/components/Heading.astro";
 import Links from "@/components/Links.astro";
-import AboutHero from "@/components/AboutHero.astro";
 import Team from "@/components/Team.astro";
-import AboutFAQ from "@/components/AboutFAQ.astro";
+import FAQ from "@/components/FAQ.astro";
 import CTA from "@/components/CTA.astro";
-import AboutSlider from "@/components/AboutSlider.astro";
+import ImageSlider from "@/components/ImageSlider.astro";
+import InternalHero from "@/components/InternalHero.astro";
+import SplitOverlay from "@/components/SplitOverlay.astro";
+
+
+
+
+// Data for FAQ section
+import { getCollection } from 'astro:content';
+const faq = await getCollection('aboutFAQ');
+
+const faqData = faq.map((item) => ({
+  tag: item.data.tag,
+  question: item.data.question,
+  answer: item.data.answer
+}));
+
+// Data for "What We're About" section
+const whatWereAbout = [
+  {
+    title: "Local Always Wins",
+    description: "We’re proud to be rooted in Monroe, NC. When you work with us, you're supporting a real local business, not some faceless print broker."
+  },
+  {
+    title: "Real Quality, No Fluff",
+    description: "We print on the same gear and blanks used by national brands. Quality is everything — and we take it personally."
+  },
+  {
+    title: "We Move Fast",
+    description: "Need it by next weekend? We’ve got you. Our typical turnaround is 7–10 business days, and rush jobs are always on the table."
+  },
+  {
+    title: "We’re Print Nerds",
+    description: "Screen printing isn’t just what we do — it’s what we love. From color separations to specialty inks, we geek out over the details so you don’t have to."
+  }
+];
+
+// Data for Image Slider
+const sliderImages = [
+  { src: press, alt: "travel photo", id: "slide-1" },
+  { src: press, alt: "travel photo", id: "slide-2" },
+  { src: press, alt: "travel photo", id: "slide-3" },
+  { src: press, alt: "travel photo", id: "slide-4" }
+];
+
 
 
 
@@ -17,43 +60,19 @@ import AboutSlider from "@/components/AboutSlider.astro";
 
 <Layout title="About Us">
 
-<AboutHero />
+<InternalHero title="About Us" subtitle="We're a small team doing big things for other small teams — schools, churches, businesses, breweries, artists, fundraisers, and anyone who wants to wear their message with pride." ariaLabel="Hero About-Us" />
 
-<section aria-label="About Us">
-    <div class="container-md">
-        <div class="content-full split">
-            <div class="split__col">
-                <div class="img-wrapper">
-                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
-                </div>
-            </div>
-            <div class="split__col split__content">
-                <Heading tag="h2" size="xl" fontFamily="primary" marginBottom="s">Your New Favorite Print Shop</Heading>
-                <p>What started as a side hustle in a garage quickly became a full-fledged print studio serving Monroe, NC and beyond. At Beyond Belief Studio, we specialize in high-quality screen printing with fast turnarounds, fair pricing, and a personal touch.</p>
-                <p>We don’t outsource. We don’t cut corners. We print everything in-house and treat every project like it’s our own — whether it’s a hundred shirts for a local school or a limited run for your brand’s next drop.</p>
-            </div>
-        </div>
-    </div>
-</section>
+<SplitOverlay title="Your New Favorite Print Shop" imgSrc={press} imgAlt="Photo of Press" orientation="">
+    <p>What started as a side hustle in a garage quickly became a full-fledged print studio serving Monroe, NC and beyond. At Beyond Belief Studio, we specialize in high-quality screen printing with fast turnarounds, fair pricing, and a personal touch.</p>
+    <p>We don’t outsource. We don’t cut corners. We print everything in-house and treat every project like it’s our own — whether it’s a hundred shirts for a local school or a limited run for your brand’s next drop.</p>
+</SplitOverlay>
 
-<section aria-label="Our Story">
-    <div class="container-md">
-        <div class="content-full split">
-            <div class="split__col split__content">
-                <Heading tag="h2" size="xl" fontFamily="primary" marginBottom="s">Our Story</Heading>
-                <p>Beyond Belief, a small, family-run, faith-based print shop, was born in 2016 in New Jersey as a humble basement hobby. Focused on crafting apparel that resonates with pride and satisfaction, we've grown from a local provider of screen-printed items to a comprehensive design and web design service, all while maintaining our core commitment to community involvement with businesses, churches, and non-profits.</p>
-                <p>Relocating to Monroe, NC in 2023, we've upheld our reputation as the dependable "merch guys," prioritizing reliability and personal growth for our clients over being the biggest in the business. From Chris's initial experiments with a DIY screen printing kit to becoming a town favorite, our journey has always been about fostering connections and ensuring customer satisfaction.</p>
-            </div>
-            <div class="split__col">
-                <div class="img-wrapper">
-                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<SplitOverlay title="Our Story" imgSrc={press} imgAlt="Photo of Press" orientation="left" background="bg-white">
+    <p>Beyond Belief, a small, family-run, faith-based print shop, was born in 2016 in New Jersey as a humble basement hobby. Focused on crafting apparel that resonates with pride and satisfaction, we've grown from a local provider of screen-printed items to a comprehensive design and web design service, all while maintaining our core commitment to community involvement with businesses, churches, and non-profits.</p>
+    <p>Relocating to Monroe, NC in 2023, we've upheld our reputation as the dependable "merch guys," prioritizing reliability and personal growth for our clients over being the biggest in the business. From Chris's initial experiments with a DIY screen printing kit to becoming a town favorite, our journey has always been about fostering connections and ensuring customer satisfaction.</p>
+</SplitOverlay>
 
-<AboutSlider />
+<ImageSlider items={sliderImages} />
 
 <section class="bg-primary" id="what-were-about" aria-label="What We're About">
     <div class="container-md column-main">
@@ -62,29 +81,20 @@ import AboutSlider from "@/components/AboutSlider.astro";
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam ex quam minus eaque eius, eveniet non voluptas, sunt quo, maxime neque veritatis mollitia deleniti ratione culpa sequi dolores modi labore!</p>
         </div>
         <div class="content-full grid">
-            <div class="card">
-                <Heading tag="h3" size="m" fontFamily="primary" marginBottom="s">Local Always Wins</Heading>
-                <p>We’re proud to be rooted in Monroe, NC. When you work with us, you're supporting a real local business, not some faceless print broker.</p>
-            </div>
-            <div class="card">
-                <Heading tag="h3" size="m" fontFamily="primary" marginBottom="s">Real Quality, No Fluff</Heading>
-                <p>We print on the same gear and blanks used by national brands. Quality is everything — and we take it personally.</p>
-            </div>
-            <div class="card">
-                <Heading tag="h3" size="m" fontFamily="primary" marginBottom="s">We Move Fast</Heading>
-                <p>Need it by next weekend? We’ve got you. Our typical turnaround is 7–10 business days, and rush jobs are always on the table.</p>
-            </div>
-            <div class="card">
-                <Heading tag="h3" size="m" fontFamily="primary" marginBottom="s">We’re Print Nerds</Heading>
-                <p>Screen printing isn’t just what we do — it’s what we love. From color separations to specialty inks, we geek out over the details so you don’t have to.</p>
-            </div>
+            {whatWereAbout.map((item) => (
+                <div class="card">
+                    <Heading tag="h3" size="m" fontFamily="primary" marginBottom="s">{item.title}</Heading>
+                    <p>{item.description}</p>
+                </div>
+            ))}
         </div>
     </div>
 </section>
 
 <Team />
 
-<AboutFAQ />
+<FAQ faq={faqData}/>
+
 <CTA />
 
 </Layout>

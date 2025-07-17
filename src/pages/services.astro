@@ -1,38 +1,42 @@
 ---
-import ServicesHero from "@/components/ServicesHero.astro";
-import Layout from "@/layouts/Layout.astro";
-
+// Helpers
 import Picture from "astro/components/Picture.astro";
 
+// Assets
 import press from "@/assets/press.jpg"
-import Links from "@/components/Links.astro";
+
+// Components
+import Layout from "@/layouts/Layout.astro";
 import PrintingStyles from "@/components/services/PrintingStyles.astro";
-import ServicesFAQ from "@/components/services/ServicesFAQ.astro";
 import CTA from "@/components/CTA.astro";
 import Heading from "@/components/Heading.astro";
+import InternalHero from "@/components/InternalHero.astro";
+import SplitOverlay from "@/components/SplitOverlay.astro";
 
+
+// Data for FAQ section
+import { getCollection } from 'astro:content';
+import FAQ from "@/components/FAQ.astro";
+
+const faq = await getCollection('servicesFAQ');
+
+const faqData = faq.map((item) => ({
+  tag: item.data.tag,
+  question: item.data.question,
+  answer: item.data.answer
+}));
 
 ---
 
 <Layout title="Services">
 
-<ServicesHero />
+<InternalHero title="Services" subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates eum tenetur dignissimos tempore sed expedita at voluptatum rerum labore pariatur, ex, consequatur architecto culpa provident exercitationem nostrum amet ea sint." ariaLabel="Hero Services" class="test" />
 
-<section>
-    <div class="container-md">
-        <div class="content-full split">
-            <div class="split__col">
-                <div class="img-wrapper">
-                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
-                </div>
-            </div>
-            <div class="split__col split__content">
-                <Heading tag="h2" size="xl" fontFamily="primary" marginBottom="s">Custom Apparel Printing</Heading>
-                <p>When you're looking for high quality apparel that lasts the test of time, screen printing is the way to go. Specializing in many different types of screen printing methods, we can make you anything ranging from the simple to the completely wild. Make your brand your own with custom Pantone colors, private labeling and folding/bagging services. Art is only as good as its canvas, so we also stock garments from the worlds best manufacturers to bring any project idea to life.</p>
-            </div>
-        </div>
-    </div>
-</section>
+<SplitOverlay title="Custom Apparel Printing" imgSrc={press} imgAlt="Photo of Press" orientation="">
+    <p>What started as a side hustle in a garage quickly became a full-fledged print studio serving Monroe, NC and beyond. At Beyond Belief Studio, we specialize in high-quality screen printing with fast turnarounds, fair pricing, and a personal touch.</p>
+    <p>We don’t outsource. We don’t cut corners. We print everything in-house and treat every project like it’s our own — whether it’s a hundred shirts for a local school or a limited run for your brand’s next drop.</p>
+</SplitOverlay>
+
 
 <PrintingStyles />
 
@@ -118,7 +122,7 @@ import Heading from "@/components/Heading.astro";
     </div>
 </section>
 
-<ServicesFAQ />
+ <FAQ faq={faqData} />
 
 <CTA />
 

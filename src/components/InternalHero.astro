@@ -1,16 +1,26 @@
 ---
 import Heading from "./Heading.astro";
 
+import type { HTMLAttributes } from "astro/types";
+
+export interface HeroProps extends HTMLAttributes<"section"> {
+    title: string;
+    subtitle?: string;
+    ariaLabel?: string;
+}
+
+const { title, subtitle, ariaLabel, ...rest } = Astro.props;
+
 
 ---
 
-<section class="hero bg-dark">
-    <div class="container-md">
+<section class="hero bg-dark" aria-label={ariaLabel} {...rest}>
+    <div class="container-md hero__container">
         <div class="column column-main flex-1">
             <div class="content-md">
-                <Heading tag="h1" size="xxl" fontFamily="primary" marginBottom="l">About Us</Heading>
+                <Heading tag="h1" size="xxl" fontFamily="primary" marginBottom="l">{title}</Heading>
                 <p>
-                    We're a small team doing big things for other small teams — schools, churches, businesses, breweries, artists, fundraisers, and anyone who wants to wear their message with pride.
+                    {subtitle}
                 </p>
             </div>
         </div>
@@ -24,6 +34,11 @@ import Heading from "./Heading.astro";
     overflow: hidden; 
     position: relative;
     padding-top: 124px;
+
+    &__container {
+        padding-top: var(--_spacing---section-space--xl);
+        padding-bottom: var(--_spacing---section-space--xl);
+    }
 
     h1, h2, h3, h4, p {
         color: var(--light-200)

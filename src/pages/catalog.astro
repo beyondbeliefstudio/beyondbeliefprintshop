@@ -1,13 +1,16 @@
 ---
-import Layout from "@/layouts/Layout.astro";
+// Helpers
 import { getCollection } from "astro:content";
-import CatalogHero from "@/components/CatalogHero.astro";
 
+// Assets
 import press from "@/assets/press.jpg"
+
+// Components
+import Layout from "@/layouts/Layout.astro";
 import Picture from "astro/components/Picture.astro";
 import Heading from "@/components/Heading.astro";
 import Links from "@/components/Links.astro";
-import CatalogCard from "@/components/CatalogCard.astro";
+import InternalHero from "@/components/InternalHero.astro";
 
 
 
@@ -15,7 +18,7 @@ import CatalogCard from "@/components/CatalogCard.astro";
 
 <Layout title="Home">
 
-<CatalogHero />
+<InternalHero title="Catalog" subtitle="Explore our collection of custom screen printing services and products." ariaLabel="Hero Catalog" />
 
 <section>
     <div class="container-md  column-main">

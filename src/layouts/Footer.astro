@@ -4,9 +4,9 @@ import Links from "@/components/Links.astro";
 
 // Content
 import { navData } from '@/data/navData';
+import { baseData } from "@/data/siteData";
 
 // Images
-import navLogo from '@/assets/navLogo.svg';
 import wordmark from '@/assets/wordmark.png';
 
 
@@ -16,7 +16,7 @@ import wordmark from '@/assets/wordmark.png';
         <div class="content-full footer__content">
             <div class="footer__info">
                 <Image src={wordmark} alt="beyond belief wordmark" class="footer__wordmark" />
-                <p class="small">At Beyond Belief Studio, we specialize exclusively in high-quality screen printing for schools, small businesses, events, and brands—right here in Monroe, NC.</p>
+                <p class="small">{baseData.description}</p>
                 <div class="social-grid">
                     <span class="social">
                         <img src="/src/assets/instagram.png" alt="">
@@ -120,7 +120,7 @@ import wordmark from '@/assets/wordmark.png';
     
     .social-grid {
         display: flex;
-        gap: 1rem;
+        gap: .5rem;
     
         .social {
             background: var(--brand-primary);
@@ -131,10 +131,16 @@ import wordmark from '@/assets/wordmark.png';
             align-items: center;
             justify-content: center;
             padding-right: 1px;
+            transition: .25s ease-in-out all;
+            cursor: pointer;
     
             img {
                 width: 20px;
                 height: 20px;
+            }
+
+            &:hover {
+                background: var(--light-100);
             }
         }
     }

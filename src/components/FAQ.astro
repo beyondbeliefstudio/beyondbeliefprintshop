@@ -1,8 +1,9 @@
 ---
-import { getCollection } from "astro:content";
 import Heading from "@/components/Heading.astro";
 
-const aboutFAQ = await getCollection("aboutFAQ");
+let { faq } = Astro.props;
+
+
 ---
 
 <section>
@@ -13,7 +14,7 @@ const aboutFAQ = await getCollection("aboutFAQ");
         <div class="content-lg">
             <div class="accordion">
                 {
-                    aboutFAQ.map(({data}) => (
+                    faq.map((data: {tag: string; question: string; answer: string}) => (
                         <div class="accordion__item">
                             <div class="accordion__question">
                                 <button type="button" class="accordion__button" aria-expanded="false" aria-controls={data.tag}>

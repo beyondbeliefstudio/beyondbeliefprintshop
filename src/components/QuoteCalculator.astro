@@ -1,0 +1,307 @@
+---
+import Links from "./Links.astro";
+import { getCollection } from "astro:content";
+
+import ProductCard from "./ProductCard.astro";
+
+const productCard = await getCollection("popularProducts");
+---
+
+<section>
+    <div class="container-md">
+        <form class="quote-calculator">
+            <div class="form-group">
+                <label for="garment">Select Garment</label>
+                <select id="garment" name="garment" class="form-control">
+                    <option value="" disabled selected>Select a garment</option>
+                    <option value="tshirt">T-Shirt</option>
+                    <option value="hoodie">Hoodie</option>
+                    <option value="tanktop">Tank Top</option>
+                    <option value="longsleeve">Long Sleeve</option>
+                    <option value="sweatshirt">Sweatshirt</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="garmentQuality">Garment Quality</label>
+                <select id="garmentQuality" name="garmentQuality" class="form-control">
+                    <option value="" disabled selected>Select quality</option>
+                    <option value="basic">Basic</option>
+                    <option value="midrange">Mid-Range</option>
+                    <option value="premium">Premium</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input type="number" id="quantity" name="quantity" class="form-control" min="1" required />
+            </div>
+            <div class="form-group">
+                <label for="frontColors">Front Print Colors</label>
+                <input type="number" id="frontColors" name="frontColors" class="form-control" min="1" max="6" required />
+            </div>
+            <div class="form-group">
+                <label for="backColors">Back Print Colors</label>
+                <input type="number" id="backColors" name="backColors" class="form-control" min="0" max="6" />
+            </div>
+            <button type="submit" class="btn btn-primary">Get Quote</button>
+        </form>
+    </div>
+</section>
+
+<section>
+    <div class="container-md column-main">
+        <div class="content-full">
+            <h2>Popular Garment Options</h2>
+            <div class="filter-tabs">
+                <button class="tab active" data-filter="all">All Project</button>
+                <button class="tab" data-filter="tshirt">T-Shirts</button>
+                <button class="tab" data-filter="hoodie">Hoodies</button>
+                <button class="tab" data-filter="tanktop">Tank Tops</button>
+                <button class="tab" data-filter="longsleeve">Long Sleeves</button>
+                <button class="tab" data-filter="sweatshirt">Sweatshirts</button>
+            </div>
+        </div>
+        <div class="content-full">
+            <div class="productGrid">
+                {
+                    productCard.map((product) => (
+                        <div class="productCard__wrapper" data-category={product.data.itemCategory}>
+                            <ProductCard popularProducts={product} />
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<style lang="scss">
+.filter-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    background: white;
+    padding: 0.75rem 1rem;
+    border-radius: 2rem;
+    width: fit-content;
+    margin: auto;
+}
+
+.tab {
+  background: transparent;
+  border: none;
+  padding: 0.5rem 1.25rem;
+  border-radius: 2rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--secondary-family);
+font-size: 1rem;
+}
+
+.tab.active {
+  background: var(--brand-primary);
+  color: var(--dark-900);
+}
+
+
+.productGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+}
+</style>
+
+
+
+<script>
+const tabs = document.querySelectorAll(".tab");
+const cards = document.querySelectorAll(".productCard__wrapper");
+
+tabs.forEach(tab => {
+tab.addEventListener("click", () => {
+    document.querySelector(".tab.active").classList.remove("active");
+    tab.classList.add("active");
+
+    const filter = tab.getAttribute("data-filter");
+
+    cards.forEach(card => {
+    const category = card.getAttribute("data-category");
+    if (filter === "all" || category === filter) {
+        (card as HTMLElement).style.display = "block";
+    } else {
+        (card as HTMLElement).style.display = "none";
+    }
+    });
+});
+});
+
+
+
+const garmentOptions = [
+    { value: "tshirt", label: "T-Shirt", avgPriceBasic: 10, avgPriceMidrange: 15, avgPricePremium: 20 },
+    { value: "hoodie", label: "Hoodie", avgPriceBasic: 25, avgPriceMidrange: 30, avgPricePremium: 40 },
+    { value: "tanktop", label: "Tank Top", avgPriceBasic: 12, avgPriceMidrange: 18, avgPricePremium: 25 },
+    { value: "longsleeve", label: "Long Sleeve", avgPriceBasic: 15, avgPriceMidrange: 20, avgPricePremium: 30 },
+    { value: "sweatshirt", label: "Sweatshirt", avgPriceBasic: 20, avgPriceMidrange: 25, avgPricePremium: 35 }
+];
+
+const garmentQualityOptions = [
+    { value: "basic", label: "Basic" },
+    { value: "midrange", label: "Mid-Range" },
+    { value: "premium", label: "Premium" }
+];
+
+const printPrices = [
+    {
+        "1": {
+            "1 Color": 5.5,
+            "2 Color": 6.5,
+            "3 Color": 7.5,
+            "4 Color": 8.5,
+            "5 Color": 9.5,
+            "6 Color": 10.5
+        },
+        "24": {
+            "1 Color": 4.5,
+            "2 Color": 5.5,
+            "3 Color": 6.5,
+            "4 Color": 7.5,
+            "5 Color": 8.5,
+            "6 Color": 9.5
+        },
+        "48": {
+            "1 Color": 4,
+            "2 Color": 5,
+            "3 Color": 6,
+            "4 Color": 7,
+            "5 Color": 8,
+            "6 Color": 9
+        },
+        "72": {
+            "1 Color": 3.5,
+            "2 Color": 4.5,
+            "3 Color": 5.5,
+            "4 Color": 6.5,
+            "5 Color": 7.5,
+            "6 Color": 8.5
+        },
+        "100": {
+            "1 Color": 3,
+            "2 Color": 4,
+            "3 Color": 5,
+            "4 Color": 6,
+            "5 Color": 7,
+            "6 Color": 8
+        },
+        "150": {
+            "1 Color": 2.5,
+            "2 Color": 3.5,
+            "3 Color": 4.5,
+            "4 Color": 5.5,
+            "5 Color": 6.5,
+            "6 Color": 7.5
+        },
+        "200": {
+            "1 Color": 2,
+            "2 Color": 3,
+            "3 Color": 4,
+            "4 Color": 5,
+            "5 Color": 6,
+            "6 Color": 7
+        },
+        "250": {
+            "1 Color": 1.75,
+            "2 Color": 2.75,
+            "3 Color": 3.75,
+            "4 Color": 4.75,
+            "5 Color": 5.75,
+            "6 Color": 6.75
+        }
+    }
+];
+
+const setupFees = {
+    "1 Color": 20,
+    "2 Color": 40,
+    "3 Color": 60,
+    "4 Color": 80,
+    "5 Color": 100,
+    "6 Color": 120
+};
+
+const calculateQuote = event => {
+  event.preventDefault()
+
+  const garmentSelect = document.getElementById("garment") as HTMLSelectElement
+  const garmentQualitySelect = document.getElementById("garmentQuality") as HTMLSelectElement
+  const quantityInput = document.getElementById("quantity") as HTMLInputElement
+  const frontColorsInput = document.getElementById("frontColors") as HTMLInputElement
+  const backColorsInput = document.getElementById("backColors") as HTMLInputElement
+
+  const garment = garmentSelect.value
+  const garmentQuality = garmentQualitySelect.value
+  const quantity = parseInt(quantityInput.value)
+  const frontColors = parseInt(frontColorsInput.value)
+  const backColors = parseInt(backColorsInput.value) || 0
+
+  if (!garment || !garmentQuality || !quantity || !frontColors) {
+    alert("Please fill in all required fields.")
+    return
+  }
+
+  const garmentOption = garmentOptions.find(option => option.value === garment)
+  if (!garmentOption) {
+    alert("Garment not found.")
+    return
+  }
+
+  let garmentPrice = 0
+  switch (garmentQuality) {
+    case "basic":
+      garmentPrice = garmentOption.avgPriceBasic
+      break
+    case "midrange":
+      garmentPrice = garmentOption.avgPriceMidrange
+      break
+    case "premium":
+      garmentPrice = garmentOption.avgPricePremium
+      break
+    default:
+      alert("Invalid garment quality selected.")
+      return
+  }
+
+  // Find the closest bracket from printPrices
+  const priceTiers = Object.keys(printPrices[0])
+    .map(Number)
+    .sort((a, b) => a - b)
+  let closestTier = priceTiers[0]
+  for (const tier of priceTiers) {
+    if (quantity >= tier) closestTier = tier
+  }
+
+  const frontColorKey = `${frontColors} Color`
+  const backColorKey = `${backColors} Color`
+
+  const tierPricing = printPrices[0][String(closestTier)]
+
+  const frontPrintPrice = tierPricing[frontColorKey] || 0
+  const backPrintPrice = backColors > 0 ? tierPricing[backColorKey] || 0 : 0
+
+  const setupFee =
+    setupFees[frontColorKey] + (backColors > 0 ? setupFees[backColorKey] : 0)
+
+  const total =
+    (garmentPrice + frontPrintPrice + backPrintPrice) * quantity + setupFee
+
+  alert(`Your quote for ${quantity} ${garment}(s) is: $${total.toFixed(2)}`)
+}
+
+const formElement = document.querySelector(".quote-calculator")
+if (formElement) {
+  formElement.addEventListener("submit", calculateQuote)
+}
+
+</script>

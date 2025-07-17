@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "itemNumber": "G5000",
+    "itemDescription": "Gildan 5000 Heavy Cotton T-Shirt",
+    "itemImage": "https://cdn.ssactivewear.com/Images/Style/16_fm.jpg",
+    "itemPrice": 4.25,
+    "itemCategory": "tshirt",
+    "itemQuality": "basic",
+    "itemURL": "https://www.ssactivewear.com/p/gildan/5000"
+  },
+  {
+    "id": 2,
+    "itemNumber": "J29MR",
+    "itemDescription": "Jerzees 29MR Dri-Power 50/50 T-Shirt",
+    "itemImage": "https://cdn.ssactivewear.com/Images/Style/145_fm.jpg",
+    "itemPrice": 4.7,
+    "itemCategory": "tshirt",
+    "itemQuality": "basic",
+    "itemURL": "https://www.ssactivewear.com/p/jerzees/29mr"
+  },
+  {
+    "id": 3,
+    "itemNumber": "AA1301",
+    "itemDescription": "American Apparel 13001 Unisex Heavyweight Cotton Tee",
+    "itemImage": "https://cdn.ssactivewear.com/Images/Style/8168_fm.jpg",
+    "itemPrice": 4.75,
+    "itemCategory": "tshirt",
+    "itemQuality": "basic",
+    "itemURL": "https://www.ssactivewear.com/p/american_apparel/1301"
+  },
+  {
+    "id": 4,
+    "itemNumber": "BC3001",
+    "itemDescription": "Bella+Canvas 3001 Unisex Jersey T-Shirt",
+    "itemImage": "https://cdn.ssactivewear.com/Images/Style/8168_fm.jpg",
+    "itemPrice": 6.5,
+    "itemCategory": "tshirt",
+    "itemQuality": "midrange",
+    "itemURL": "/products/jerzees-29mr"
+  },
+  {
+    "id": 5,
+    "itemNumber": "AS5001",
+    "itemDescription": "AS Colour 5001 Staple T-Shirt",
+    "itemImage": "https://cdn.ssactivewear.com/Images/Style/8168_fm.jpg",
+    "itemPrice": 7.75,
+    "itemCategory": "tshirt",
+    "itemQuality": "midrange",
+    "itemURL": "/products/jerzees-29mr"
+  },
+  {
+    "id": 6,
+    "itemNumber": "NL3600",
+    "itemDescription": "Next Level 3600 Cotton Crew",
+    "itemImage": "https://cdn.ssactivewear.com/Images/Style/8168_fm.jpg",
+    "itemPrice": 5.75,
+    "itemCategory": "tshirt",
+    "itemQuality": "midrange",
+    "itemURL": "/products/jerzees-29mr"
+  },
+  {
+    "id": 7,
+    "itemNumber": "CC1717",
+    "itemDescription": "Comfort Colors 1717 Garment-Dyed T-Shirt",
+    "itemImage": "https://cdn.ssactivewear.com/Images/Style/8168_fm.jpg",
+    "itemPrice": 8.5,
+    "itemCategory": "tshirt",
+    "itemQuality": "premium",
+    "itemURL": "/products/jerzees-29mr"
+  },
+  {
+    "id": 8,
+    "itemNumber": "AS5026",
+    "itemDescription": "AS Colour 5026 Classic T-Shirt",
+    "itemImage": "https://cdn.ssactivewear.com/Images/Style/8168_fm.jpg",
+    "itemPrice": 11.0,
+    "itemCategory": "tshirt",
+    "itemQuality": "premium",
+    "itemURL": "/products/jerzees-29mr"
+  },
+  {
+    "id": 9,
+    "itemNumber": "NL 6010",
+    "itemDescription": "Next Level 6010 Premium Fitted T-Shirt",
+    "itemImage": "https://cdn.ssactivewear.com/Images/Style/8168_fm.jpg",
+    "itemPrice": 8.1,
+    "itemCategory": "tshirt",
+    "itemQuality": "premium",
+    "itemURL": "/products/jerzees-29mr"
+  }
+]

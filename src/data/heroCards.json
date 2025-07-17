@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "The Garden State",
-    "description": "A short description of the project",
+    "description": "Your number one source for all things Jersey.",
     "image": "@/assets/tgsHero.jpeg",
     "imageAlt": "The Garden State",
     "isFeatured": true
@@ -10,7 +10,7 @@
   {
     "id": 2,
     "title": "Evangel Church",
-    "description": "A short description of the project",
+    "description": "Evangel Church is an Assemblies of God church in NJ. Their vision is to be changed lives changing communities.",
     "image": "@/assets/evangelHero.jpg",
     "imageAlt": "Evangel Church",
     "isFeatured": true
@@ -26,7 +26,7 @@
   {
     "id": 4,
     "title": "Beyond Belief Golf Club",
-    "description": "A short description of the project",
+    "description": "Where Pars Are Rare and Bogeys Are Plenty.",
     "image": "@/assets/bbgcHero.jpg",
     "imageAlt": "Beyond Belief Golf Club",
     "isFeatured": true

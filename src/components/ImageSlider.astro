@@ -1,22 +1,21 @@
 ---
 import Picture from "astro/components/Picture.astro";
-import press from "@/assets/press.jpg"
+
+const { items } = Astro.props;
 ---
 
-<section aria-label="About Us Slider" id="about-slider" class="bg-white">
+<section aria-label="About Us Slider" id="about-slider">
     <div class="container-md">
         <div class="slider">
             <div class="slider__wrapper">
-                <Picture src={press} alt="travel photo" class="slider__img" id="slide-1" loading="eager" width={2000} height={1000} />
-                <Picture src={press} alt="travel photo" class="slider__img" id="slide-2" loading="eager" width={2000} height={1000} />
-                <Picture src={press} alt="travel photo" class="slider__img" id="slide-3" loading="eager" width={2000} height={1000} />
-                <Picture src={press} alt="travel photo" class="slider__img" id="slide-4" loading="eager" width={2000} height={1000} />
+                {items.map((item: { src: string; alt?: string; id?: string }) => (
+                    <Picture src={item.src} alt={item.alt ?? null} class="slider__img" id={item.id} loading="eager" width={2000} height={1000} />
+                ))}
             </div>
             <div class="slider__nav">
-                <a href="#slide-1"></a>
-                <a href="#slide-2"></a>
-                <a href="#slide-3"></a>
-                <a href="#slide-4"></a>
+                {items.map((item: {id?: string }) => (
+                    <a href={`#${item.id}`} class:list={item.id === "slide-1" ? "active" : ""}></a>
+                ))}
             </div>
         </div>
     </div>
