@@ -236,6 +236,29 @@ a {
   color: inherit;
 }
 
+.btn {
+  position: relative;
+  display: inline-block;
+  border-style: solid;
+  border-width: 1px;
+  transition: .25s ease-in-out all;
+  font-weight: 500;
+  letter-spacing: 0px;
+  text-decoration: none;
+  padding: .5rem 1rem;
+  border-radius: 100px;
+  text-transform: capitalize;
+  line-height: 1.4;
+  margin: .5rem .25rem;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: inherit;
+  font-family: inherit;
+  color: var(--dark-800);
+  font-size: 1rem;
+}
+
 // UTILITIES
 .bg-primary {
   background-color: var(--brand-primary);

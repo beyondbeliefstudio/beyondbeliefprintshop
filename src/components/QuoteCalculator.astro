@@ -3,47 +3,99 @@ import Links from "./Links.astro";
 import { getCollection } from "astro:content";
 
 import ProductCard from "./ProductCard.astro";
+import Buttons from "./Buttons.astro";
+import Heading from "./Heading.astro";
+
 
 const productCard = await getCollection("popularProducts");
 ---
 
-<section>
-    <div class="container-md">
-        <form class="quote-calculator">
-            <div class="form-group">
-                <label for="garment">Select Garment</label>
-                <select id="garment" name="garment" class="form-control">
-                    <option value="" disabled selected>Select a garment</option>
-                    <option value="tshirt">T-Shirt</option>
-                    <option value="hoodie">Hoodie</option>
-                    <option value="tanktop">Tank Top</option>
-                    <option value="longsleeve">Long Sleeve</option>
-                    <option value="sweatshirt">Sweatshirt</option>
-                </select>
+<section aria-labelledby="quote-calculator-heading" class="quote-calculator">
+    <div class="container-md quote-calculator__container">
+        <div class="content-md quote-calculator__wrapper">
+            <div>
+                <Heading tag="h2" size="l" fontFamily="primary" marginBottom="s">Pricing</Heading>
+                <p class="lead">Fill out the form below to get a quote for your custom garment printing project. We will get back to you as soon as possible with a detailed quote based on your specifications.</p>
             </div>
-            <div class="form-group">
-                <label for="garmentQuality">Garment Quality</label>
-                <select id="garmentQuality" name="garmentQuality" class="form-control">
-                    <option value="" disabled selected>Select quality</option>
-                    <option value="basic">Basic</option>
-                    <option value="midrange">Mid-Range</option>
-                    <option value="premium">Premium</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="quantity">Quantity</label>
-                <input type="number" id="quantity" name="quantity" class="form-control" min="1" required />
-            </div>
-            <div class="form-group">
-                <label for="frontColors">Front Print Colors</label>
-                <input type="number" id="frontColors" name="frontColors" class="form-control" min="1" max="6" required />
-            </div>
-            <div class="form-group">
-                <label for="backColors">Back Print Colors</label>
-                <input type="number" id="backColors" name="backColors" class="form-control" min="0" max="6" />
-            </div>
-            <button type="submit" class="btn btn-primary">Get Quote</button>
-        </form>
+            <form class="quote-calculator__form">
+                <div class="form-grouping">
+                    <div class="form-group">
+                        <label for="garment">Select Garment</label>
+                        <select id="garment" name="garment" class="form-control">
+                            <option value="" disabled selected>Select a garment</option>
+                            <option value="tshirt">T-Shirt</option>
+                            <option value="hoodie">Hoodie</option>
+                            <option value="tanktop">Tank Top</option>
+                            <option value="longsleeve">Long Sleeve</option>
+                            <option value="sweatshirt">Sweatshirt</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="garmentQuality">Garment Quality</label>
+                        <select id="garmentQuality" name="garmentQuality" class="form-control">
+                            <option value="" disabled selected>Select quality</option>
+                            <option value="basic">Basic</option>
+                            <option value="midrange">Mid-Range</option>
+                            <option value="premium">Premium</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">How many do you need?</label>
+                    <div class="input-group">
+                        <button type="button" class="quote-calculator__input-button minus">
+                            <div class="circle">
+                                <span class="horizontal"></span>
+                            </div>
+                        </button>
+                        <input type="number" id="quantity" name="quantity" class="form-control" min="12" required />
+                        <button type="button" class="quote-calculator__input-button plus">
+                            <div class="circle">
+                                <span class="horizontal"></span>
+                                <span class="vertical"></span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-grouping">
+                    <div class="form-group">
+                        <label for="frontColors">Front Print Colors</label>
+                        <div class="input-group">
+                            <button type="button" class="quote-calculator__input-button minus">
+                                <div class="circle">
+                                    <span class="horizontal"></span>
+                                </div>
+                            </button>
+                            <input type="number" id="frontColors" name="frontColors" class="form-control" min="1" max="6" required />
+                            <button type="button" class="quote-calculator__input-button plus">
+                                <div class="circle">
+                                    <span class="horizontal"></span>
+                                    <span class="vertical"></span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="backColors">Back Print Colors</label>
+                        <div class="input-group">
+                            <button type="button" class="quote-calculator__input-button minus">
+                                <div class="circle">
+                                    <span class="horizontal"></span>
+                                </div>
+                            </button>
+                            <input type="number" id="backColors" name="backColors" class="form-control" min="0" max="6" />
+                            <button type="button" class="quote-calculator__input-button plus">
+                                <div class="circle">
+                                    <span class="horizontal"></span>
+                                    <span class="vertical"></span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <Buttons variant="secondary">Get Quote</Buttons>
+            </form>
+        </div>
     </div>
 </section>
 
@@ -53,9 +105,9 @@ const productCard = await getCollection("popularProducts");
             <h2>Popular Garment Options</h2>
             <div class="filter-tabs">
                 <button class="tab active" data-filter="all">All Project</button>
-                <button class="tab" data-filter="tshirt">T-Shirts</button>
-                <button class="tab" data-filter="hoodie">Hoodies</button>
-                <button class="tab" data-filter="tanktop">Tank Tops</button>
+                <button class="tab" data-filter="T-Shirt">T-Shirts</button>
+                <button class="tab" data-filter="Hoodie">Hoodies</button>
+                <button class="tab" data-filter="Tanktop">Tank Tops</button>
                 <button class="tab" data-filter="longsleeve">Long Sleeves</button>
                 <button class="tab" data-filter="sweatshirt">Sweatshirts</button>
             </div>
@@ -105,11 +157,137 @@ font-size: 1rem;
   color: var(--dark-900);
 }
 
+.quote-calculator {
+    &__container {
+        padding-top: 0;
+        padding-bottom: 0;
+        position: relative;
+        z-index: 999;
+        margin-top: -10rem;
+    }
+    &__wrapper {
+        width: 100%;
+        background: #fff;
+        padding: 2rem;
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    &__form {
+        width: 100%;
+        text-align: center;
+        display: grid;
+        gap: 1rem;
+        max-width: 640px;
+        margin: 0 auto;
+    }
+
+    .input-group {
+        display: flex;
+        flex-direction: row;
+        grid-gap: .5rem;
+        align-items: center;
+        justify-content: center;
+    }
+
+    input[type="number"] {
+        width: 100px;
+        text-align: center;
+    }
+
+    select, input {
+        font-family: var(--secondary-family);
+    }
+
+    &__input-button {
+        background: none;
+        cursor: pointer;
+        padding: 0;
+        width: 35px;
+        height: 35px;
+        position: relative;
+        border: 0px;
+
+        .circle {
+            background: var(--brand-primary);
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .horizontal,
+        .vertical {
+            position: absolute;
+            width: 18px;
+            height: 3px;
+            background-color: var(--dark-900);
+            transition: background-color 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .horizontal {
+            opacity: 1;
+        }
+
+        .vertical {
+            transform: rotate(90deg);
+            transform-origin: center;
+            transition: .25s ease-in-out all;
+        }
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        label {
+            font-weight: bold;
+        }
+
+        input, select {
+            padding: 0.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--light-200);
+            font-size: 1rem;
+        }
+    }
+
+    .form-grouping {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 3rem;
+    }
+
+    button {
+        align-self: center;
+    }
+}
+
 
 .productGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(360px, 100%), 1fr));
     gap: 1rem;
+}
+
+
+/* Hide number input spinners for Chrome, Safari, Edge */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide number input spinners for Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 </style>
 
@@ -135,6 +313,28 @@ tab.addEventListener("click", () => {
     }
     });
 });
+});
+
+// Increment/Decrement logic for frontColors and backColors
+document.querySelectorAll('.input-group').forEach(group => {
+  const minusBtn = group.querySelector('.quote-calculator__input-button.minus');
+  const plusBtn = group.querySelector('.quote-calculator__input-button.plus');
+  const input = group.querySelector('input[type="number"]');
+
+  if (minusBtn && input) {
+    minusBtn.addEventListener('click', () => {
+      let min = parseInt((input as HTMLInputElement).min) || 0;
+      let value = parseInt((input as HTMLInputElement).value) || min;
+      if (value > min) (input as HTMLInputElement).value = String(value - 1);
+    });
+  }
+  if (plusBtn && input) {
+    plusBtn.addEventListener('click', () => {
+      let max = parseInt((input as HTMLInputElement).max) || 99;
+      let value = parseInt((input as HTMLInputElement).value) || 0;
+      if (value < max) (input as HTMLInputElement).value = String(value + 1);
+    });
+  }
 });
 
 

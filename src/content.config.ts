@@ -73,7 +73,8 @@ const popularProducts = defineCollection({
     z.object({
       id: z.number(),
       itemNumber: z.string(),
-      itemDescription: z.string(),
+      itemName: z.string(),
+      itemBrand: z.string(),
       itemImage: z.string().url(),
       itemPrice: z.number(),
       itemCategory: z.string(),

@@ -8,9 +8,15 @@ import Layout from "@/layouts/Layout.astro";
 
 <Layout title="Get A Quote">
 
-    <InternalHero title="Get A Quote" subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates eum tenetur dignissimos tempore sed expedita at voluptatum rerum labore pariatur, ex, consequatur architecto culpa provident exercitationem nostrum amet ea sint." ariaLabel="Hero Get A Quote" />
+    <InternalHero title="Get A Quote" subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates eum tenetur dignissimos tempore sed expedita at voluptatum rerum labore pariatur, ex, consequatur architecto culpa provident exercitationem nostrum amet ea sint." ariaLabel="Hero Get A Quote" classes="hero-quote" />
 
     <QuoteCalculator />
 
 
 </Layout>
+
+<style lang="scss">
+.hero-quote {
+    padding-bottom: 10rem;
+}
+</style>

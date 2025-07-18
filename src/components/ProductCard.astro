@@ -4,6 +4,7 @@ import Picture from "astro/components/Picture.astro";
 import type { CollectionEntry } from "astro:content";
 import Heading from "./Heading.astro";
 import Image from "astro/components/Image.astro";
+import Links from "./Links.astro";
 
 type Props = {
     popularProducts: CollectionEntry<"popularProducts">
@@ -11,20 +12,21 @@ type Props = {
 
 const {popularProducts} = Astro.props;
 
-const {itemCategory, id, itemDescription, itemImage, itemNumber, itemPrice, itemQuality, itemURL} = popularProducts.data;
+const {itemCategory, itemImage, itemNumber, itemPrice, itemQuality, itemURL, itemName, itemBrand} = popularProducts.data;
 ---
 
 <article class="productCard">
     <div class="productCard__img-wrapper">
-        <Image src={itemImage} alt={itemDescription} class="productCard__img" loading="lazy" width={300} height={300} />
+        <Image src={itemImage} alt={itemName} class="productCard__img" loading="lazy" width={300} height={300} />
         <p class="quality">{itemQuality}</p>
     </div>
     <div class="productCard__content">
-        <Heading tag="h3" size="s" fontFamily="primary" marginBottom="none">{itemDescription}</Heading>
-        <p>Item Number: {itemNumber}</p>
-        <p>Category: {itemCategory}</p>
-        <p>Price: ${itemPrice.toFixed(2)}</p>
-        <a href={itemURL} class="btn btn-secondary">View Product</a>
+        <Heading tag="h3" size="s" fontFamily="primary" marginBottom="s">{itemName}</Heading>
+        <p><b>Brand:</b> {itemBrand}</p>
+        <p><b>Item Number:</b> {itemNumber}</p>
+        <p><b>Category:</b> {itemCategory}</p>
+        <p><b>Price:</b> ${itemPrice.toFixed(2)}</p>
+        <Links href={itemURL}>View Product</Links>
     </div>
 </article>
 
@@ -41,6 +43,8 @@ const {itemCategory, id, itemDescription, itemImage, itemNumber, itemPrice, item
 
     &__img-wrapper {
         position: relative;
+        aspect-ratio: 3 / 4;
+        overflow: hidden;
     }
 
     .quality {
@@ -54,11 +58,17 @@ const {itemCategory, id, itemDescription, itemImage, itemNumber, itemPrice, item
         left: .5rem;
         bottom: .5rem;
         text-transform: uppercase;
-        font-weight: 700;
+        font-weight: 400;
         letter-spacing: 2px;
         font-size: .8rem;
         font-family: 'Hamburg';
         line-height: 1;
+    }
+
+    &__content {
+        p {
+            margin-bottom: 0rem
+        }
     }
 }
 </style>
