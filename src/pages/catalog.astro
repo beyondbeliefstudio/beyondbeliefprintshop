@@ -1,18 +1,9 @@
 ---
-// Helpers
-import { getCollection } from "astro:content";
-
-// Assets
-import press from "@/assets/press.jpg"
 
 // Components
 import Layout from "@/layouts/Layout.astro";
-import Picture from "astro/components/Picture.astro";
-import Heading from "@/components/Heading.astro";
-import Links from "@/components/Links.astro";
 import InternalHero from "@/components/InternalHero.astro";
-
-
+import PopularProducts from "@/components/PopularProducts.astro";
 
 ---
 
@@ -20,114 +11,12 @@ import InternalHero from "@/components/InternalHero.astro";
 
 <InternalHero title="Catalog" subtitle="Explore our collection of custom screen printing services and products." ariaLabel="Hero Catalog" />
 
-<section>
-    <div class="container-md  column-main">
-        <div class="content-full">
-            <h2>Customized apparel options</h2>
-            <p class="large">There are a lot of different options for customized corporate apparel. What will your team be wearing?</p>
-        </div>
-        <div class="content-full">
-            <div class="bento-component">
-                <div class="grid">
-                    <div class="card">
-                        <div class="img-wrapper">
-                            <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
-                        </div>
-                        <div class="content">
-                            <Heading tag="h3" size="s" fontFamily="primary" marginBottom="xs">T-Shirts</Heading>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure maxime aliquid animi reprehenderit.</p>
-                            <Links variant="outline-dark" href={"/"}>Learn More</Links>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="img-wrapper">
-                            <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
-                        </div>
-                        <div class="content">
-                            <Heading tag="h3" size="s" fontFamily="primary" marginBottom="xs">T-Shirts</Heading>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure maxime aliquid animi reprehenderit.</p>
-                            <Links variant="outline-dark" href={"/"}>Learn More</Links>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="img-wrapper">
-                            <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
-                        </div>
-                        <div class="content">
-                            <Heading tag="h3" size="s" fontFamily="primary" marginBottom="xs">T-Shirts</Heading>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure maxime aliquid animi reprehenderit.</p>
-                            <Links variant="outline-dark" href={"/"}>Learn More</Links>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="img-wrapper">
-                            <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
-                        </div>
-                        <div class="content">
-                            <Heading tag="h3" size="s" fontFamily="primary" marginBottom="xs">T-Shirts</Heading>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure maxime aliquid animi reprehenderit.</p>
-                            <Links variant="outline-dark" href={"/"}>Learn More</Links>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="img-wrapper">
-                            <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
-                        </div>
-                        <div class="content">
-                            <Heading tag="h3" size="s" fontFamily="primary" marginBottom="xs">T-Shirts</Heading>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure maxime aliquid animi reprehenderit.</p>
-                            <Links variant="outline-dark" href={"/"}>Learn More</Links>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="img-wrapper">
-                            <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
-                        </div>
-                        <div class="content">
-                            <Heading tag="h3" size="s" fontFamily="primary" marginBottom="xs">T-Shirts</Heading>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure maxime aliquid animi reprehenderit.</p>
-                            <Links variant="outline-dark" href={"/"}>Learn More</Links>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
+<PopularProducts />
 
 
 
 </Layout>
 
 <style lang="scss">
-.card {
-    background: var(--light-100);
-    border-radius: var(--border-radius-medium);
-    padding: 1rem;
 
-    .img-wrapper {
-        margin-bottom: 1rem;
-        border-radius: 6px;
-        overflow: hidden;
-        aspect-ratio: 4 / 3;
-    }
-
-    .content {
-        text-align: left;
-    }
-}
-
-.grid {
-    display: grid;
-    // grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
-    grid-template-rows: auto auto;
-    gap: 1rem;
-
-    .card:nth-child(1),
-    .card:nth-child(2) {
-        grid-column: span 2;
-    } 
-}
 </style>

@@ -1,12 +1,23 @@
 ---
+import type { HTMLAttributes } from "astro/types";
 import Heading from "@/components/Heading.astro";
 
 let { faq } = Astro.props;
 
+export interface LinkProps extends HTMLAttributes<"section"> {
+  id: string;
+  ariaLabel: string;
+}
+
+const { 
+  id,
+  ariaLabel,
+    ...rest
+} = Astro.props;
 
 ---
 
-<section>
+<section id={id} aria-label={ariaLabel}>
     <div class="container-md column-main">
         <div class="content-lg">
             <Heading tag="h2" size="xl" fontFamily="primary" marginBottom="m">Frequently Asked Questions</Heading>
@@ -23,7 +34,7 @@ let { faq } = Astro.props;
                                         <span class="vertical"></span>
                                     </div>
                                 </button>
-                                <Heading tag="h3" size="m" fontFamily="secondary" marginBottom="none" class="accordion__headings">{data.question}</Heading>
+                                <Heading tag="h3" size="s" fontFamily="secondary" marginBottom="none" class="accordion__headings">{data.question}</Heading>
                             </div>
                             <div id={data.tag} class="accordion__content" hidden>
                                 <p>

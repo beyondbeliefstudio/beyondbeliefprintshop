@@ -56,6 +56,15 @@ const aboutFAQ = defineCollection({
   }),
 });
 
+const quoteFAQ = defineCollection({
+  loader: file("src/data/quoteFAQ.json"),
+  schema: z.object({
+    question: z.string(),
+    answer: z.string(),
+    tag: z.string(),
+  }),
+});
+
 const team = defineCollection({
   loader: file("src/data/team.json"),
   schema: ({ image }) =>
@@ -83,6 +92,42 @@ const popularProducts = defineCollection({
     }),
 });
 
+const garmentQualityOptions = defineCollection({
+  loader: file("src/data/quoteCalculator/garmentQualityOptions.json"),
+  schema: z.object({
+    value: z.string(),
+    label: z.string(),
+  }),
+});
+
+const setupFees = defineCollection({
+  loader: file("src/data/quoteCalculator/setupFees.json"),
+  schema: z.object({
+    colorCount: z.number(),
+    price: z.number(),
+  }),
+});
+
+const printPrices = defineCollection({
+  loader: file("src/data/quoteCalculator/printPrices.json"),
+  schema: z.object({
+    minCount: z.number(),
+    maxCount: z.number(),
+    pricePerColor: z.array(z.number()),
+  }),
+});
+
+const garmentOptions = defineCollection({
+  loader: file("src/data/quoteCalculator/garmentOptions.json"),
+  schema: z.object({
+    value: z.string(),
+    label: z.string(),
+    avgPriceBasic: z.number(),
+    avgPriceMidRange: z.number(),
+    avgPricePremium: z.number(),
+  }),
+});
+
 export const collections = {
   reviews,
   heroCards,
@@ -91,4 +136,9 @@ export const collections = {
   team,
   aboutFAQ,
   popularProducts,
+  garmentQualityOptions,
+  setupFees,
+  printPrices,
+  garmentOptions,
+  quoteFAQ,
 };

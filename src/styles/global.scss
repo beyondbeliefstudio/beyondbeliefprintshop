@@ -23,7 +23,7 @@ html {
   --light-200--transparency: #fdfbf9;
 
   --dark-900: #0f0f0f;
-  --dark-900--transparency: rgba(25, 25, 25, 0.1);
+  --dark-900--transparency: rgba(25, 25, 25, 0.6);
   --dark-800: #292929;
 
   /* STYLING */
@@ -241,15 +241,15 @@ a {
   display: inline-block;
   border-style: solid;
   border-width: 1px;
-  transition: .25s ease-in-out all;
+  transition: 0.25s ease-in-out all;
   font-weight: 500;
   letter-spacing: 0px;
   text-decoration: none;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 100px;
   text-transform: capitalize;
   line-height: 1.4;
-  margin: .5rem .25rem;
+  margin: 0.5rem 0.25rem;
   text-align: center;
   cursor: pointer;
   text-decoration: none;

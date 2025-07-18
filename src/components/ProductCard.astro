@@ -1,6 +1,5 @@
 ---
 // Content
-import Picture from "astro/components/Picture.astro";
 import type { CollectionEntry } from "astro:content";
 import Heading from "./Heading.astro";
 import Image from "astro/components/Image.astro";
@@ -40,11 +39,22 @@ const {itemCategory, itemImage, itemNumber, itemPrice, itemQuality, itemURL, ite
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    // cursor: pointer;
+
+    &:hover {
+        img {
+            transform: scale(1.05);
+        }
+    }
 
     &__img-wrapper {
         position: relative;
         aspect-ratio: 3 / 4;
         overflow: hidden;
+
+        img {
+            transition: transform 0.3s ease-in-out;
+        }
     }
 
     .quality {

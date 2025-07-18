@@ -1,21 +1,23 @@
 ---
-import Links from "./Links.astro";
-import { getCollection } from "astro:content";
-
-import ProductCard from "./ProductCard.astro";
 import Buttons from "./Buttons.astro";
 import Heading from "./Heading.astro";
 
+import garmentQualityOptions from "../data/quoteCalculator/garmentQualityOptions.json";
+import garmentOptions from "../data/quoteCalculator/garmentOptions.json";
+import printPrices from "../data/quoteCalculator/printPrices.json";
+import setupFees from "../data/quoteCalculator/setupFees.json";
+import PopularProducts from "./PopularProducts.astro";
+import QuoteModal from "./QuoteModal.astro";
 
-const productCard = await getCollection("popularProducts");
 ---
 
 <section aria-labelledby="quote-calculator-heading" class="quote-calculator">
     <div class="container-md quote-calculator__container">
         <div class="content-md quote-calculator__wrapper">
-            <div>
-                <Heading tag="h2" size="l" fontFamily="primary" marginBottom="s">Pricing</Heading>
+            <div class="quote-calculator__intro">
+                <Heading tag="h2" size="xl" fontFamily="primary" marginBottom="s">Quote Estimate</Heading>
                 <p class="lead">Fill out the form below to get a quote for your custom garment printing project. We will get back to you as soon as possible with a detailed quote based on your specifications.</p>
+                <p class="lead"><b>Need help filling out the form?</b><br>Check out the <a class="inline-link" href="#quote-estimate-faq">"Quote Estimate FAQ"</a> guide below.</p>
             </div>
             <form class="quote-calculator__form">
                 <div class="form-grouping">
@@ -23,20 +25,22 @@ const productCard = await getCollection("popularProducts");
                         <label for="garment">Select Garment</label>
                         <select id="garment" name="garment" class="form-control">
                             <option value="" disabled selected>Select a garment</option>
-                            <option value="tshirt">T-Shirt</option>
-                            <option value="hoodie">Hoodie</option>
-                            <option value="tanktop">Tank Top</option>
-                            <option value="longsleeve">Long Sleeve</option>
-                            <option value="sweatshirt">Sweatshirt</option>
+                                {
+                                    garmentOptions.map(option => (
+                                        <option value={option.value}>{option.label}</option>
+                                    ))
+                                }
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="garmentQuality">Garment Quality</label>
                         <select id="garmentQuality" name="garmentQuality" class="form-control">
                             <option value="" disabled selected>Select quality</option>
-                            <option value="basic">Basic</option>
-                            <option value="midrange">Mid-Range</option>
-                            <option value="premium">Premium</option>
+                                {
+                                    garmentQualityOptions.map(option => (
+                                        <option value={option.value}>{option.label}</option>
+                                    ))
+                                }
                         </select>
                     </div>
                 </div>
@@ -48,7 +52,7 @@ const productCard = await getCollection("popularProducts");
                                 <span class="horizontal"></span>
                             </div>
                         </button>
-                        <input type="number" id="quantity" name="quantity" class="form-control" min="12" required />
+                        <input type="number" id="quantity" name="quantity" class="form-control" min="12" required placeholder="50" />
                         <button type="button" class="quote-calculator__input-button plus">
                             <div class="circle">
                                 <span class="horizontal"></span>
@@ -66,7 +70,7 @@ const productCard = await getCollection("popularProducts");
                                     <span class="horizontal"></span>
                                 </div>
                             </button>
-                            <input type="number" id="frontColors" name="frontColors" class="form-control" min="1" max="6" required />
+                            <input type="number" id="frontColors" name="frontColors" class="form-control" min="1" max="6" required placeholder="2" />
                             <button type="button" class="quote-calculator__input-button plus">
                                 <div class="circle">
                                     <span class="horizontal"></span>
@@ -83,7 +87,7 @@ const productCard = await getCollection("popularProducts");
                                     <span class="horizontal"></span>
                                 </div>
                             </button>
-                            <input type="number" id="backColors" name="backColors" class="form-control" min="0" max="6" />
+                            <input type="number" id="backColors" name="backColors" class="form-control" min="0" max="6" placeholder="2" />
                             <button type="button" class="quote-calculator__input-button plus">
                                 <div class="circle">
                                     <span class="horizontal"></span>
@@ -95,75 +99,150 @@ const productCard = await getCollection("popularProducts");
                 </div>
                 <Buttons variant="secondary">Get Quote</Buttons>
             </form>
+            <div class="quote-terms">
+                <h3>Pricing Tips & Terms</h3>
+                <ul>
+                    <li><strong>Order more to save more:</strong> Higher quantities reduce cost per item.</li>
+                    <li><strong>Use 1-2 colors per side:</strong> Best pricing is for simple prints.</li>
+                    <li><strong>Extended sizes (XXL+):</strong> Additional costs apply for larger sizes.</li>
+                    <li><strong>Tax:</strong> Added at checkout.</li>
+                    <li><strong>Garment Quality Pricing:</strong> Prices shown are <u>averages</u> for each quality group. Actual pricing may vary depending on the specific item selected and will be finalized with our sales team.</li>
+                    <li><strong>Additional Fees:</strong> Price may be higher if an underbase is needed for your design, or for other specialty requests.</li>
+                    <li><strong>This quote is not final:</strong> All quotes are subject to change based on final artwork, garment selection, and other requirements.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quote Modal -->
+     <QuoteModal />
+
+</section>
+
+<section class="average-garment-prices bg-primary" aria-label="Average Garment Prices">
+    <div class="container-md average-garment-prices__container">
+        <div class="content-md">
+            <Heading tag="h2" size="xl" fontFamily="primary" marginBottom="s">Average Garment Prices</Heading>
+            <p class="lead">These are average prices for each garment quality option. Actual prices may vary based on specific items and quantities.</p>
+        </div>
+        <div class="content-md">
+            <div class="garment-price-grid">
+                    <div class="garment-price-grid__wrapper">
+                    {
+                        garmentOptions.map(option => (
+                            <div class="garment-card">
+                                <Heading tag="h3" size="m" fontFamily="primary" marginBottom="m">{option.label}</Heading>
+                                <ul>
+                                    <li><span class="quality-label">Basic:</span> ${option.avgPriceBasic}</li>
+                                    <li><span class="quality-label">Mid-Range:</span> ${option.avgPriceMidRange}</li>
+                                    <li><span class="quality-label">Premium:</span> ${option.avgPricePremium}</li>
+                                </ul>
+                            </div>
+                        ))
+                    }
+                    </div>
+            </div>
         </div>
     </div>
 </section>
 
-<section>
-    <div class="container-md column-main">
-        <div class="content-full">
-            <h2>Popular Garment Options</h2>
-            <div class="filter-tabs">
-                <button class="tab active" data-filter="all">All Project</button>
-                <button class="tab" data-filter="T-Shirt">T-Shirts</button>
-                <button class="tab" data-filter="Hoodie">Hoodies</button>
-                <button class="tab" data-filter="Tanktop">Tank Tops</button>
-                <button class="tab" data-filter="longsleeve">Long Sleeves</button>
-                <button class="tab" data-filter="sweatshirt">Sweatshirts</button>
-            </div>
-        </div>
-        <div class="content-full">
-            <div class="productGrid">
-                {
-                    productCard.map((product) => (
-                        <div class="productCard__wrapper" data-category={product.data.itemCategory}>
-                            <ProductCard popularProducts={product} />
-                        </div>
-                    ))
-                }
-            </div>
-        </div>
-    </div>
-</section>
+
+
+<script type="application/json" id="garmentOptions-data" set:html={JSON.stringify(garmentOptions)}></script>
+<script type="application/json" id="garmentQualityOptions-data" set:html={JSON.stringify(garmentQualityOptions)}></script>
+<script type="application/json" id="printPrices-data" set:html={JSON.stringify(printPrices)}></script>
+<script type="application/json" id="setupFees-data" set:html={JSON.stringify(setupFees)}></script>
 
 
 <style lang="scss">
-.filter-tabs {
+.inline-link {
+    color: var(--dark-900);
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:hover {
+        color: var(--dark-900--transparency);
+    }
+}
+
+.average-garment-prices {
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+.garment-price-grid {
+
+}
+.garment-price-grid__wrapper {
     display: flex;
-    justify-content: center;
-    gap: 1rem;
     flex-wrap: wrap;
-    background: white;
-    padding: 0.75rem 1rem;
-    border-radius: 2rem;
-    width: fit-content;
-    margin: auto;
+    gap: 1rem;
+    justify-content: center;
+}
+.garment-card {
+    background: var(--light-100);
+    border-radius: var(--border-radius-medium);
+    padding: 1.5rem 1.5rem 1rem;
+    min-width: 290px;
+    text-align: center;
+}
+.quality-label {
+    font-weight: bold;
+}
+.garment-card h5 {
+    margin-bottom: 0.75rem;
+}
+.garment-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.garment-card li {
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.tab {
-  background: transparent;
-  border: none;
-  padding: 0.5rem 1.25rem;
-  border-radius: 2rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: var(--secondary-family);
-font-size: 1rem;
+
+.quote-terms {
+    margin: 0rem auto;
+    max-width: 640px;
+    padding: 2rem;
+}
+.quote-terms h3 {
+    margin-bottom: 1rem;
+}
+.quote-terms ul {
+    list-style: disc;
+    padding-left: 0;
+}
+.quote-terms li {
+    margin-bottom: 0rem;
+    font-size: .8rem;
+    text-align: left;
+    opacity: .7;
 }
 
-.tab.active {
-  background: var(--brand-primary);
-  color: var(--dark-900);
-}
+
+
 
 .quote-calculator {
     &__container {
         padding-top: 0;
-        padding-bottom: 0;
         position: relative;
         z-index: 999;
         margin-top: -10rem;
+    }
+
+    &__intro {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 1rem;
     }
     &__wrapper {
         width: 100%;
@@ -219,6 +298,7 @@ font-size: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: background-color 0.3s ease;
         }
 
         .horizontal,
@@ -239,6 +319,18 @@ font-size: 1rem;
             transform: rotate(90deg);
             transform-origin: center;
             transition: .25s ease-in-out all;
+        }
+
+        &:hover {
+            .circle {
+                background: var(--dark-900)
+            }
+
+            .horizontal,
+            .vertical {
+                background-color: var(--light-100);
+            }
+        
         }
     }
 
@@ -270,14 +362,6 @@ font-size: 1rem;
     }
 }
 
-
-.productGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(360px, 100%), 1fr));
-    gap: 1rem;
-}
-
-
 /* Hide number input spinners for Chrome, Safari, Edge */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
@@ -293,215 +377,175 @@ input[type="number"] {
 
 
 
+
+
 <script>
-const tabs = document.querySelectorAll(".tab");
-const cards = document.querySelectorAll(".productCard__wrapper");
+document.addEventListener("DOMContentLoaded", function() {
+    const garmentOptions = JSON.parse(document.getElementById('garmentOptions-data').textContent);
+    const garmentQualityOptions = JSON.parse(document.getElementById('garmentQualityOptions-data').textContent);
+    const printPrices = JSON.parse(document.getElementById('printPrices-data').textContent);
+    const setupFees = JSON.parse(document.getElementById('setupFees-data').textContent);
 
-tabs.forEach(tab => {
-tab.addEventListener("click", () => {
-    document.querySelector(".tab.active").classList.remove("active");
-    tab.classList.add("active");
 
-    const filter = tab.getAttribute("data-filter");
 
-    cards.forEach(card => {
-    const category = card.getAttribute("data-category");
-    if (filter === "all" || category === filter) {
-        (card as HTMLElement).style.display = "block";
-    } else {
-        (card as HTMLElement).style.display = "none";
+
+    // Increment/Decrement logic for frontColors and backColors
+    document.querySelectorAll('.input-group').forEach(group => {
+    const minusBtn = group.querySelector('.quote-calculator__input-button.minus');
+    const plusBtn = group.querySelector('.quote-calculator__input-button.plus');
+    const input = group.querySelector('input[type="number"]');
+
+    if (minusBtn && input) {
+        minusBtn.addEventListener('click', () => {
+        let min = parseInt((input as HTMLInputElement).min) || 0;
+        let value = parseInt((input as HTMLInputElement).value) || min;
+        if (value > min) (input as HTMLInputElement).value = String(value - 1);
+        });
+    }
+    if (plusBtn && input) {
+        plusBtn.addEventListener('click', () => {
+        let max = parseInt((input as HTMLInputElement).max) || 99;
+        let value = parseInt((input as HTMLInputElement).value) || 0;
+        if (value < max) (input as HTMLInputElement).value = String(value + 1);
+        });
     }
     });
-});
-});
 
-// Increment/Decrement logic for frontColors and backColors
-document.querySelectorAll('.input-group').forEach(group => {
-  const minusBtn = group.querySelector('.quote-calculator__input-button.minus');
-  const plusBtn = group.querySelector('.quote-calculator__input-button.plus');
-  const input = group.querySelector('input[type="number"]');
+    function calculateQuote(event) {
+        event.preventDefault();
 
-  if (minusBtn && input) {
-    minusBtn.addEventListener('click', () => {
-      let min = parseInt((input as HTMLInputElement).min) || 0;
-      let value = parseInt((input as HTMLInputElement).value) || min;
-      if (value > min) (input as HTMLInputElement).value = String(value - 1);
-    });
-  }
-  if (plusBtn && input) {
-    plusBtn.addEventListener('click', () => {
-      let max = parseInt((input as HTMLInputElement).max) || 99;
-      let value = parseInt((input as HTMLInputElement).value) || 0;
-      if (value < max) (input as HTMLInputElement).value = String(value + 1);
-    });
-  }
-});
+        const garmentSelect = document.getElementById("garment") as HTMLSelectElement;
+        const garmentQualitySelect = document.getElementById("garmentQuality") as HTMLSelectElement;
+        const quantityInput = document.getElementById("quantity") as HTMLSelectElement;
+        const frontColorsInput = document.getElementById("frontColors") as HTMLSelectElement;
+        const backColorsInput = document.getElementById("backColors") as HTMLSelectElement;
 
+        const garment = garmentSelect.value;
+        const garmentQuality = garmentQualitySelect.value;
+        const quantity = parseInt(quantityInput.value);
+        const frontColors = parseInt(frontColorsInput.value);
+        const backColors = parseInt(backColorsInput.value) || 0;
 
-
-const garmentOptions = [
-    { value: "tshirt", label: "T-Shirt", avgPriceBasic: 10, avgPriceMidrange: 15, avgPricePremium: 20 },
-    { value: "hoodie", label: "Hoodie", avgPriceBasic: 25, avgPriceMidrange: 30, avgPricePremium: 40 },
-    { value: "tanktop", label: "Tank Top", avgPriceBasic: 12, avgPriceMidrange: 18, avgPricePremium: 25 },
-    { value: "longsleeve", label: "Long Sleeve", avgPriceBasic: 15, avgPriceMidrange: 20, avgPricePremium: 30 },
-    { value: "sweatshirt", label: "Sweatshirt", avgPriceBasic: 20, avgPriceMidrange: 25, avgPricePremium: 35 }
-];
-
-const garmentQualityOptions = [
-    { value: "basic", label: "Basic" },
-    { value: "midrange", label: "Mid-Range" },
-    { value: "premium", label: "Premium" }
-];
-
-const printPrices = [
-    {
-        "1": {
-            "1 Color": 5.5,
-            "2 Color": 6.5,
-            "3 Color": 7.5,
-            "4 Color": 8.5,
-            "5 Color": 9.5,
-            "6 Color": 10.5
-        },
-        "24": {
-            "1 Color": 4.5,
-            "2 Color": 5.5,
-            "3 Color": 6.5,
-            "4 Color": 7.5,
-            "5 Color": 8.5,
-            "6 Color": 9.5
-        },
-        "48": {
-            "1 Color": 4,
-            "2 Color": 5,
-            "3 Color": 6,
-            "4 Color": 7,
-            "5 Color": 8,
-            "6 Color": 9
-        },
-        "72": {
-            "1 Color": 3.5,
-            "2 Color": 4.5,
-            "3 Color": 5.5,
-            "4 Color": 6.5,
-            "5 Color": 7.5,
-            "6 Color": 8.5
-        },
-        "100": {
-            "1 Color": 3,
-            "2 Color": 4,
-            "3 Color": 5,
-            "4 Color": 6,
-            "5 Color": 7,
-            "6 Color": 8
-        },
-        "150": {
-            "1 Color": 2.5,
-            "2 Color": 3.5,
-            "3 Color": 4.5,
-            "4 Color": 5.5,
-            "5 Color": 6.5,
-            "6 Color": 7.5
-        },
-        "200": {
-            "1 Color": 2,
-            "2 Color": 3,
-            "3 Color": 4,
-            "4 Color": 5,
-            "5 Color": 6,
-            "6 Color": 7
-        },
-        "250": {
-            "1 Color": 1.75,
-            "2 Color": 2.75,
-            "3 Color": 3.75,
-            "4 Color": 4.75,
-            "5 Color": 5.75,
-            "6 Color": 6.75
+        // Condition 1: Minimum quantity
+        if (quantity < 24) {
+        alert("The minimum is 24 items for 2 or more colors.");
+        return;
         }
+
+        // Condition 2: Only 1 color allowed for <36 quantity
+        if (quantity < 36 && (frontColors !== 1 || (backColors > 0 && backColors !== 1))) {
+        alert("For orders less than 36 items, only 1 color is allowed for Front and Back Print.");
+        return;
+        }
+
+        if (!garment || !garmentQuality || !quantity || !frontColors) {
+        alert("Please fill in all required fields.");
+        return;
+        }
+
+        // Find garment option
+        const garmentOption = garmentOptions.find(option => option.value === garment);
+        if (!garmentOption) {
+        alert("Garment not found.");
+        return;
+        }
+
+        // Get garment price based on quality
+        let garmentPrice = 0;
+        switch (garmentQuality) {
+        case "basic":
+            garmentPrice = garmentOption.avgPriceBasic;
+            break;
+        case "midrange":
+            garmentPrice = garmentOption.avgPriceMidRange;
+            break;
+        case "premium":
+            garmentPrice = garmentOption.avgPricePremium;
+            break;
+        default:
+            alert("Invalid garment quality selected.");
+            return;
+        }
+
+        // Find the correct print price bracket
+        let priceBracket = printPrices.find(
+        bracket => quantity >= bracket.minCount && quantity <= bracket.maxCount
+        );
+        if (!priceBracket) {
+        priceBracket = printPrices[printPrices.length - 1];
+        }
+
+        // Get print prices per color
+        const frontPrintPrice = priceBracket.pricePerColor[frontColors - 1] || 0;
+        const backPrintPrice = backColors > 0 ? priceBracket.pricePerColor[backColors - 1] || 0 : 0;
+
+        // Find setup fee for front colors
+        const frontSetup = setupFees.find(fee => fee.colorCount === frontColors);
+        const frontSetupFee = frontSetup ? frontSetup.price : 0;
+
+        // Find setup fee for back colors (only if backColors > 0)
+        const backSetup = setupFees.find(fee => fee.colorCount === backColors);
+        const backSetupFee = backColors > 0 && backSetup ? backSetup.price : 0;
+
+        // Total setup fee
+        const setupFee = frontSetupFee + backSetupFee;
+
+        // Debugging logs
+        console.log("garmentOption:", garmentOption);
+        console.log("garmentPrice:", garmentPrice);
+        console.log("priceBracket:", priceBracket);
+        console.log("frontPrintPrice:", frontPrintPrice);
+        console.log("backPrintPrice:", backPrintPrice);
+        console.log("setupFee:", setupFee);
+        // Calculate total
+        const total = (garmentPrice + frontPrintPrice + backPrintPrice) * quantity + setupFee;
+        const costPerItem = total / quantity;
+
+        // alert(`Your quote for ${quantity} ${garment}(s) is: $${total.toFixed(2)}\nCost per item: $${costPerItem.toFixed(2)}`);
+        const quoteModal = document.getElementById("quoteModal");
+        const quoteDetails = document.getElementById("quoteDetails");
+        const closeQuoteModal = document.getElementById("closeQuoteModal");
+
+        quoteDetails.innerHTML = `
+        <strong>Total Price:</strong> $${total.toFixed(2)}<br>
+        <strong>Cost per item:</strong> $${costPerItem.toFixed(2)}<br>
+        <strong>Quantity:</strong> ${quantity} ${garment}(s)
+        `;
+
+        quoteModal.style.display = "flex";
+
+        // Close modal on click
+        closeQuoteModal.onclick = function() {
+        quoteModal.style.display = "none";
+        };
+        window.onclick = function(event) {
+        if (event.target === quoteModal) {
+            quoteModal.style.display = "none";
+        }
+        };
+        console.log(`Total price: $${total.toFixed(2)}, Cost per item: $${costPerItem.toFixed(2)}`);
     }
-];
 
-const setupFees = {
-    "1 Color": 20,
-    "2 Color": 40,
-    "3 Color": 60,
-    "4 Color": 80,
-    "5 Color": 100,
-    "6 Color": 120
-};
+    // Attach to form submit
+    const formElement = document.querySelector(".quote-calculator__form");
+    if (formElement) {
+        formElement.addEventListener("submit", calculateQuote);
+    }
 
-const calculateQuote = event => {
-  event.preventDefault()
+    const quoteEmailForm = document.getElementById("quoteEmailForm") as HTMLFormElement;
+    const quoteEmailStatus = document.getElementById("quoteEmailStatus") as HTMLParagraphElement;
 
-  const garmentSelect = document.getElementById("garment") as HTMLSelectElement
-  const garmentQualitySelect = document.getElementById("garmentQuality") as HTMLSelectElement
-  const quantityInput = document.getElementById("quantity") as HTMLInputElement
-  const frontColorsInput = document.getElementById("frontColors") as HTMLInputElement
-  const backColorsInput = document.getElementById("backColors") as HTMLInputElement
+    quoteEmailForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const customerEmail = (document.getElementById("customerEmail") as HTMLInputElement).value;
+    // TODO: Send email via backend or service
+    quoteEmailStatus.textContent = "Quote sent to " + customerEmail + "! (Demo only)";
+    // You can send the quote via AJAX to your backend here
+    });
+});
 
-  const garment = garmentSelect.value
-  const garmentQuality = garmentQualitySelect.value
-  const quantity = parseInt(quantityInput.value)
-  const frontColors = parseInt(frontColorsInput.value)
-  const backColors = parseInt(backColorsInput.value) || 0
 
-  if (!garment || !garmentQuality || !quantity || !frontColors) {
-    alert("Please fill in all required fields.")
-    return
-  }
 
-  const garmentOption = garmentOptions.find(option => option.value === garment)
-  if (!garmentOption) {
-    alert("Garment not found.")
-    return
-  }
 
-  let garmentPrice = 0
-  switch (garmentQuality) {
-    case "basic":
-      garmentPrice = garmentOption.avgPriceBasic
-      break
-    case "midrange":
-      garmentPrice = garmentOption.avgPriceMidrange
-      break
-    case "premium":
-      garmentPrice = garmentOption.avgPricePremium
-      break
-    default:
-      alert("Invalid garment quality selected.")
-      return
-  }
-
-  // Find the closest bracket from printPrices
-  const priceTiers = Object.keys(printPrices[0])
-    .map(Number)
-    .sort((a, b) => a - b)
-  let closestTier = priceTiers[0]
-  for (const tier of priceTiers) {
-    if (quantity >= tier) closestTier = tier
-  }
-
-  const frontColorKey = `${frontColors} Color`
-  const backColorKey = `${backColors} Color`
-
-  const tierPricing = printPrices[0][String(closestTier)]
-
-  const frontPrintPrice = tierPricing[frontColorKey] || 0
-  const backPrintPrice = backColors > 0 ? tierPricing[backColorKey] || 0 : 0
-
-  const setupFee =
-    setupFees[frontColorKey] + (backColors > 0 ? setupFees[backColorKey] : 0)
-
-  const total =
-    (garmentPrice + frontPrintPrice + backPrintPrice) * quantity + setupFee
-
-  alert(`Your quote for ${quantity} ${garment}(s) is: $${total.toFixed(2)}`)
-}
-
-const formElement = document.querySelector(".quote-calculator")
-if (formElement) {
-  formElement.addEventListener("submit", calculateQuote)
-}
 
 </script>
