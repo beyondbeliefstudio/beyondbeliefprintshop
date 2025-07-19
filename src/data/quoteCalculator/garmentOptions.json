@@ -11,9 +11,9 @@
     "id": 2,
     "value": "hoodie",
     "label": "Hoodie",
-    "avgPriceBasic": 25,
-    "avgPriceMidRange": 30,
-    "avgPricePremium": 40
+    "avgPriceBasic": 16,
+    "avgPriceMidRange": 20,
+    "avgPricePremium": 28
   },
   {
     "id": 3,

@@ -97,5 +97,104 @@
     "itemCategory": "T-Shirt",
     "itemQuality": "premium",
     "itemURL": "https://www.ssactivewear.com/p/next_level/6010"
+  },
+  {
+    "id": 10,
+    "itemNumber": "LS14001",
+    "itemName": "Premium Pullover Hooded Sweatshirt",
+    "itemBrand": "Lane Seven",
+    "itemImage": "https://cdn.ssactivewear.com/Images/ModelColor/120320_omf_fm.jpg",
+    "itemPrice": 15,
+    "itemCategory": "Hoodie",
+    "itemQuality": "basic",
+    "itemURL": "https://www.ssactivewear.com/p/lane_seven/ls14001"
+  },
+  {
+    "id": 11,
+    "itemNumber": "P170",
+    "itemName": "Ecosmart® Hooded Sweatshirt",
+    "itemBrand": "Hanes",
+    "itemImage": "https://cdn.ssactivewear.com/Images/Style/391_fm.jpg",
+    "itemPrice": 16.50,
+    "itemCategory": "Hoodie",
+    "itemQuality": "basic",
+    "itemURL": "https://www.ssactivewear.com/p/hanes/p170"
+  },
+  {
+    "id": 12,
+    "itemNumber": "G18500",
+    "itemName": "Heavy Blend™ Hooded Sweatshirt",
+    "itemBrand": "Gildan",
+    "itemImage": "https://cdn.ssactivewear.com/Images/Style/395_fm.jpg",
+    "itemPrice": 16.50,
+    "itemCategory": "Hoodie",
+    "itemQuality": "basic",
+    "itemURL": "https://www.ssactivewear.com/p/gildan/18500"
+  },
+  {
+    "id": 13,
+    "itemNumber": "996MR",
+    "itemName": "NuBlend® Hooded Sweatshirt",
+    "itemBrand": "Jerzees",
+    "itemImage": "https://cdn.ssactivewear.com/Images/Style/393_fm.jpg",
+    "itemPrice": 18.20,
+    "itemCategory": "Hoodie",
+    "itemQuality": "midrange",
+    "itemURL": "https://www.ssactivewear.com/p/jerzees/996mr"
+  },
+  {
+    "id": 14,
+    "itemNumber": "SS4500",
+    "itemName": "Midweight Hooded Sweatshirt",
+    "itemBrand": "Independent Trading Co.",
+    "itemImage": "https://cdn.ssactivewear.com/Images/ModelColor/31212_omf_fm.jpg",
+    "itemPrice": 18.20,
+    "itemCategory": "Hoodie",
+    "itemQuality": "midrange",
+    "itemURL": "https://www.ssactivewear.com/p/independent_trading_co/ss4500"
+  },
+  {
+    "id": 15,
+    "itemNumber": "AS5101",
+    "itemName": "Supply Hood",
+    "itemBrand": "AS Colour",
+    "itemImage": "https://cdn11.bigcommerce.com/s-hsi95a83fz/images/stencil/1500w/products/1139/20521/5101_SUPPLY_HOOD_MAIN__07503.1741654127.jpg?",
+    "itemPrice": 23.10,
+    "itemCategory": "Hoodie",
+    "itemQuality": "midrange",
+    "itemURL": "https://ascolour.com/supply-hood-5101/"
+  },
+    {
+    "id": 16,
+    "itemNumber": "IND4000",
+    "itemName": "Heavyweight Hooded Sweatshirt",
+    "itemBrand": "Independent Trading Co.",
+    "itemImage": "https://cdn.ssactivewear.com/Images/Style/403_fm.jpg",
+    "itemPrice": 27.00,
+    "itemCategory": "Hoodie",
+    "itemQuality": "premium",
+    "itemURL": "https://www.ssactivewear.com/p/independent_trading_co/ind4000"
+  },
+    {
+    "id": 17,
+    "itemNumber": "BC4719",
+    "itemName": "Heavyweight Hoodie Sweatshirt",
+    "itemBrand": "Bella+Canvas",
+    "itemImage": "https://cdn.ssactivewear.com/Images/ModelColor/116258_omf_fm.jpg",
+    "itemPrice": 29.50,
+    "itemCategory": "Hoodie",
+    "itemQuality": "premium",
+    "itemURL": "https://www.ssactivewear.com/p/bella/4719"
+  },
+    {
+    "id": 18,
+    "itemNumber": "AS5102",
+    "itemName": "Stencil Hood",
+    "itemBrand": "AS Colour",
+    "itemImage": "https://cdn11.bigcommerce.com/s-hsi95a83fz/images/stencil/1500w/products/222/6903/5102_STENCIL_HOOD_MAIN__10256.1660195030.jpg",
+    "itemPrice": 31.15,
+    "itemCategory": "Hoodie",
+    "itemQuality": "premium",
+    "itemURL": "https://ascolour.com/stencil-hood-5102/"
   }
 ]

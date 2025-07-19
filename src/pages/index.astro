@@ -112,6 +112,12 @@ import OrderingProcess from '@/components/OrderingProcess.astro';
             </section>
         </div>
     </div>
+
+    <!-- Gallery Modal -->
+    <div id="gallery-modal" class="gallery-modal" style="display:none;">
+    <span class="gallery-modal-close">&times;</span>
+    <img id="gallery-modal-img" src="/" alt="Gallery Image" />
+    </div>
 </section>
 
 
@@ -241,3 +247,27 @@ import OrderingProcess from '@/components/OrderingProcess.astro';
 
 
 </style>
+
+<script>
+
+// For Astro <Picture> component, select the <img> inside each .gallery-item
+document.querySelectorAll('.gallery-item').forEach(item => {
+  const img = item.querySelector('img');
+  if (img) {
+    img.addEventListener('click', function() {
+      const modal = document.getElementById('gallery-modal');
+      const modalImg = document.getElementById('gallery-modal-img');
+      modalImg.src = (img instanceof HTMLImageElement ? img.src : '');
+      modal.style.display = 'flex';
+    });
+  }
+});
+
+document.querySelector('.gallery-modal-close').addEventListener('click', function() {
+  document.getElementById('gallery-modal').style.display = 'none';
+});
+
+document.getElementById('gallery-modal').addEventListener('click', function(e) {
+  if (e.target === this) this.style.display = 'none';
+});
+</script>
