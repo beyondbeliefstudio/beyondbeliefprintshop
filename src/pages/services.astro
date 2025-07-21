@@ -1,6 +1,7 @@
 ---
 // Helpers
 import Picture from "astro/components/Picture.astro";
+import { getCollection } from 'astro:content';
 
 // Assets
 import press from "@/assets/press.jpg"
@@ -13,10 +14,15 @@ import Heading from "@/components/Heading.astro";
 import InternalHero from "@/components/InternalHero.astro";
 import SplitOverlay from "@/components/SplitOverlay.astro";
 
+// Blog Card Component
+const allPosts = await getCollection('blog');
+const featuredSlugs = ["event-shirt-design-guide", "favorite-apparel-blanks", "maximize-custom-apparel-budget"];
+const featuredPosts = allPosts.filter(post => featuredSlugs.includes(post.data.slug));
+
 
 // Data for FAQ section
-import { getCollection } from 'astro:content';
 import FAQ from "@/components/FAQ.astro";
+import BlogCard from "@/components/blog/BlogCard.astro";
 
 const faq = await getCollection('servicesFAQ');
 
@@ -46,7 +52,7 @@ const faqData = faq.map((item) => ({
             <Heading tag="h2" size="xl" fontFamily="primary" marginBottom="s">Why Work With Us</Heading>
             <p>We’re a small team that cares deeply about quality, speed, and helping you look your best. From first mockup to final print, we make it easy.</p>
         </div>
-        <div class="content-full grid">
+        <div class="content-full grid-auto-3">
             <div class="card">
                 <Heading tag="h3" size="m" fontFamily="primary" marginBottom="s">Locally Rooted</Heading>
                 <p>We’re based right here in Monroe, NC — proudly serving our local community with a personal touch, fast turnarounds, and face-to-face service when needed.</p>
@@ -81,43 +87,12 @@ const faqData = faq.map((item) => ({
             <Heading tag="h2" size="xl" fontFamily="primary" marginBottom="s">Print Styles</Heading>
             <p class="large">Explore different ways to make your prints stand out</p>
         </div>
-        <div class="content-full blog-card__wrapper">
-            <div class="blog-card">
-                <div class="img-wrapper">
-                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
-                </div>
-                <div class="blog-card__content">
-                    <Heading tag="h3" size="s" fontFamily="secondary" marginBottom="s">Metallic Inks That Shine</Heading>
-                    <p class="small">Add a reflective, eye-catching finish with gold, silver, or copper inks.</p>
-                </div>
-            </div>
-            <div class="blog-card">
-                <div class="img-wrapper">
-                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
-                </div>
-                <div class="blog-card__content">
-                    <Heading tag="h3" size="s" fontFamily="secondary" marginBottom="s">Tonal Prints for a Minimal Look</Heading>
-                    <p class="small">Low-contrast prints that blend beautifully with shirt color for a subtle, premium style.</p>
-                </div>
-            </div>
-            <div class="blog-card">
-                <div class="img-wrapper">
-                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
-                </div>
-                <div class="blog-card__content">
-                    <Heading tag="h3" size="s" fontFamily="secondary" marginBottom="s">Puff Ink Printing: Add Depth & Texture</Heading>
-                    <p class="small">Create a subtle 3D effect that pops right off the fabric.</p>
-                </div>
-            </div>
-            <div class="blog-card">
-                <div class="img-wrapper">
-                    <Picture src={press} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
-                </div>
-                <div class="blog-card__content">
-                    <Heading tag="h3" size="s" fontFamily="secondary" marginBottom="s">Custom Tag Printing</Heading>
-                    <p class="small">Take your apparel to the next level with branded tag prints and relabeling options.</p>
-                </div>
-            </div>
+        <div class="content-full blog-card__wrapper grid-auto-3">
+            {
+                featuredPosts.map(post => (
+                <BlogCard post={post} />
+                ))
+            }
         </div>
     </div>
 </section>
@@ -138,12 +113,6 @@ const faqData = faq.map((item) => ({
         text-wrap: balance;
         text-align: left;
     }
-
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-        grid-gap: 1rem;
-    }
 }
 
 
@@ -152,43 +121,6 @@ const faqData = faq.map((item) => ({
         h1, h2, h3, h4, h5, h6, p {
             color: var(--light-100);
         }
-    }
-}
-
-.blog-card__wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 1rem;
-}
-
-.blog-card {
-    border: 1px solid;
-    border-radius: 16px;
-    overflow: hidden;
-
-    &:hover {
-        background: #1a1a1a;
-    }
-
-    .img-wrapper {
-        // border-radius: 16px;
-        overflow: hidden;
-        margin-bottom: 1rem;
-    }
-
-    &__content {
-        text-align: left;
-        color: #fff;
-        padding: 1rem;
-
-        h4 {
-            margin-bottom: .25rem;
-        }
-
-        p {
-            color: #fff;
-            font-size: .9rem;
-        }        
     }
 }
 

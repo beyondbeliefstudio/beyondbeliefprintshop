@@ -128,6 +128,22 @@ const garmentOptions = defineCollection({
   }),
 });
 
+const blog = defineCollection({
+  loader: glob({ pattern: "src/content/blog/**/*.md" }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      slug: z.string(),
+      description: z.string(),
+      author: z.string(),
+      heroImage: image(),
+      imageAlt: z.string(),
+      pubDate: z.date(),
+      isDraft: z.boolean().optional(),
+      tags: z.array(z.string()).optional(),
+    }),
+});
+
 export const collections = {
   reviews,
   heroCards,
@@ -141,4 +157,5 @@ export const collections = {
   printPrices,
   garmentOptions,
   quoteFAQ,
+  blog,
 };

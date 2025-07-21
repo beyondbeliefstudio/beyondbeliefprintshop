@@ -126,21 +126,19 @@ import QuoteModal from "./QuoteModal.astro";
             <p class="lead">These are average prices for each garment quality option. Actual prices may vary based on specific items and quantities.</p>
         </div>
         <div class="content-md">
-            <div class="garment-price-grid">
-                    <div class="garment-price-grid__wrapper">
-                    {
-                        garmentOptions.map(option => (
-                            <div class="garment-card">
-                                <Heading tag="h3" size="m" fontFamily="primary" marginBottom="m">{option.label}</Heading>
-                                <ul>
-                                    <li><span class="quality-label">Basic:</span> ${option.avgPriceBasic}</li>
-                                    <li><span class="quality-label">Mid-Range:</span> ${option.avgPriceMidRange}</li>
-                                    <li><span class="quality-label">Premium:</span> ${option.avgPricePremium}</li>
-                                </ul>
-                            </div>
-                        ))
-                    }
-                    </div>
+            <div class="garment-price-grid__wrapper">
+                {
+                    garmentOptions.map(option => (
+                        <div class="garment-card">
+                            <Heading tag="h3" size="m" fontFamily="primary" marginBottom="m">{option.label}</Heading>
+                            <ul>
+                                <li><span class="quality-label">Basic:</span> ${option.avgPriceBasic}</li>
+                                <li><span class="quality-label">Mid-Range:</span> ${option.avgPriceMidRange}</li>
+                                <li><span class="quality-label">Premium:</span> ${option.avgPricePremium}</li>
+                            </ul>
+                        </div>
+                    ))
+                }
             </div>
         </div>
     </div>
@@ -188,6 +186,7 @@ import QuoteModal from "./QuoteModal.astro";
     padding: 1.5rem 1.5rem 1rem;
     min-width: 290px;
     text-align: center;
+    flex-grow: 1;
 }
 .quality-label {
     font-weight: bold;
@@ -269,11 +268,21 @@ import QuoteModal from "./QuoteModal.astro";
         grid-gap: .5rem;
         align-items: center;
         justify-content: center;
+
+        @media (max-width: 768px) {
+            display: grid;
+            justify-content: space-between;
+            grid-template-columns: auto 1fr auto;
+        }
     }
 
     input[type="number"] {
         width: 100px;
         text-align: center;
+
+        @media (max-width: 768px) {
+            width: auto;
+        }
     }
 
     select, input {
@@ -355,6 +364,11 @@ import QuoteModal from "./QuoteModal.astro";
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 3rem;
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+            grid-gap: 1rem;
+        }
     }
 
     button {

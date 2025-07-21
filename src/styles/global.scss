@@ -9,10 +9,6 @@ html {
   scroll-behavior: smooth;
 }
 
-// main {
-//   padding-top: var(--scroll-padding, 50px);
-// }
-
 :root {
   /* SWATCHES */
   --brand-primary: #50f774;
@@ -296,8 +292,32 @@ a {
 
 .grid-auto-3 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 1rem;
+}
+
+@media (max-width: 991px) {
+  .grid-auto-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.grid-auto-4 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 1200px) {
+  .grid-auto-4 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-auto-4 {
+    grid-template-columns: 1fr;
+  }
 }
 
 .row-small {
@@ -503,9 +523,11 @@ a {
 .gallery-modal {
   position: fixed;
   z-index: 9999;
-  left: 0; top: 0;
-  width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.95);
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -521,7 +543,8 @@ a {
 }
 .gallery-modal-close {
   position: absolute;
-  top: 2rem; right: 2rem;
+  top: 2rem;
+  right: 2rem;
   font-size: 2.5rem;
   color: #fff;
   cursor: pointer;

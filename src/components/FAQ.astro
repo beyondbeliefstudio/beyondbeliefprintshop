@@ -27,13 +27,13 @@ const {
                 {
                     faq.map((data: {tag: string; question: string; answer: string}) => (
                         <div class="accordion__item">
-                            <div class="accordion__question">
-                                <button type="button" class="accordion__button" aria-expanded="false" aria-controls={data.tag}>
+                            <div class="accordion__question" aria-expanded="false" aria-controls={data.tag} tabindex="0" role="button">
+                                <div class="accordion__button">
                                     <div class="circle">
                                         <span class="horizontal"></span>
                                         <span class="vertical"></span>
                                     </div>
-                                </button>
+                                </div>
                                 <Heading tag="h3" size="s" fontFamily="secondary" marginBottom="none" class="accordion__headings">{data.question}</Heading>
                             </div>
                             <div id={data.tag} class="accordion__content" hidden>
@@ -69,6 +69,7 @@ const {
         width: 100%;
         gap: 2rem;
         align-items: center;
+        cursor: pointer;
     }
     
     &__button {
@@ -112,11 +113,11 @@ const {
         }
     }
     
-    &__heading {
-        /* margin-bottom: 0; */
+    &__headings {
         width: fit-content;
         text-align: left;
-        /* font-size: 1.5rem; */
+        max-width: calc(100% - 88px);
+
     }
     
     &__content {
@@ -150,19 +151,46 @@ const {
 </style>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const accordionButtons: NodeListOf<HTMLButtonElement> = document.querySelectorAll(".accordion__button");
+// document.addEventListener("DOMContentLoaded", () => {
+//   const accordionButtons: NodeListOf<HTMLButtonElement> = document.querySelectorAll(".accordion__button");
 
-  accordionButtons.forEach((button: HTMLButtonElement) => {
-    button.addEventListener("click", () => {
-      const isExpanded: boolean = button.getAttribute("aria-expanded") === "true";
-      const contentId: string | null = button.getAttribute("aria-controls");
-      const content: HTMLElement | null = contentId ? document.getElementById(contentId) : null;
+//   accordionButtons.forEach((button: HTMLButtonElement) => {
+//     button.addEventListener("click", () => {
+//       const isExpanded: boolean = button.getAttribute("aria-expanded") === "true";
+//       const contentId: string | null = button.getAttribute("aria-controls");
+//       const content: HTMLElement | null = contentId ? document.getElementById(contentId) : null;
+
+//       // Collapse all accordions
+//       accordionButtons.forEach((btn: HTMLButtonElement) => {
+//         const contentToHide: HTMLElement | null = document.getElementById(btn.getAttribute("aria-controls") || "");
+//         btn.setAttribute("aria-expanded", "false");
+//         if (contentToHide) {
+//           contentToHide.setAttribute("hidden", "");
+//         }
+//       });
+
+//       // If the clicked accordion was not expanded, expand it
+//       if (!isExpanded && content) {
+//         button.setAttribute("aria-expanded", "true");
+//         content.removeAttribute("hidden");
+//       }
+//     });
+//   });
+// });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const accordionQuestions = document.querySelectorAll(".accordion__question");
+
+  accordionQuestions.forEach((question) => {
+    question.addEventListener("click", () => {
+      const isExpanded = question.getAttribute("aria-expanded") === "true";
+      const contentId = question.getAttribute("aria-controls");
+      const content = contentId ? document.getElementById(contentId) : null;
 
       // Collapse all accordions
-      accordionButtons.forEach((btn: HTMLButtonElement) => {
-        const contentToHide: HTMLElement | null = document.getElementById(btn.getAttribute("aria-controls") || "");
-        btn.setAttribute("aria-expanded", "false");
+      accordionQuestions.forEach((q) => {
+        const contentToHide = document.getElementById(q.getAttribute("aria-controls") || "");
+        q.setAttribute("aria-expanded", "false");
         if (contentToHide) {
           contentToHide.setAttribute("hidden", "");
         }
@@ -170,8 +198,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // If the clicked accordion was not expanded, expand it
       if (!isExpanded && content) {
-        button.setAttribute("aria-expanded", "true");
+        question.setAttribute("aria-expanded", "true");
         content.removeAttribute("hidden");
+      }
+    });
+
+    // Optional: Allow keyboard accessibility
+    question.addEventListener("keydown", (e: KeyboardEvent) => {
+      if (e.key === "Enter" || e.key === " ") {
+        (question as HTMLElement).click();
       }
     });
   });

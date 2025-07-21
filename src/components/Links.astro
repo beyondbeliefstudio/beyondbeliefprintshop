@@ -3,18 +3,20 @@ import type { HTMLAttributes } from "astro/types";
 
 export interface LinkProps extends HTMLAttributes<"a"> {
   href: string;
-  variant?: "primary" | "secondary" | "outline" | "outline-dark" | "nav-link";
+  variant?: "primary" | "secondary" | "outline" | "outline-dark" | "nav-link" | "inline";
+  classes?: string;
 }
 
 const { 
   href,
     variant = "primary",
+    classes,
     ...rest 
 } = Astro.props;
 
 ---
 
-<a href={href} class:list={["btn", variant]} {...rest}>
+<a href={href} class:list={["btn", variant, classes]} {...rest}>
   <slot />
 </a>
 
@@ -97,5 +99,45 @@ const {
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.3s ease;
+}
+
+.inline {
+    border: 0;
+    padding: 0;
+    text-transform: capitalize;
+      display: flex;
+    align-items: center;
+    width: fit-content;
+
+    &:after {
+      content: '';
+      display: inline-block;
+      background-image: url('../assets/arrow-right.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 28px;
+      height: 27px;
+      margin-left: 0.5rem;
+      line-height: 1;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: calc(100% - 37px);
+      background: var(--brand-primary);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover, &:active, &:focus {
+        &:before {
+            transform: scaleX(1);
+        }
+    }
 }
 </style>

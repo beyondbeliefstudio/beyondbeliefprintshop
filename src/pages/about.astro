@@ -80,7 +80,7 @@ const sliderImages = [
             <Heading tag="h2" size="xl" fontFamily="primary" marginBottom="s">What We’re About</Heading>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam ex quam minus eaque eius, eveniet non voluptas, sunt quo, maxime neque veritatis mollitia deleniti ratione culpa sequi dolores modi labore!</p>
         </div>
-        <div class="content-full grid">
+        <div class="content-full grid grid-auto-4">
             {whatWereAbout.map((item) => (
                 <div class="card">
                     <Heading tag="h3" size="m" fontFamily="primary" marginBottom="s">{item.title}</Heading>
@@ -113,10 +113,10 @@ const sliderImages = [
         }
     }
 
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        grid-gap: 1rem;
-    }
+    // .grid {
+    //     display: grid;
+    //     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    //     grid-gap: 1rem;
+    // }
 }
 </style>

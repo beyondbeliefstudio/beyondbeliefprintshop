@@ -26,7 +26,7 @@ import garmentOptions from "../data/quoteCalculator/garmentOptions.json";
             </div>
         </div>
         <div class="content-full">
-            <div class="productGrid">
+            <div class="productGrid grid-auto-3">
                 {
                     productCard.map((product) => (
                         <div class="productCard__wrapper" data-category={product.data.itemCategory}>
@@ -73,11 +73,11 @@ import garmentOptions from "../data/quoteCalculator/garmentOptions.json";
   color: var(--dark-900);
 }
 
-.productGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(360px, 100%), 1fr));
-    gap: 1rem;
-}
+// .productGrid {
+//     display: grid;
+//     grid-template-columns: repeat(auto-fill, minmax(min(360px, 100%), 1fr));
+//     gap: 1rem;
+// }
 </style>
 
 <script>
