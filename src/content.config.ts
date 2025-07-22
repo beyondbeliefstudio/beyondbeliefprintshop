@@ -144,6 +144,7 @@ const blog = defineCollection({
     }),
 });
 
+
 export const collections = {
   reviews,
   heroCards,

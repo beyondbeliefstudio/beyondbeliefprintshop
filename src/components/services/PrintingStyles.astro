@@ -101,6 +101,10 @@ import Heading from "../Heading.astro";
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-gap: var(--_spacing---section-space--small);
+
+    @media screen and (max-width: 1028px) {
+        grid-template-columns: 1fr;
+    }
 }
 
 .styles-card {
@@ -112,13 +116,18 @@ import Heading from "../Heading.astro";
     overflow: hidden;
     align-items: center;
     justify-content: center;
+
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+    }
 }
 
 .img-wrapper {
-    aspect-ratio: 1 / 1;
+    // aspect-ratio: 1 / 1;
     width: fit-content;
     border-radius: 7px;
     overflow: hidden;
+    height: 100%;
 }
 
 .card-content {
@@ -156,8 +165,6 @@ span.icon svg path {
     fill: var(--dark-800);
 }
 
-
-
 .styles-wrapper__text {
     position: sticky;
 }
@@ -172,8 +179,7 @@ span.icon svg path {
 }
 
 .styles-wrapper {
-    grid-column-gap: 3rem;
-    grid-row-gap: 2rem;
+    gap: 1rem;
     flex-flow: column;
     display: flex;
 }

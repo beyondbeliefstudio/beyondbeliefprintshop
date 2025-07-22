@@ -1,0 +1,44 @@
+---
+import InternalHero from "@/components/InternalHero.astro";
+import Layout from "@/layouts/Layout.astro";
+import Gallery from "@/components/Gallery.astro";
+import CTA from "@/components/CTA.astro";
+
+
+// Import images for the gallery
+import press from "@/assets/press.jpg";
+
+// Data for Image Slider
+const projects = [
+  { src: press, alt: "travel photo", id: "slide-1" },
+  { src: press, alt: "travel photo", id: "slide-2" },
+  { src: press, alt: "travel photo", id: "slide-3" },
+  { src: press, alt: "travel photo", id: "slide-4" },
+  { src: press, alt: "travel photo", id: "slide-5" },
+  { src: press, alt: "travel photo", id: "slide-6" },
+  { src: press, alt: "travel photo", id: "slide-7" },
+  { src: press, alt: "travel photo", id: "slide-8" },
+  { src: press, alt: "travel photo", id: "slide-9" },
+  { src: press, alt: "travel photo", id: "slide-10" },
+  { src: press, alt: "travel photo", id: "slide-11" },
+  { src: press, alt: "travel photo", id: "slide-12" },
+  { src: press, alt: "travel photo", id: "slide-13" },
+  { src: press, alt: "travel photo", id: "slide-14" },
+  { src: press, alt: "travel photo", id: "slide-15" },
+  { src: press, alt: "travel photo", id: "slide-16" },
+  { src: press, alt: "travel photo", id: "slide-17" },
+  { src: press, alt: "travel photo", id: "slide-18" },
+];
+
+
+---
+
+<Layout title="Projects">
+
+<InternalHero title="Projects" subtitle="Explore our latest projects and see how we can help you achieve your goals." />
+
+<Gallery items={projects}/>
+
+<CTA />
+
+</Layout>
