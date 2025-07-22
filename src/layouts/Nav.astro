@@ -4,6 +4,9 @@ import { Icon } from 'astro-icon/components';
 import Links from '@/components/Links.astro';
 
 import { navData } from '@/data/navData';
+
+import wordmark from '@/assets/wordmark.svg';
+
 ---
 
 
@@ -12,7 +15,7 @@ import { navData } from '@/data/navData';
   <div class="nav__container">
     <div class="nav__logo">
       <a href="/" class="nav__logo-img">
-        <Icon name="wordmark" />
+        <Image src={wordmark} alt="Wordmark Logo" />
       </a>
       <a href="/" class="nav__logo-img__sticky">
         <Icon name="navLogo" />
@@ -74,7 +77,7 @@ import { navData } from '@/data/navData';
     height: 100%;
     line-height: 0;
 
-    svg {
+    svg, img {
       height: 70px;
       width: fit-content;
     }
@@ -85,7 +88,7 @@ import { navData } from '@/data/navData';
     height: 100%;
     line-height: 0;
   
-    svg {
+    svg, img {
       height: 50px;
       width: fit-content;
     }
@@ -204,7 +207,7 @@ body.menu-open {
   }
 
   &__logo-img {
-    svg {
+    svg, img {
       height: 70px;
       width: fit-content;
     }
