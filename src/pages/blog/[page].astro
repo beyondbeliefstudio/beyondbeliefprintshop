@@ -33,7 +33,6 @@ const { title, description, heroImage, imageAlt, pubDate, slug, tags, author } =
     <div class="container-md blog__container">
         <div class="content-full blog__content">
             <Content />
-            <Links href={`/blog/${slug}`} variant="inline" classes="blog-read-more">Read more</Links>
         </div>
     </div>
 
@@ -46,33 +45,4 @@ const { title, description, heroImage, imageAlt, pubDate, slug, tags, author } =
 </Layout>
 
 <style lang="scss" is:global>
-.blog {
-    &__container {
-    }
-
-    &__content {
-        max-width: 800px;
-        margin: 0 auto;
-        text-align: left;
-        
-        hr {
-            border: 0;
-            height: 3rem;
-        }
-        
-        h2 {
-            font-size: 2rem;
-        }
-
-        h3 {
-            margin-top: 1rem;
-        }
-
-        img {
-            border-radius: var(--border-radius-medium);
-            margin: 1rem auto;
-        }
-    }
-}
-
 </style>

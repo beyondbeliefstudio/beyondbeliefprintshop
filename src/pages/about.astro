@@ -2,6 +2,8 @@
 import Layout from "@/layouts/Layout.astro";
 
 import press from "@/assets/press.jpg"
+import rewindPress from "@/assets/rewindPress.jpeg"
+import basement from "@/assets/basement.jpg"
 import Picture from "astro/components/Picture.astro";
 import Heading from "@/components/Heading.astro";
 import Links from "@/components/Links.astro";
@@ -62,12 +64,12 @@ const sliderImages = [
 
 <InternalHero title="About Us" subtitle="We're a small team doing big things for other small teams — schools, churches, businesses, breweries, artists, fundraisers, and anyone who wants to wear their message with pride." ariaLabel="Hero About-Us" />
 
-<SplitOverlay title="Your New Favorite Print Shop" imgSrc={press} imgAlt="Photo of Press" orientation="">
+<SplitOverlay title="Your New Favorite Print Shop" imgSrc={rewindPress} imgAlt="Photo of Press" orientation="">
     <p>What started as a side hustle in a garage quickly became a full-fledged print studio serving Monroe, NC and beyond. At Beyond Belief Studio, we specialize in high-quality screen printing with fast turnarounds, fair pricing, and a personal touch.</p>
     <p>We don’t outsource. We don’t cut corners. We print everything in-house and treat every project like it’s our own — whether it’s a hundred shirts for a local school or a limited run for your brand’s next drop.</p>
 </SplitOverlay>
 
-<SplitOverlay title="Our Story" imgSrc={press} imgAlt="Photo of Press" orientation="left" background="bg-white">
+<SplitOverlay title="Our Story" imgSrc={basement} imgAlt="Photo of Press" orientation="left" background="bg-white">
     <p>Beyond Belief, a small, family-run, faith-based print shop, was born in 2016 in New Jersey as a humble basement hobby. Focused on crafting apparel that resonates with pride and satisfaction, we've grown from a local provider of screen-printed items to a comprehensive design and web design service, all while maintaining our core commitment to community involvement with businesses, churches, and non-profits.</p>
     <p>Relocating to Monroe, NC in 2023, we've upheld our reputation as the dependable "merch guys," prioritizing reliability and personal growth for our clients over being the biggest in the business. From Chris's initial experiments with a DIY screen printing kit to becoming a town favorite, our journey has always been about fostering connections and ensuring customer satisfaction.</p>
 </SplitOverlay>

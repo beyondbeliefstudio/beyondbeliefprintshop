@@ -5,6 +5,7 @@ import { getCollection } from 'astro:content';
 
 // Assets
 import press from "@/assets/press.jpg"
+import shop from "@/assets/shop.jpeg";
 
 // Components
 import Layout from "@/layouts/Layout.astro";
@@ -38,7 +39,7 @@ const faqData = faq.map((item) => ({
 
 <InternalHero title="Services" subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates eum tenetur dignissimos tempore sed expedita at voluptatum rerum labore pariatur, ex, consequatur architecto culpa provident exercitationem nostrum amet ea sint." ariaLabel="Hero Services" class="test" />
 
-<SplitOverlay title="Custom Apparel Printing" imgSrc={press} imgAlt="Photo of Press" orientation="">
+<SplitOverlay title="Custom Apparel Printing" imgSrc={shop} imgAlt="Photo of Press" orientation="">
     <p>What started as a side hustle in a garage quickly became a full-fledged print studio serving Monroe, NC and beyond. At Beyond Belief Studio, we specialize in high-quality screen printing with fast turnarounds, fair pricing, and a personal touch.</p>
     <p>We don’t outsource. We don’t cut corners. We print everything in-house and treat every project like it’s our own — whether it’s a hundred shirts for a local school or a limited run for your brand’s next drop.</p>
 </SplitOverlay>
