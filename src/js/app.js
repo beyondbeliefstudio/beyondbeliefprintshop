@@ -1,18 +1,21 @@
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger);
 
 // Run when DOM is ready
 window.addEventListener("DOMContentLoaded", () => {
   // Left-side text animation
-  gsap.from(".content-lg > *", {
-    y: 40,
-    opacity: 0,
-    duration: 1,
-    stagger: 0.15,
-    ease: "power2.out",
-  });
+  const contentItems = document.querySelectorAll(".hero__content > *");
+  if (contentItems.length > 0) {
+    gsap.from(contentItems, {
+      y: 40,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.15,
+      ease: "power2.out",
+    });
+  }
 
   // Animate cards in
   const cards = gsap.utils.toArray(".heroCard");
@@ -144,40 +147,47 @@ heroImages.forEach((card, index) => {
 });
 
 // Arrow click listeners
-prevBtn.addEventListener("click", () => {
-  const nextIndex =
-    currentIndex === null
-      ? 0
-      : (currentIndex - 1 + heroImages.length) % heroImages.length;
-  animateToCard(nextIndex);
-});
+if (prevBtn) {
+  prevBtn.addEventListener("click", () => {
+    const nextIndex =
+      currentIndex === null
+        ? 0
+        : (currentIndex - 1 + heroImages.length) % heroImages.length;
+    animateToCard(nextIndex);
+  });
+}
 
-nextBtn.addEventListener("click", () => {
-  const nextIndex =
-    currentIndex === null ? 0 : (currentIndex + 1) % heroImages.length;
-  animateToCard(nextIndex);
-});
+if (nextBtn) {
+  nextBtn.addEventListener("click", () => {
+    const nextIndex =
+      currentIndex === null ? 0 : (currentIndex + 1) % heroImages.length;
+    animateToCard(nextIndex);
+  });
+}
 
 // GALLERY GRID
 // Animate grid items on page load
 window.addEventListener("DOMContentLoaded", () => {
-  gsap.from(".gallery-item img", {
-    opacity: 0,
-    y: 50,
-    duration: 1,
-    stagger: 0.15,
-    ease: "power3.out",
-  });
+  const galleryImages = document.querySelectorAll(".gallery-item img");
+  if (galleryImages.length > 0) {
+    gsap.from(galleryImages, {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      stagger: 0.15,
+      ease: "power3.out",
+    });
 
-  // Add a fun hover scale bounce
-  document.querySelectorAll(".gallery-item img").forEach((item) => {
-    item.addEventListener("mouseenter", () => {
-      gsap.to(item, { scale: 1.03, duration: 0.3, ease: "back.out(1.7)" });
+    // Add a fun hover scale bounce
+    galleryImages.forEach((item) => {
+      item.addEventListener("mouseenter", () => {
+        gsap.to(item, { scale: 1.03, duration: 0.3, ease: "back.out(1.7)" });
+      });
+      item.addEventListener("mouseleave", () => {
+        gsap.to(item, { scale: 1, duration: 0.3, ease: "power2.out" });
+      });
     });
-    item.addEventListener("mouseleave", () => {
-      gsap.to(item, { scale: 1, duration: 0.3, ease: "power2.out" });
-    });
-  });
+  }
 });
 
 // REVIEW SCROLLER

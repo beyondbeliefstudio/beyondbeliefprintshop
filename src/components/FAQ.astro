@@ -123,7 +123,7 @@ const {
     &__content {
         color: #1b1b1b;
         margin-top: 0;
-        overflow: auto;
+        overflow: hidden;
         padding: 0;
         line-height: 1.5;
         text-align: left;
@@ -168,6 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
         q.setAttribute("aria-expanded", "false");
         if (contentToHide) {
           contentToHide.setAttribute("hidden", "");
+          gsap.to(contentToHide, { height: 0, opacity: 0, duration: 0.3, ease: "power2.inOut" });
         }
       });
 
@@ -175,7 +176,12 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!isExpanded && content) {
         question.setAttribute("aria-expanded", "true");
         content.removeAttribute("hidden");
-      }
+        gsap.fromTo(
+            content,
+            { height: 0, opacity: 0 },
+            { height: "auto", opacity: 1, duration: 0.4, ease: "power2.out" }
+            );
+        }
     });
 
     // Optional: Allow keyboard accessibility
@@ -192,9 +198,9 @@ document.addEventListener("DOMContentLoaded", () => {
 import { gsap } from 'gsap';
 
 const toggleBtn = document.getElementById('accordionToggle') as HTMLElement;
-const content = document.getElementById('accordionContent') as HTMLElement;
-const vertical = toggleBtn.querySelector('.vertical') as HTMLElement;
-const horizontal = toggleBtn.querySelector('.horizontal') as HTMLElement;
+const content = document.querySelector('.accordion__item') as HTMLElement;
+const vertical = document.querySelector('.vertical') as HTMLElement;
+const horizontal = document.querySelector('.horizontal') as HTMLElement;
 
 let isOpen: boolean = false;
 
@@ -211,13 +217,4 @@ iconTL
   rotate: 90,
   ease: 'power2.inOut'
 }, 0);
-
-// Timeline for the accordion content
-const contentTL = gsap.timeline({ paused: true });
-contentTL.to(content, {
-  duration: 0.4,
-  height: 'auto',
-  opacity: 1,
-  ease: 'power2.out'
-});
 </script>
