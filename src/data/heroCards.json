@@ -19,7 +19,7 @@
     "id": 3,
     "title": "Resting Place House of Worship",
     "description": "There Must Be More Conference",
-    "image": "@/assets/restingPlaceHero.jpg",
+    "image": "@/assets/restingPlace.jpg",
     "imageAlt": "Resting Place",
     "isFeatured": true
   },
@@ -27,7 +27,7 @@
     "id": 4,
     "title": "Beyond Belief Golf Club",
     "description": "Collection 001: Where Pars Are Rare",
-    "image": "@/assets/bbgcHero.jpg",
+    "image": "@/assets/bbgcImage.jpg",
     "imageAlt": "Beyond Belief Golf Club",
     "isFeatured": true
   }
