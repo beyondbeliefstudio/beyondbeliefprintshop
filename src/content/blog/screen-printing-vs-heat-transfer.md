@@ -37,7 +37,7 @@ Screen printing is the _OG_ of custom apparel. It’s a process that involves pu
 
 ---
 
-![Heat press transfers](@/assets/press.jpg)
+![Heat press transfers](@/assets/printPress.jpg)
 
 ## What Is Heat Transfer?
 
