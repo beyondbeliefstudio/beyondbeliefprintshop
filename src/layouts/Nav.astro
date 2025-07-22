@@ -1,8 +1,7 @@
 ---
 import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
 import Links from '@/components/Links.astro';
-import navLogo from '@/assets/navLogo.svg';
-import wordmark from '@/assets/wordmark.png';
 
 import { navData } from '@/data/navData';
 ---
@@ -13,10 +12,10 @@ import { navData } from '@/data/navData';
   <div class="nav__container">
     <div class="nav__logo">
       <a href="/" class="nav__logo-img">
-        <Image src={wordmark} alt="beyond belief studio" />
+        <Icon name="wordmark" />
       </a>
       <a href="/" class="nav__logo-img__sticky">
-        <Image src={navLogo} alt="beyond belief studio" />
+        <Icon name="navLogo" />
       </a>
     </div>
 
@@ -73,18 +72,22 @@ import { navData } from '@/data/navData';
   &__logo-img {
     display: block;
     height: 100%;
+    line-height: 0;
 
-    img {
-      max-height: 70px;
+    svg {
+      height: 70px;
+      width: fit-content;
     }
   }
   
   &__logo-img__sticky {
     display: none;
     height: 100%;
+    line-height: 0;
   
-    img {
-      max-height: 50px;
+    svg {
+      height: 50px;
+      width: fit-content;
     }
   }
   
@@ -201,8 +204,9 @@ body.menu-open {
   }
 
   &__logo-img {
-    img {
-      max-height: 70px;
+    svg {
+      height: 70px;
+      width: fit-content;
     }
   }
   
@@ -302,9 +306,12 @@ window.addEventListener("scroll", () => {
 const navLinks = document.querySelectorAll('nav a'); // Adjust selector to your actual nav links
 
 navLinks.forEach(link => {
-  // Check if the href matches the current page
-  if (link.getAttribute('href') === window.location.pathname) {
-    link.classList.add('active');
+  // Cast link to HTMLAnchorElement to access href property
+  const anchor = link as HTMLAnchorElement;
+  const linkUrl = new URL(anchor.href, window.location.origin);
+  // Compare only the pathname
+  if (linkUrl.pathname === window.location.pathname) {
+    anchor.classList.add('active');
   }
 });
 </script>

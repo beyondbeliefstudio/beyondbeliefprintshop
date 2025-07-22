@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets"
 import Links from "@/components/Links.astro";
+import { Icon } from "astro-icon/components";
 
 // Content
 import { navData } from '@/data/navData';
@@ -8,6 +9,9 @@ import { baseData } from "@/data/siteData";
 
 // Images
 import wordmark from '@/assets/wordmark.png';
+import instagram from '@/assets/instagram.png';
+import facebook from '@/assets/facebook.png';
+import mail from '@/assets/mail.png';
 
 
 ---
@@ -19,13 +23,13 @@ import wordmark from '@/assets/wordmark.png';
                 <p class="small">{baseData.description}</p>
                 <div class="social-grid">
                     <span class="social">
-                        <img src="/src/assets/instagram.png" alt="">
+                        <Image src={instagram} alt="Instagram Icon" />
                     </span>
                     <span class="social">
-                        <img src="/src/assets/facebook.png" alt="">
+                        <Image src={facebook} alt="Facebook Icon" />
                     </span>
                     <span class="social">
-                        <img src="/src/assets/mail.png" alt="">
+                        <Image src={mail} alt="Mail Icon" />
                     </span>
                 </div>
             </div>

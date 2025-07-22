@@ -133,8 +133,10 @@ const {
             margin-bottom: 0;
         }
     }
-    
-    &__button[aria-expanded=true] {
+}
+
+.accordion__question[aria-expanded="true"] {
+    .accordion__button {
         .circle {
             .vertical {
                 transform: rotate(180deg);
@@ -151,33 +153,6 @@ const {
 </style>
 
 <script>
-// document.addEventListener("DOMContentLoaded", () => {
-//   const accordionButtons: NodeListOf<HTMLButtonElement> = document.querySelectorAll(".accordion__button");
-
-//   accordionButtons.forEach((button: HTMLButtonElement) => {
-//     button.addEventListener("click", () => {
-//       const isExpanded: boolean = button.getAttribute("aria-expanded") === "true";
-//       const contentId: string | null = button.getAttribute("aria-controls");
-//       const content: HTMLElement | null = contentId ? document.getElementById(contentId) : null;
-
-//       // Collapse all accordions
-//       accordionButtons.forEach((btn: HTMLButtonElement) => {
-//         const contentToHide: HTMLElement | null = document.getElementById(btn.getAttribute("aria-controls") || "");
-//         btn.setAttribute("aria-expanded", "false");
-//         if (contentToHide) {
-//           contentToHide.setAttribute("hidden", "");
-//         }
-//       });
-
-//       // If the clicked accordion was not expanded, expand it
-//       if (!isExpanded && content) {
-//         button.setAttribute("aria-expanded", "true");
-//         content.removeAttribute("hidden");
-//       }
-//     });
-//   });
-// });
-
 document.addEventListener("DOMContentLoaded", () => {
   const accordionQuestions = document.querySelectorAll(".accordion__question");
 
