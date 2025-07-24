@@ -517,47 +517,25 @@ document.addEventListener("DOMContentLoaded", function() {
         const total = (garmentPrice + frontPrintPrice + backPrintPrice) * quantity + setupFee;
         const costPerItem = total / quantity;
 
-        // alert(`Your quote for ${quantity} ${garment}(s) is: $${total.toFixed(2)}\nCost per item: $${costPerItem.toFixed(2)}`);
-        const quoteModal = document.getElementById("quoteModal");
-        const quoteDetails = document.getElementById("quoteDetails");
-        const closeQuoteModal = document.getElementById("closeQuoteModal");
+        // Instead of showing modal, redirect to results page with quote data
+        const queryParams = new URLSearchParams({
+            garment: garment,
+            garmentQuality: garmentQuality,
+            quantity: quantity.toString(),
+            frontColors: frontColors.toString(),
+            backColors: backColors.toString(),
+            total: total.toFixed(2),
+            costPerItem: costPerItem.toFixed(2)
+        });
 
-        quoteDetails.innerHTML = `
-        <strong>Total Price:</strong> $${total.toFixed(2)}<br>
-        <strong>Cost per item:</strong> $${costPerItem.toFixed(2)}<br>
-        <strong>Quantity:</strong> ${quantity} ${garment}(s)
-        `;
-
-        quoteModal.style.display = "flex";
-
-        // Close modal on click
-        closeQuoteModal.onclick = function() {
-        quoteModal.style.display = "none";
-        };
-        window.onclick = function(event) {
-        if (event.target === quoteModal) {
-            quoteModal.style.display = "none";
-        }
-        };
-        console.log(`Total price: $${total.toFixed(2)}, Cost per item: $${costPerItem.toFixed(2)}`);
+        window.location.href = `/quote-results?${queryParams.toString()}`;
     }
 
-    // Attach to form submit
-    const formElement = document.querySelector(".quote-calculator__form");
-    if (formElement) {
-        formElement.addEventListener("submit", calculateQuote);
+    // ADD THIS: Event listener for form submission
+    const form = document.querySelector('.quote-calculator__form');
+    if (form) {
+        form.addEventListener('submit', calculateQuote);
     }
-
-    const quoteEmailForm = document.getElementById("quoteEmailForm") as HTMLFormElement;
-    const quoteEmailStatus = document.getElementById("quoteEmailStatus") as HTMLParagraphElement;
-
-    quoteEmailForm.addEventListener("submit", function(e) {
-    e.preventDefault();
-    const customerEmail = (document.getElementById("customerEmail") as HTMLInputElement).value;
-    // TODO: Send email via backend or service
-    quoteEmailStatus.textContent = "Quote sent to " + customerEmail + "! (Demo only)";
-    // You can send the quote via AJAX to your backend here
-    });
 });
 
 
