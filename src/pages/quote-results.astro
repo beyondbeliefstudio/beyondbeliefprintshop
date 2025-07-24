@@ -25,7 +25,16 @@ import InternalHero from "@/components/InternalHero.astro";
                 <Heading tag="h2" size="l" fontFamily="primary" marginBottom="s">Get More Information</Heading>
                 <p>Ready to move forward? Fill out the form below and we'll contact you with next steps.</p>
 
-                <form netlify name="quote-results" id="quote-results__form" class="quote-results__form" method="POST" action="/submit-quote">
+                <form netlify name="quote-results" id="quote-results__form" class="quote-results__form" method="POST" action="/quote-submitted">
+                    <!-- Hidden fields for quote data -->
+                    <input type="hidden" name="quote-garment" id="quote-garment">
+                    <input type="hidden" name="quote-garmentQuality" id="quote-garmentQuality">
+                    <input type="hidden" name="quote-quantity" id="quote-quantity">
+                    <input type="hidden" name="quote-frontColors" id="quote-frontColors">
+                    <input type="hidden" name="quote-backColors" id="quote-backColors">
+                    <input type="hidden" name="quote-total" id="quote-total">
+                    <input type="hidden" name="quote-costPerItem" id="quote-costPerItem">
+
                     <div class="form-group">
                         <label for="name" class="quote-results__label">Full Name *</label>
                         <input type="text" id="name" name="name" required class="quote-results__input">
@@ -337,8 +346,17 @@ document.addEventListener("DOMContentLoaded", function() {
         const total = parseFloat(urlParams.get('total'));
         const costPerItem = parseFloat(urlParams.get('costPerItem'));
         
+        // Populate hidden form fields with quote data
+        (document.getElementById('quote-garment') as HTMLInputElement).value = garment;
+        (document.getElementById('quote-garmentQuality') as HTMLInputElement).value = garmentQuality;
+        (document.getElementById('quote-quantity') as HTMLInputElement).value = quantity.toString();
+        (document.getElementById('quote-frontColors') as HTMLInputElement).value = frontColors.toString();
+        (document.getElementById('quote-backColors') as HTMLInputElement).value = backColors.toString();
+        (document.getElementById('quote-total') as HTMLInputElement).value = total.toFixed(2);
+        (document.getElementById('quote-costPerItem') as HTMLInputElement).value = costPerItem.toFixed(2);
+        
         // Calculate single item pricing (typically much higher)
-        const singleItemCost = costPerItem * 2.8; // Approximate 2.8x markup for single items
+        const singleItemCost = costPerItem * 2.8;
         const singleItemTotal = singleItemCost * quantity;
         const savings = singleItemTotal - total;
         const savingsPercent = Math.round((savings / singleItemTotal) * 100);
@@ -408,48 +426,15 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     
     // Handle form submission
-    const contactForm = document.getElementById('contactForm') as HTMLFormElement;
+    const contactForm = document.getElementById('quote-results__form') as HTMLFormElement;
     const formStatus = document.getElementById('form-status');
     
-    contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        const formData = new FormData(contactForm);
-        const quoteData = {
-            garment: urlParams.get('garment'),
-            garmentQuality: urlParams.get('garmentQuality'),
-            quantity: urlParams.get('quantity'),
-            frontColors: urlParams.get('frontColors'),
-            backColors: urlParams.get('backColors'),
-            total: urlParams.get('total'),
-            costPerItem: urlParams.get('costPerItem')
-        };
-        
-        // Add quote data to form submission
-        Object.keys(quoteData).forEach(key => {
-            if (quoteData[key]) {
-                formData.append(`quote_${key}`, quoteData[key]);
-            }
+    if (contactForm && formStatus) {
+        contactForm.addEventListener('submit', function(e) {
+            // Let Netlify handle the form submission naturally
+            formStatus.textContent = 'Sending your quote request...';
+            formStatus.className = '';
         });
-        
-        try {
-            // Replace this URL with your form handler (Formspree, Netlify Forms, etc.)
-            const response = await fetch('YOUR_FORM_ENDPOINT', {
-                method: 'POST',
-                body: formData
-            });
-            
-            if (response.ok) {
-                formStatus.className = 'success';
-                formStatus.textContent = 'Thank you! We\'ll be in touch soon with your custom quote.';
-                contactForm.reset();
-            } else {
-                throw new Error('Form submission failed');
-            }
-        } catch (error) {
-            formStatus.className = 'error';
-            formStatus.textContent = 'Sorry, there was an error sending your request. Please try again or contact us directly.';
-        }
-    });
+    }
 });
 </script>
