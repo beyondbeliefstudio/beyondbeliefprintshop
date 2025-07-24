@@ -112,7 +112,7 @@ import wordmark from '@/assets/wordmark.svg';
     .nav__container {
         background-color: #ffffffd1;
         width: fit-content;
-        padding: 0.5rem .5rem .5rem 1.5rem;
+        padding: 0.5rem .5rem .5rem 1rem;
         box-shadow: 0px 0px 13px #00000029;
     }
   }
@@ -215,6 +215,13 @@ body.menu-open {
   
   &__links {
     display: none;
+  }
+}
+
+.nav.scrolled {
+  .nav__container {
+    width: 100%;
+    padding-left: .5rem;
   }
 }
 

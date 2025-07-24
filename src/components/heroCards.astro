@@ -20,8 +20,8 @@ const {description, image, imageAlt, title} = heroCards.data;
         <Picture src={image} alt={imageAlt} class="heroCard__img" loading="eager" width={1000} height={1000} format="avif" />
     </div>
     <div class="heroCard__img-content">
-        <Heading tag="h2" size="s" fontFamily="primary" marginBottom="none">{title}</Heading>
-        <p>{description}</p>
+        <Heading tag="h2" size="s" fontFamily="primary" marginBottom="xs">{title}</Heading>
+        <p class="heroCard__description">{description}</p>
     </div>
 </article>
 
@@ -85,6 +85,10 @@ const {description, image, imageAlt, title} = heroCards.data;
             color: var(--dark-900);
         }
     }
+
+    &__description {
+        line-height: 1.2;
+    }
 }
 
 .active {
@@ -94,6 +98,24 @@ const {description, image, imageAlt, title} = heroCards.data;
 
     .heroCard__img-content {
         transform: scaleY(1);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .heroCard {
+        max-width: 80%;
+
+        &:nth-child(2) {
+            left: 6.66%;
+        }
+        
+        &:nth-child(3) {
+            left: 13.33%;
+        }
+        
+        &:nth-child(4) {
+            left: 20%;
+        }
     }
 }
 </style>

@@ -133,7 +133,7 @@ import OrderingProcess from '@/components/OrderingProcess.astro';
 <!-- COMPANIES -->
 <section class="bg-primary">
     <div class="container-md column-main">
-        <div class="content-lg">
+        <div class="content-md">
             <span class="flag">
                 <Icon name="icon-flag" />
             </span>
@@ -142,7 +142,7 @@ import OrderingProcess from '@/components/OrderingProcess.astro';
         </div>
         <div class="content-full">
             <Heading tag='h3' size='l' fontFamily='primary' marginBottom='l'>Trusted by Local Teams, Schools & Businesses</Heading>
-            <div class="logo-grid">
+            <div class="logo-grid grid-auto-4">
                 <div class="logo-item">
                     <Image src={azLogo} alt="Arizona Logo" />
                 </div>
@@ -150,13 +150,7 @@ import OrderingProcess from '@/components/OrderingProcess.astro';
                     <Image src={logoArborbrook} alt="Arborbrook Logo" />
                 </div>
                 <div class="logo-item">
-                    <Image src={bienLogo} alt="Bien Logo" />
-                </div>
-                <div class="logo-item">
                     <Image src={logoCSHL} alt="CSHL Logo" />
-                </div>
-                <div class="logo-item">
-                    <Icon name="logo-edkas" />
                 </div>
                 <div class="logo-item">
                     <Icon name="logo-evangel" />
@@ -231,20 +225,22 @@ import OrderingProcess from '@/components/OrderingProcess.astro';
 
 // LOGO GRID
 .logo-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
-    grid-gap: 1rem;
-    margin-top: 2rem;
+    @media screen and (max-width: 1200px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
 }
 
 .logo-item {
     background-color: #fff;
     border-radius: var(--border-radius-medium);
     padding: 1.5rem;
-    aspect-ratio: 1 / 1;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media screen and (max-width: 768px) {
+        padding: 1rem;
+    }
 
     img, svg {
         max-width: 200px;

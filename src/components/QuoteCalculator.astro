@@ -171,9 +171,6 @@ import QuoteModal from "./QuoteModal.astro";
     }
 }
 
-.garment-price-grid {
-
-}
 .garment-price-grid__wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -252,6 +249,10 @@ import QuoteModal from "./QuoteModal.astro";
         display: flex;
         flex-direction: column;
         gap: 1rem;
+
+        @media screen and (max-width: 768px) {
+            padding: 2rem 1rem 1rem;
+        }
     }
 
     &__form {

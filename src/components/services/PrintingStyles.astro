@@ -102,7 +102,7 @@ import Heading from "../Heading.astro";
     grid-template-columns: 1fr 2fr;
     grid-gap: var(--_spacing---section-space--small);
 
-    @media screen and (max-width: 1028px) {
+    @media screen and (max-width: 1010px) {
         grid-template-columns: 1fr;
     }
 }
@@ -133,6 +133,11 @@ import Heading from "../Heading.astro";
 .card-content {
     width: 100%;
     padding: 2rem 2rem 1rem;
+
+    @media screen and (max-width: 768px) {
+        padding: 2rem 1rem 1rem;
+        
+    }
 }
 
 span.number {

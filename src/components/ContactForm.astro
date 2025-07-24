@@ -53,6 +53,10 @@ import Heading from "./Heading.astro";
         display: flex;
         flex-direction: column;
         gap: 1rem;
+
+        @media screen and (max-width: 768px) {
+            padding: 2rem 1rem 1rem;
+        }
     }
 
     &__form {
