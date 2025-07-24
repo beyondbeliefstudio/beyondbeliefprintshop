@@ -17,7 +17,7 @@ const {description, image, imageAlt, title} = heroCards.data;
 <article class="heroCard">
     <div class="heroCard__img-wrapper">
         <div class="heroCard__img-overlay"></div>
-        <Picture src={image} alt={imageAlt} class="heroCard__img" loading="eager" width={1000} height={1000} format="avif" />
+        <Picture src={image as any} alt={imageAlt} class="heroCard__img" loading="eager" width={1000} height={1000} format="avif" />
     </div>
     <div class="heroCard__img-content">
         <Heading tag="h2" size="s" fontFamily="primary" marginBottom="xs">{title}</Heading>

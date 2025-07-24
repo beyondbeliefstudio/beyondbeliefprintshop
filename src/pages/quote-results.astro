@@ -7,14 +7,14 @@ import InternalHero from "@/components/InternalHero.astro";
 
 <Layout title="Your Quote Results">
 
-<InternalHero title="Your Results" subtitle="Here are the details of your custom screen printing quote. If you have any questions or are ready to move forward, please fill out the form below." ariaLabel="Quote Results Hero" classes="hero-quote-results" />
+<InternalHero title="Your Quote Results" subtitle="Here are the details of your custom screen printing quote. If you have any questions or are ready to move forward, please fill out the form below." ariaLabel="Quote Results Hero" classes="hero-quote-results" />
 
 <section class="quote-results" aria-label="Quote Results">
     <div class="container-md quote-results__container">
         <div class="content-md quote-results__wrapper">
             <div class="quote-results__summary">
                 <div class="quote-results__details">
-                    <h3>Quote Summary</h3>
+                    <Heading tag="h2" size="l" fontFamily="primary" marginBottom="s">Your Quote Details</Heading>
                     <div id="quote-results__info">
                         <!-- Quote details will be populated by JavaScript -->
                     </div>
@@ -25,7 +25,7 @@ import InternalHero from "@/components/InternalHero.astro";
                 <Heading tag="h2" size="l" fontFamily="primary" marginBottom="s">Get More Information</Heading>
                 <p>Ready to move forward? Fill out the form below and we'll contact you with next steps.</p>
 
-                <form netlify name="quote-results" id="quote-results__form" class="quote-results__form" method="POST" action="/quote-submitted">
+                <form data-netlify="true" name="quote-results" id="quote-results__form" class="quote-results__form" method="POST" action="/quote-submitted">
                     <!-- Hidden fields for quote data -->
                     <input type="hidden" name="quote-garment" id="quote-garment">
                     <input type="hidden" name="quote-garmentQuality" id="quote-garmentQuality">
@@ -46,8 +46,8 @@ import InternalHero from "@/components/InternalHero.astro";
                     </div>
                     
                     <div class="form-group">
-                        <label for="phone" class="quote-results__label">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" class="quote-results__input">
+                        <label for="phone" class="quote-results__label">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required class="quote-results__input">
                     </div>
                     
                     <div class="form-group">
@@ -69,7 +69,7 @@ import InternalHero from "@/components/InternalHero.astro";
 </section>
 </Layout>
 
-<style lang="scss">
+<style lang="scss" is:global>
 .hero-quote-results {
     padding-bottom: 10rem;
 }
@@ -89,7 +89,7 @@ import InternalHero from "@/components/InternalHero.astro";
         border-radius: 16px;
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: 3rem;
 
         @media screen and (max-width: 768px) {
             padding: 2rem 1rem 1rem;
@@ -167,6 +167,7 @@ import InternalHero from "@/components/InternalHero.astro";
     margin-bottom: 3rem;
 }
 
+
 .quote-details h3 {
     margin-bottom: 1rem;
     color: var(--brand-primary);
@@ -183,6 +184,12 @@ import InternalHero from "@/components/InternalHero.astro";
         font-weight: bold;
         font-size: 1.2rem;
     }
+}
+
+.contact-section {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
 }
 
 .contact-form {
@@ -229,43 +236,45 @@ import InternalHero from "@/components/InternalHero.astro";
 
 
 .pricing-comparison {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    border-radius: var(--border-radius-medium);
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-    border-left: 4px solid var(--brand-primary);
+    margin-bottom: 1rem;
 }
 
 .price-row {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 0.75rem 0;
+    padding: 0.25rem 0;
+    gap: .5rem;
+    line-height: 1;
     
     &.single-item {
         color: #6c757d;
         text-decoration: line-through;
+        font-size: 1.25rem;
+
+        @media screen and (max-width: 768px) {
+            font-size: 1rem;
+        }
     }
     
     &.volume-pricing {
         font-weight: bold;
-        font-size: 1.1rem;
+        font-size: 1.5rem;
         
-        .price-amount.highlighted {
-            color: var(--brand-primary);
+        @media screen and (max-width: 768px) {
+            font-size: 1.15rem;
         }
     }
 }
 
 .savings-highlight {
-    background: #d4edda;
-    color: #155724;
+    background: #f8f9fa;
+    color: var(--dark-900);
     padding: 1rem;
     border-radius: var(--border-radius-small);
     text-align: center;
     font-weight: bold;
     margin-top: 1rem;
-    border: 1px solid #c3e6cb;
 }
 
 .quote-summary-details {
@@ -317,18 +326,6 @@ import InternalHero from "@/components/InternalHero.astro";
     }
 }
 
-@media (max-width: 768px) {
-    .price-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.25rem;
-    }
-    
-    .breakdown-item {
-        flex-direction: column;
-        gap: 0.25rem;
-    }
-}
 </style>
 
 <script>
@@ -374,50 +371,17 @@ document.addEventListener("DOMContentLoaded", function() {
         
         quoteInfo.innerHTML = `
             <div class="pricing-comparison">
-                <div class="quote-summary-details">
-                    <h4>What's Included:</h4>
-                    <ul class="included-items">
-                        <li>${quantity} ${qualityName} ${garmentName}${quantity > 1 ? 's' : ''}</li>
-                        <li>${colorsDescription}</li>
-                    </ul>
-                </div>
+
                 <div class="price-row single-item">
-                    <span class="price-label">Single Item Pricing:</span>
                     <span class="price-amount">$${singleItemCost.toFixed(2)} each | $${singleItemTotal.toFixed(2)} total</span>
                 </div>
+
                 <div class="price-row volume-pricing">
-                    <span class="price-label">Your Volume Pricing:</span>
                     <span class="price-amount highlighted">$${costPerItem.toFixed(2)} each | $${total.toFixed(2)} total</span>
                 </div>
+
                 <div class="savings-highlight">
                     You saved $${savings.toFixed(2)} (${savingsPercent}%) with the Volume Discount.
-                </div>
-            </div>
-            
-            <div class="quote-summary-details">
-                <h4>What's Included:</h4>
-                <ul class="included-items">
-                    <li>${quantity} ${qualityName} ${garmentName}${quantity > 1 ? 's' : ''}</li>
-                    <li>${colorsDescription}</li>
-                    <li>FREE Standard 7-10 Day Production</li>
-                    <li>Professional Design Review</li>
-                    <li>All Printing and Setup Fees</li>
-                    <li>Quality Guarantee</li>
-                </ul>
-            </div>
-            
-            <div class="quote-breakdown">
-                <div class="breakdown-item">
-                    <span>Quantity:</span>
-                    <span>${quantity}</span>
-                </div>
-                <div class="breakdown-item">
-                    <span>Garment Type:</span>
-                    <span>${garmentName} (${qualityName})</span>
-                </div>
-                <div class="breakdown-item">
-                    <span>Print Colors:</span>
-                    <span>Front: ${frontColors}, Back: ${backColors}</span>
                 </div>
             </div>
         `;

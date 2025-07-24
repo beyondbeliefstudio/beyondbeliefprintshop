@@ -16,7 +16,7 @@ const { title, description, heroImage, imageAlt, pubDate, slug, tags, author } =
     <div class="blog-card">
         <a href={`/blog/${slug}`} class="blog-card__link-wrapper">
             <div class="blog-card__img-wrapper">
-                <Picture src={heroImage} alt={imageAlt} type="image" class="blog-card__img" />
+                <Picture src={heroImage as any} alt={imageAlt} class="blog-card__img" />
             </div>
             <div class="blog-card__content">
                 <Heading tag="h2" size="s" fontFamily="primary" marginBottom="s" class="blog-card__title">{title}</Heading>

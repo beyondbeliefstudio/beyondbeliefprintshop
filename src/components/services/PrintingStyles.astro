@@ -37,35 +37,6 @@ import Heading from "../Heading.astro";
                     <Picture src={printPress} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
                 </div>
                 <div class="card-content">
-                     <span class="icon">
-                        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30.12 39.88">
-                        <path d="M30.12,24.82c0,8.32-6.74,15.06-15.06,15.06S0,33.14,0,24.82,15.06,0,15.06,0c0,0,15.06,16.5,15.06,24.82h0Z"/>
-                        </svg>
-                    </span>
-                    <Heading tag="h3" size="m" fontFamily="secondary" marginBottom="s">Simulated Process Printing</Heading>
-                    <p>This advanced technique breaks down complex images into separate color layers to recreate photorealistic effects. Ideal for portraits, detailed illustrations, and gradient-heavy designs that require smooth color transitions. The results look stunning on both light and dark garments.</p>
-                </div>
-            </div>
-            <div class="styles-card">
-                <div class="img-wrapper">
-                    <Picture src={printPress} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
-                </div>
-                <div class="card-content">
-                    <!-- <span class="number">01</span> -->
-                     <span class="icon">
-                        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30.12 39.88">
-                        <path d="M30.12,24.82c0,8.32-6.74,15.06-15.06,15.06S0,33.14,0,24.82,15.06,0,15.06,0c0,0,15.06,16.5,15.06,24.82h0Z"/>
-                        </svg>
-                    </span>
-                    <Heading tag="h3" size="m" fontFamily="secondary" marginBottom="s">CMYK Process Printing</Heading>
-                    <p>Using cyan, magenta, yellow, and black inks, we create vintage-inspired prints with a softer feel. This method excels at producing subtle color variations and tonal effects that give your design an artistic, lived-in quality. Perfect for designs that benefit from a less commercial, more artistic look.</p>
-                </div>
-            </div>
-            <div class="styles-card">
-                <div class="img-wrapper">
-                    <Picture src={printPress} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
-                </div>
-                <div class="card-content">
                     <!-- <span class="number">01</span> -->
                      <span class="icon">
                         <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30.12 39.88">
@@ -89,6 +60,21 @@ import Heading from "../Heading.astro";
                     </span>
                     <Heading tag="h3" size="m" fontFamily="secondary" marginBottom="s">Custom Tag Printing</Heading>
                     <p>Transform standard blanks into your own branded apparel with inside tag printing. We can remove existing tags and print your logo, care instructions, and sizing information directly on the garment. This professional touch elevates your brand and creates a seamless, retail-ready product.</p>
+                </div>
+            </div>
+            <div class="styles-card">
+                <div class="img-wrapper">
+                    <Picture src={printPress} alt="travel photo" class="hero__img" loading="eager" width={2000} height={1000} />
+                </div>
+                <div class="card-content">
+                    <!-- <span class="number">01</span> -->
+                     <span class="icon">
+                        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30.12 39.88">
+                        <path d="M30.12,24.82c0,8.32-6.74,15.06-15.06,15.06S0,33.14,0,24.82,15.06,0,15.06,0c0,0,15.06,16.5,15.06,24.82h0Z"/>
+                        </svg>
+                    </span>
+                    <Heading tag="h3" size="m" fontFamily="secondary" marginBottom="s">Fullfillment Services</Heading>
+                    <p>We offer comprehensive fulfillment services to handle your inventory and shipping needs. From warehousing to order processing, we ensure your products are ready to go when you need them. This allows you to focus on growing your business while we take care of the logistics.</p>
                 </div>
             </div>
         </div>
@@ -124,7 +110,8 @@ import Heading from "../Heading.astro";
 
 .img-wrapper {
     // aspect-ratio: 1 / 1;
-    width: fit-content;
+    // width: fit-content;
+    width: 100%;
     border-radius: 7px;
     overflow: hidden;
     height: 100%;

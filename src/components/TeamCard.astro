@@ -16,7 +16,7 @@ const {name, image, imageAlt, position} = team.data;
 ---
 
 <li>
-    <Picture src={image} alt={imageAlt} class="team__img" loading="eager" width={1300} height={1000} />
+    <Picture src={image as any} alt={imageAlt} class="team__img" loading="eager" width={1300} height={1000} />
     <div class="team__content">
         <Heading tag='h3' size='s' fontFamily='primary' marginBottom='none'>{name}</Heading>
         <p class="review">{position}</p>

@@ -26,7 +26,7 @@ const orderingProcess = await getCollection("orderingProcess");
             {
                 orderingProcess.map(({data}) => (
                     <div id={data.data} class="order-process__card" current-state={data.active}>
-                        <Picture src={data.image} alt={data.imageAlt} class="order-process__img" loading="eager" width={1000} height={1000} />
+                        <Picture src={data.image as any} alt={data.imageAlt} class="order-process__img" loading="eager" width={1000} height={1000} />
                     </div>
                 ))
             }
