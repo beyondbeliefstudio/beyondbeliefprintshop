@@ -16,7 +16,7 @@ const {itemCategory, itemImage, itemNumber, itemPrice, itemQuality, itemURL, ite
 
 <article class="productCard">
     <div class="productCard__img-wrapper">
-        <Image src={itemImage} alt={itemName} class="productCard__img" loading="lazy" width={300} height={300} />
+        <Image src={itemImage} alt={itemName} class="productCard__img" loading="eager" width={600} height={600} />
         <p class="quality">{itemQuality}</p>
     </div>
     <div class="productCard__content">
@@ -24,7 +24,7 @@ const {itemCategory, itemImage, itemNumber, itemPrice, itemQuality, itemURL, ite
         <p><b>Brand:</b> {itemBrand}</p>
         <p><b>Item Number:</b> {itemNumber}</p>
         <p><b>Category:</b> {itemCategory}</p>
-        <p><b>Price:</b> ${itemPrice.toFixed(2)}</p>
+        <p><b>Price:</b> Starting at ${itemPrice.toFixed(2)}</p>
         <Links href={itemURL}>View Product</Links>
     </div>
 </article>

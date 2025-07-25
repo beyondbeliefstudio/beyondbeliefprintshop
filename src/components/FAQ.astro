@@ -37,9 +37,7 @@ const {
                                 <Heading tag="h3" size="s" fontFamily="secondary" marginBottom="none" class="accordion__headings">{data.question}</Heading>
                             </div>
                             <div id={data.tag} class="accordion__content" hidden>
-                                <p>
-                                    {data.answer}
-                                </p>
+                                    <div set:html={data.answer}></div>
                             </div>
                         </div>
                     ))
@@ -49,7 +47,7 @@ const {
     </div>
 </section>
 
-<style lang="scss">
+<style lang="scss" is:global>
 .accordion {
     display: flex;
     flex-direction: column;
@@ -154,6 +152,29 @@ const {
         p {
             margin-bottom: 0;
         }
+
+        ol {
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+            
+            li {
+                margin-bottom: 0.5rem;
+                line-height: 1.6;
+            }
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        
+        strong {
+            font-weight: 700;
+        }
+        
     }
 }
 

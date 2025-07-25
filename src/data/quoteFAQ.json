@@ -46,5 +46,11 @@
     "question": "What if I need help choosing options?",
     "answer": "Contact our sales team or use the FAQ for guidance. We're happy to help you select the best options for your project!",
     "tag": "a8"
+  },
+  {
+    "id": 9,
+    "question": "I want to add multiple items to my order (like t-shirts AND hoodies). How can I do that?",
+    "answer": "Great question! While our quote calculator shows pricing for one item type at a time, you can absolutely include multiple items in your order. Here's how:<ol><li><strong>Start with one item</strong> - Fill out the quote form for your primary item (e.g., 50 t-shirts with 1 color front/back)</li><li><strong>Get your initial quote</strong> - Submit the form to see pricing and move to the next step</li><li><strong>Add details for additional items</strong> - In the 'Additional Details' section of the contact form, simply list your other items (e.g., 'Also need 100 hoodies with 2 colors front/2 colors back')</li><li><strong>We'll handle the rest</strong> - Our team will provide a comprehensive quote covering all your items</li></ol><p><strong>Pro tip:</strong> Feel free to run the quote calculator multiple times with different items to get ballpark pricing for each part of your order!</p>",
+    "tag": "a9"
   }
 ]
