@@ -13,8 +13,8 @@
   },
   {
     "id": 3,
-    "question": "How do I enter 'Quantity'?",
-    "answer": "Enter the total number of garments you need. Minimum order is 12, and discounts apply for higher quantities.",
+    "question": "What are the minimums?",
+    "answer": "Our minimum order is 24 pieces for single-color prints and 36 pieces for multi-color prints. These minimums help us keep your per-shirt price low and ensure the best print quality. If you have questions about your design or need a special exception, just ask!",
     "tag": "a3"
   },
   {
@@ -26,7 +26,7 @@
   {
     "id": 5,
     "question": "Why do I need to enter my email?",
-    "answer": "Your quote will be sent to your email, and our team may follow up to help finalize your order.",
+    "answer": "We ask for your email and contact information so we can send your quote, get in touch to answer any questions, and help you get your order started. Our team may follow up to make sure you have everything you need!",
     "tag": "a5"
   },
   {
