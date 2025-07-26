@@ -42,7 +42,7 @@ import OrderingProcess from '@/components/OrderingProcess.astro';
     <div class="container-md column-main">
         <div class="content-md">
             <Heading tag="h2" size="xl" fontFamily="primary" marginBottom="m">Your Local Screen Printing Experts</Heading>
-            <p>We focus 100% on screen printing so you get sharp, consistent prints that last wash after wash. No embroidery, no vinyl—just the craft we know best.</p>
+            <p>We live and breathe ink, treating every shirt as a blank canvas ready for something memorable. We focus 100% on screen printing so you get sharp, consistent prints that last wash after wash.</p>
         </div>
         <div class="content-full">
             <div class="card-grid grid-auto-3">
@@ -80,8 +80,8 @@ import OrderingProcess from '@/components/OrderingProcess.astro';
 <section class="bg-white">
     <div class="container-md column-main">
         <div class="content-md">
-            <Heading tag='h2' size='xl' fontFamily='primary' marginBottom='m'>Getting Started Is Easy.</Heading>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam qui optio beatae natus quae! Molestiae nam accusamus dolorem ab consequuntur, tempore, vitae, officia ex qui omnis necessitatibus voluptatibus alias illum.</p>
+            <Heading tag='h2' size='xl' fontFamily='primary' marginBottom='m'>How It Works</Heading>
+            <p>Ordering should feel simple, almost fun. Here’s the four‑step playbook that gets your gear from idea to doorstep in record time.</p>
         </div>
         <div class="content-full">
             <OrderingProcess />
@@ -238,6 +238,13 @@ import OrderingProcess from '@/components/OrderingProcess.astro';
     align-items: center;
     justify-content: center;
 
+    &:hover {
+        img,svg {
+            transform: scale(1.05);
+            opacity: .8;
+        }
+    }
+
     @media screen and (max-width: 768px) {
         padding: 1rem;
     }
@@ -248,7 +255,7 @@ import OrderingProcess from '@/components/OrderingProcess.astro';
         width: 100%;
         max-height: 150px;
         object-fit: contain;
-        // filter: invert(1);
+        transition: transform 0.3s ease-in-out;
     }
 }
 
